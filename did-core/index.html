@@ -213,128 +213,60 @@ Introduction
     </h1>
 
     <p>
-Conventional <a href="https://en.wikipedia.org/wiki/Identity_management">identity management</a>
-systems are based on centralized authorities such as corporate
-<a href="https://en.wikipedia.org/wiki/Directory_service">directory services</a>,
-<a href="https://en.wikipedia.org/wiki/Certificate_authority">certificate authorities</a>,
-or <a href="https://en.wikipedia.org/wiki/Domain_name_registry">domain name registries</a>.
-From the standpoint of cryptographic trust verification, each of these
-centralized authorities serves as its own
-<a href="https://en.wikipedia.org/wiki/Trust_anchor">root of trust</a>. To make
-identity management work across these systems requires implementing
-<a href="https://en.wikipedia.org/wiki/Federated_identity">federated identity management</a>.
+기존의 ID 관리 시스템(<a href="https://en.wikipedia.org/wiki/Identity_management">identity management</a>)은 기업의 디렉토리 서비스(<a href="https://en.wikipedia.org/wiki/Directory_service">directory services</a>), 인증 기관(,
+<a href="https://en.wikipedia.org/wiki/Certificate_authority">certificate authorities</a>) 또는 도메인 등록 기관(<a href="https://en.wikipedia.org/wiki/Domain_name_registry">domain name registries</a>)과 같은 중앙 집중식 기관을 기반으로 한다. 암호학적 신뢰 검증의 관점에서 보면, 이들 중앙집중화 된 각 기관은 각각의 신뢰점(<a href="https://en.wikipedia.org/wiki/Trust_anchor">root of trust</a>)이 된다. 이러한 시스템들을 통해 ID 관리를 수행하려면 연합 ID 관리(<a href="https://en.wikipedia.org/wiki/Federated_identity">federated identity management</a>)를 구축해야 한다.
     </p>
 
     <p>
-The emergence of <a>distributed ledger technology</a> (DLT) and
-<a>blockchain technology</a> provides the opportunity for fully
-<a>decentralized identity management</a>. In a decentralized identity system,
-entities (that is, discrete identifiable units such as, but not limited to,
-people, organizations, and things) are free to use any shared root of trust.
-Globally distributed ledgers, decentralized P2P networks, or other systems
-with similar capabilities, provide the means for managing a root of
-trust without introducing a centralized authority or a single point of
-failure. In combination, <a>DLTs</a> and
-<a>decentralized identity management</a> systems enable any entity to create and
-manage their own identifiers on any number of distributed, independent roots of
-trust.
+<a>블록체인</a>이라고도 하는 분산원장기술(DLT, <a>Distributed ledger Technology</a>)의 출현은 완전한 <a>탈중앙 ID 관리</a> 기회를 제공한다. 탈중앙 신원 시스템에서 개체(개인, 조직 및 기타 사항과 같은 제한이 없는 개별 식별 가능 단위)는 공유된 신뢰점을 자유롭게 사용할 수 있다. 전세계에 분산된 원장, 탈중앙 p2p 네트워크, 또는 유사한 기능을 가진 다른 시스템은 권한의 집중이나 단일 장애점을 도입하지 않고 신뢰점를 관리할 수 있는 수단을 제공한다. <a>DLTs</a>(분산원장기술들)과 <a>탈중앙 ID 관리</a>를 결합한 시스템에서는 누구나 분산되고, 신뢰점과 독립적인 자신의 식별자들을 생성하고 관리 할 수 있다.
     </p>
 
     <p>
-Entities are identified by <a>decentralized identifiers</a> (<a>DIDs</a>), and
-can authenticate using proofs (for example, digital signatures,
-privacy-preserving biometric protocols, and so on). <a>DIDs</a> point to
-<a>DID documents</a>. A <a>DID document</a> contains a set of
-<a>service endpoints</a> for interacting with the entity that the <a>DID</a>
-identifies (that is, the <a>DID subject</a>). Following the guidelines of
-<a href="https://en.wikipedia.org/wiki/Privacy_by_design">Privacy by
-Design</a>, any entity can have as many <a>DIDs</a> (and corresponding
-<a>DID documents</a> and <a>service endpoints</a>) as necessary to respect the
-entity’s desired separation of identities, personas, and contexts (in the
-everyday sense of these words).
+개체들은 <a>탈중앙 식별자</a>(<a>DIDs</a>)에 의해 식별되며, 증명(예: 디지털 서명, 생체인식 등)을 통해 인증할 수 있다. <a>DIDs</a>는 <a>DID 문서들</a>(<a>DID documents</a>)을 참조한다. <a>DID 문서<a>는 <a>DID</a> 식별자와 주체가 상호 작용을 하기 위한 <a>서비스 엔드포인트</a>들을 포함한다. 프라이버시 디자인[<a href="https://en.wikipedia.org/wiki/Privacy_by_design">Privacy by
+Design</a>] 가이드라인에 따라, 개체들은 신원, 페르소나, 그리고 컨텍스트들에 따라 구분하고 싶은 바람을 따라 자신이 원하는 만큼 많은 <a>DIDs</a>(<a>DID문서</a>와 <a>서비스 엔드포인트</a>들이 포함된)를 가질 수 있다.
     </p>
 
     <p>
-<a>DID methods</a> are the mechanism by which a <a>DID</a> and its associated
-<a>DID document</a> are created, read, updated, and deactivated on a specific
-<a>distributed ledger</a> or network. <a>DID methods</a> are defined using
-separate <a>DID method</a> specifications.
+<a>DID 메소드</a>는 특정 <a>분산 원장</a> 또는 네트워크에서 <a>DID</a>와 관련된 <a>DID 문서</a>들을 생성, 읽기, 갱신, 그리고 비활성화 하는 메커니즘이다. <a>DID 메소드들</a>은 별도의 <a>DID 메소드</a> 규격을 사용하여 정의한다.
     </p>
 
     <p>
-This design eliminates dependence on centralized registries for
-identifiers as well as centralized certificate authorities for key
-management, which is the standard in hierarchical
-<a href="https://en.wikipedia.org/wiki/Public_key_infrastructure">PKI (public key infrastructure</a>).
-In cases where the <a>DID registry</a> is a <a>distributed ledger</a>, each
-entity can serve as its own root authority. This architecture is referred to as
-<a href="https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust/blob/master/final-documents/dpki.pdf">DPKI (decentralized PKI)</a>.
+이 설계는 중앙 집중식 레지스트리와 공개키 기반구조(<a href="https://en.wikipedia.org/wiki/Public_key_infrastructure">PKI, public key infrastructure</a>)의 중앙 집중식 인증 기관에 대한 식별자의 의존성을 제거 한다. <a>DID 레지스트리</a>가 <a>분산 원장</a>인 경우, 각 개체는 자체 인증 기관의 역할을 할 수 있으며, 이것을 분권화된 <a href="https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust/blob/master/final-documents/dpki.pdf">PKI- DPKI(decentralized PKI)</a>라고 한다.
     </p>
 
     <p class="note">
-<a>DID methods</a> can also be developed for identifiers registered in federated
-or centralized identity management systems. Indeed, all types of identifier
-systems can add support for <a>DIDs</a>. This creates an interoperability bridge
-between the worlds of centralized, federated, and
-<a>decentralized identifiers</a>.
+참고로 <a>DID 메소드</a>들은 연합, 또는 중앙집중식 ID 관리 시스템에 등록된 식별자로도 사용될 수 있다. 이것을 위해, 모든 유형의 식별자 시스템에 <a>DIDs</a> 지원을 추가할 수 있다. 이로 인해 중앙집중, 연합 및 <a>분산 방식 식별자</a>들 사이의 상호 운용성이 형성 된다.
     </p>
 
     <p>
-The first purpose of this specification is to define the generic
-<a>DID scheme</a> and a generic set of operations on <a>DID documents</a> that
-can be implemented for any <a>DID registry</a>. The second purpose of this
-specification is to define the conformance requirements for a <a>DID method</a>
-specification. The <a>DID method</a> specification is a separate document that
-defines a specific <a>DID scheme</a> and specific set of <a>DID document</a>
-operations for a specific <a>DID registry</a>.
+이 규격의 첫번째 목적은 일반적인 <a>DID 스키마<a>와 일반적인 <a>DID 문서<a>들에서 동작하는 명령어 집합을 모든 <a>DID 레지스트리<a>에 구현될 수 있도록 정의하는 것 이다. 이 규격의 두번째 목적은 <a>DID 메소드<a>를 위한 적합 요구조건(특정 <a>DID 레지스트리<a>를 위한 특정 <a>DID 스키마<a>와 특정 <a>DID 문서<a>에서 동작하는 명령어 세트를 정의하는 별도의 규격)을 정의하기 위함이다.
     </p>
 
     <p class="note">
-Conceptually, the relationship between this specification and a
-<a>DID method</a> specification is similar to the relationship between the IETF
-generic <a>URI</a> specification ([[RFC3986]]) and a specific <a>URI</a> scheme
-([[IANA-URI-SCHEMES]] (such as the http: and https: schemes specified in
-[[RFC7230]]). It is also similar to the relationship between the IETF generic
-URN specification ([[RFC8141]]) and a specific URN namespace definition, (such
-as the <a>UUID</a> URN namespace defined in [[RFC4122]]). The difference is that
-a <a>DID method</a> specification, as well as defining a specific
-<a>DID scheme</a>, also specifies the methods for resolving and deactivating
-<a>DIDs</a> on, and writing <a>DID documents</a> to, the appropriate
-<a>DID registry</a>.
+개념적으로, 이 규격(Decentralized Identifiers)과 <a>DID 메소드</a> 규격의 관계는 IETF 일반 <a>URI</a> 규격([RFC3986])과 특정 <a>URI</a> 체계([IANA-URI-SCHEMES])([RFC7230]에 명시된 http:와 https: 체계)의 관계와 유사하다. IETF 일반 URN 규격([RFC8141]) 및 특정 URN 네임스페이스 정의([RFC4122]에 정의된 <a>UUID</a> URN 네임스페이스 등과 같은)의 관계와도 역시 유사하다. 
+차이점은 <a>DID 메소드</a> 규격은 특정 <a>DID 스키마</a>를 정의하는 것 외에도, 적절한 <a>DID 레지스트리</a>에서 <a>DIDs</a>의 구별방법을 제공하거나, 비활성화하거나, <a>DID 문서</a>를 작성하는 방법을 명시한다는 것이다.
     </p>
 
     <p>
-The hierarchical design of a generic <a>DID</a> specification with specific
-<a>DID method</a> specifications introduces some of the same concepts as the
-<a>URI</a> specification:
+특정 <a>DID 메소드</a> 규격을 가진 일반 <a>DID</a> 규격의 계층적 설계는 <a>URI</a> 규격과 동일한 개념의 일부를 도입한다:
     </p>
       <ul>
         <li>
-<a>DIDs</a> from different <a>DID methods</a> might not be interoperable, just
-as <a>URIs</a> from different URI schemes might not be interoperable.
+다른 <a>URI 체계</a>의 <a>URIs</a>가 상호운용되지 않는 것처럼, 다른 <a>DID 메소드</a>의 <a>DIDs</a>는 상호운용되지 않을 수 있다.
         </li>
         <li>
-Entities might need multiple <a>DIDs</a> to support different relationships
-because the other party might only support certain <a>DID methods</a>, in the
-same way that some browsers might only support certain URI schemes.
+일부 브라우저가 특정 URI 체계만 지원하는 경우와 같이, 특정한 <a>DID 메소드</a>만을 지원하는 관계의 지원을 받기 위해 복수의 <a>DIDs</a>가 필요할 수 있다.
         </li>
         <li>
-Entities might need multiple <a>DIDs</a> to support the different cryptographic
-schemes of different <a>DID methods</a> because not all parties will support the
-same cryptographic schemes, in the same way that not all browsers support the
-same URI schemes.
+모든 브라우저가 동일한 URI 체계를 지원하지 않는 것과 같이, 모든 <a>DID 메소드</a>가 동일한 암호 체계를 지원하지는 않기 때문에, 다른 암호화 체계를 지원하기 위해 복수의 <a>DIDs</a>가 필요할 수 있다.
         </li>
         <li>
-Managing multiple <a>DIDs</a>, and tracking which <a>DID</a> belongs to which
-relationship, under which cryptographic scheme, introduces similar logistical
-challenges as managing multiple web addresses and tracking which address belongs
-to which website, or tracking which email address belongs to which relationship.
+복수의 <a>DIDs</a>의 관리 및 그리고 어떤 <a>DID</a>가 어떤 관계에 속하는지 추적하는 것은, 어떤 웹 주소가 어떤 웹사이트에 속하는지 추적하거나 어떤 이메일 주소가 어떤 관계에 속하는지 추적하는 것과 유사한 문제를 야기한다.
         </li>
       </ul>
 
     <p>
-For a list of <a>DID methods</a> and their corresponding specifications,
-see the DID Method Registry [[DID-METHOD-REGISTRY]].
+<a>DID 메소드</a> 및 규격 목록은 [[DID-METHOD-REGISTRY]]를 참조하십시오.
       </p>
 
   <section class="informative">
@@ -343,7 +275,7 @@ A Simple Example
     </h2>
 
     <p>
-A <a>DID</a> is a simple text string consisting of three parts, the:
+<a>DID</a>는 3부분으로 구성된 간단한 문자열입니다.:
     </p>
       <ul>
         <li>
@@ -362,10 +294,7 @@ did:example:123456789abcdefghi
     </pre>
 
     <p>
-The example <a>DID</a> above resolves to a <a>DID document</a>. A
-<a>DID document</a> contains information associated with the <a>DID</a>, such as
-ways to cryptographically authenticate the entity in control of the <a>DID</a>,
-as well as services that can be used to interact with the entity.
+위의 예제 <a>DID</a>는 <a>DID 문서</a>로 해석됩니다. <a>DID 문서</a>에는 <a>DID</a>를 제어하여 개체를 암호학적으로 인증하는 방법 및 개체와 상호 작용하는 데 사용할 수있는 서비스와 같이 <a>DID</a>와 관련된 정보가 포함되어 있다.
     </p>
 
     <pre class="example nohighlight" title="Minimal self-managed DID document">
@@ -395,10 +324,7 @@ Design Goals
     </h2>
 
     <p>
-<a>Decentralized Identifiers</a> are a component of larger systems, such as
-the Verifiable Credentials ecosystem [[?VC-DATA-MODEL]], which drove the design
-goals for this specification. This section summarizes the primary design goals
-for this specification.
+<a>분산된 식별자들</a>은  [[?VC-DATA-MODEL]]과 같은 검증가능한 증명생태계와 같은 더 큰 시스템의 구성요소이며, 이 규격의 설계를 주도 했다. 이 절에는 이 규격의 기본 설계 목표가 요약되어 있다.
     </p>
 
     <table class="simple">
@@ -419,10 +345,7 @@ Description
 Decentralization
           </td>
           <td>
-Eliminate the requirement for centralized authorities or single point
-failure in identifier management, including the registration of globally unique
-identifiers, public verification keys, <a>service endpoints</a>, and other
-metadata.
+글로벌 고유 식별자, 공개 확인 키, <a>서비스 엔드 포인트</a> 및 기타 메타 데이터의 등록을 포함한, 식별자 관리에서 중앙집중식 기관, 또는 단일실패점 요소를 제거해야 한다.
           </td>
         </tr>
 
@@ -431,8 +354,7 @@ metadata.
 Control
           </td>
           <td>
-Give entities, both human and non-human, the power to directly control their
-digital identifiers without the need to rely on external authorities.
+주어진 개체, 인간과 비인간 모두에게 외부 기관에 의존하지 않고 디지털 식별자를 직접 제어 할 수있는 권한을 부여하십시오.
           </td>
         </tr>
 
@@ -441,8 +363,7 @@ digital identifiers without the need to rely on external authorities.
 Privacy
           </td>
           <td>
-Enable entities to control the privacy of their information, including minimal,
-selective, and progressive disclosure of attributes or other data.
+개체가 속성 또는 기타 데이터의 최소, 선택적 및 점진적 공개를 포함하여 정보의 프라이버시를 제어 할 수 있도록한다.
           </td>
         </tr>
 
@@ -451,8 +372,7 @@ selective, and progressive disclosure of attributes or other data.
 Security
           </td>
           <td>
-Enable sufficient security for relying parties to depend on <a>DID documents</a>
-for their required level of assurance.
+필요한 수준의 보증을 위해 <a>DID 문서</a>에 의존할 수 있도록 RP(relying parties)들에게 충분한 보안을 제공한다.
           </td>
         </tr>
 
@@ -461,8 +381,7 @@ for their required level of assurance.
 Proof-based
           </td>
           <td>
-Enable <a>DID subjects</a> to provide cryptographic proof when interacting with
-other entities.
+다른 개체와 상호작용할 때 <a>DID 주체</a>가 암호화 증명을 제공 할 수 있어야 한다.
           </td>
         </tr>
 
@@ -471,8 +390,7 @@ other entities.
 Discoverability
           </td>
           <td>
-Make it possible for entities to discover <a>DIDs</a> for other entities to
-learn more about or interact with those entities.
+다른 개체가 해당 개체에 대해 더 많이 학습하거나 상호 작용할 수 있도록 <a>DIDs</a>를 검색 할 수 있어야 한다.
           </td>
         </tr>
 
@@ -481,8 +399,7 @@ learn more about or interact with those entities.
 Interoperability
           </td>
           <td>
-Use interoperable standards so <a>DID</a> infrastructure can make use of
-existing tools and software libraries designed for interoperability.
+<a>DID</a> 인프라는 상호운용성을 위해 설계된 기존 툴과 소프트웨어 라이브러리를 이용할 수 있도록 상호운용성 표준을 사용해야 한다.
           </td>
         </tr>
 
@@ -491,8 +408,7 @@ existing tools and software libraries designed for interoperability.
 Portability
           </td>
           <td>
-Be system and network-independent and enable entities to use their digital
-identifiers with any system that supports <a>DIDs</a> and <a>DID methods</a>.
+시스템과 네트워크에 독립적이어야 하며 기업이 <a>DIDs</a> 및 <a>DID 메소드</a>를 지원하는 모든 시스템과 함께 디지털 식별자를 사용할 수 있도록 해야 한다.
           </td>
         </tr>
 
@@ -501,8 +417,7 @@ identifiers with any system that supports <a>DIDs</a> and <a>DID methods</a>.
 Simplicity
           </td>
           <td>
-Favor a reduced set of simple features to make the technology easier to
-understand, implement, and deploy.
+기술을보다 쉽게 이해하고, 구현 및 배포 할 수 있도록 축소 된 간단한 기능을 선호해야 한다.
           </td>
         </tr>
 
@@ -511,8 +426,7 @@ understand, implement, and deploy.
 Extensibility
           </td>
           <td>
-Where possible, enable extensibility provided it does not greatly hinder
-interoperability, portability, or simplicity.
+상호운용성(Interoperability), 이식성(Portability) 또는 단순성(Simplicity)을 크게 방해하지 않는 경우 가능한 확장할 수 있다.
           </td>
         </tr>
       </tbody>
@@ -525,42 +439,28 @@ Interoperability
     </h3>
 
     <p>
-Interoperability of implementations for <a>DIDs</a> and <a>DID documents</a>
-will be tested by evaluating an implementation's ability to create and parse
-<a>DIDs</a> and <a>DID documents</a> that conform to the specification.
-Interoperability for <a>DID methods</a> will be determined by evaluating each
-<a>DID method</a> specification to determine, at a minimum, that the:
+<a>DIDs</a>와 <a>DID 문서</a>의 구현 상호운용성은 규격에 부합하는 <a>DIDs</a> 및 <a>DID 문서</a>를 작성하고 분석할 수 있는 구현 능력을 평가하여 시험한다. <a>DID 메소드</a>의 상호운용성은 최소한 다음과 같이 최소 규격을 평가함으로써 결정된다.:
     </p>
       <ul>
         <li>
-<a>DID method</a> name is unique and not used by an existing, incompatible
-<a>DID method</a>.
+<a>DID 메소드</a> 이름은 겹치지 않고 유일해야 하며, <a>DID 메소드</a>의 기존용례와 모순된 사용은 하지 못한다.
         </li>
         <li>
-Required operations are supported.
+요구되는 기능들이 지원되어져야 한다.
         </li>
         <li>
-Operations requiring descriptions are described.
+설명이 필요한 작업에 대해 설명되어야 한다.
         </li>
         <li>
-Specification is specific, detailed, and complete enough for independent
-implementation.
+규격은 독립적 구현을 위해 충분히 구체적이고 상세하고 완전해야 한다.
         </li>
         <li>
-Specification contains sections describing security and privacy considerations.
+규격은 보안 및 프라이버시 고려사항을 기술하는 섹션을 포함해야 한다.
         </li>
       </ul>
 
     <p>
-Interoperability for producers and consumers of <a>DIDs</a> and
-<a>DID documents</a> is provided by ensuring the <a>DIDs</a> and
-<a>DID documents</a> conform. Interoperability for <a>DID method</a>
-specifications is provided by the details in each <a>DID method</a>
-specification. It is understood that, in the same way that a web browser is not
-required to implement all known URI schemes, conformant software that works
-with <a>DIDs</a> is not required to implement all known <a>DID methods</a>.
-However, all implementations of a given <a>DID method</a> must be interoperable
-for that method.
+<a>DIDs</a> 및 <a>DID 문서</a>의 생산자와 소비자를 위한 상호운용성은 <a>DIDs</a> 및 <a>DID 문서</a>가 일치하는지 확인함으로써 보장된다. <a>DID 메소드</a> 규격에 대한 상호운용성은 각 <a>DID 메소드</a> 규격에 있는 세부사항에 의해 보장된다. 웹 브라우저가 알려진 모든 URIs 스키마를 구현할 필요가 없는 것처럼, <a>DIDs</a>와 함께 작동하는 호환 소프트웨어는 알려진 모든 <a>DID 메소드</a>를 구현할 필요가 없음을 이해해야한다. 그러나 지정된 <a>DID 메소드</a>의 모든 구현은 해당 메소드에 대해 상호운용성이 보장해야한다.
     </p>
   </section>
 
