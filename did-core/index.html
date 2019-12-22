@@ -2073,35 +2073,19 @@ DID Method Schemes
       </h2>
 
       <p>
-A <a>DID method</a> specification MUST define exactly one method-specific
-<a>DID scheme</a>, identified by exactly one method name. For more information,
-see the <code>method-name</code> rule in Section
-<a href="#generic-did-syntax"></a>.
+<a>DID 메소드</a> 규격은 정확하게 메소드별 <a>DID 체계</a>마다 식별이 가능한 정확한 하나의 메소드 이름이 반드시 정의해야 한다. (<code>method-name</code> 규칙은 <a href="#generic-did-syntax"></a>에 따른다)
       </p>
 
       <p>
-Because the method name is part of the <a>DID</a>, short method names are
-preferred; the method name SHOULD be five characters or less. The method name
-might reflect the name of the <a>DID registry</a> to which the <a>DID method</a>
-specification applies. For more information, see Section
-<a href="#unique-did-method-names"></a>.
+메소드 이름은 <a>DID</a>의 일부이므로, 짧은 메소드 이름이 선호된다. 메소드 이름은 5자 이하여야 한다. 메소드 이름은 <a>DID 메소드</a> 규격이 적용되는 <a>DID 레지스트리</a>의 이름을 반영할 수 있다. (<a href="#unique-did-method-names"></a>.)
       </p>
 
       <p>
-The <a>DID method</a> specification for the method-specific <a>DID scheme</a>
-MUST specify how to generate the <code>method-specific-id</code> component of a
-<a>DID</a>. The <code>method-specific-id</code> value MUST be able to be
-generated without the use of a centralized registry service. The
-<code>method-specific-id</code> value SHOULD be globally unique by itself. The
-<a>DID</a>, as defined by the <code>did</code> rule in Section
-<a href="#generic-did-syntax"></a>, MUST be globally unique.
+메소드별 <a>DID 체계</a>를 위한 <a>DID 메소드<a> 규격에는 <a>DID</a>의 구성요소인 <code>method-specific-id</code>를 어떻게 생성하는지 반드시 명시가 되어있어야 한다. <code>method-specific-id</code>는 반드시 중앙화 된 레지스트리 서비스를 이용하지 않고 생성할 수 있어야 한다. <code>method-specific-id</code>는 범용(범세계)적으로 고유해야 한다. <code>did</code> 규칙은 <a href="#generic-did-syntax"></a>에 정의되어 있으며, 반드시 전세계적으로 고유해야 한다.
       </p>
 
       <p>
-If needed, a method-specific <a>DID scheme</a> MAY define multiple
-<code>method-specific-id</code> formats. It is RECOMMENDED that a
-method-specific <a>DID scheme</a> define as few <code>method-specific-id</code>
-formats as possible.
+필요하다면, 메소드별 <a>DID 체계</a>는 다수의 <code>method-specific-id</code> 형식을 정의할 수 있다. (하지만) 가능한 소수의 <code>method-specific-id</code> 형식을 정의하는 것을 권장한다.
       </p>
     </section>
 
@@ -2111,20 +2095,10 @@ DID Operations
       </h2>
 
       <p>
-To enable the full functionality of <a>DIDs</a> and <a>DID documents</a> on a
-particular <a>DID registry</a>, a <a>DID method</a> specification MUST specify
-how each of the following <abbr title="Create, Read, Update, Delete">CRUD</abbr>
-operations is performed by a client. Specify each operation to the level of
-detail necessary to build and test interoperable client implementations with the
-<a>DID registry</a>. These operations can effectively be used to perform all the
-operations required of a CKMS (cryptographic key management system). For
-example, key registration, key replacement, key rotation, key recovery, and key
-expiration.
-
+특정 <a>DID 레지스트리</a>에서 <a>DIDs</a> 및 <a>DID 문서</a>의 전체 기능을 사용하려면 클라이언트에 의해 수행되는 다음 <abbr title="Create, Read, Update, Delete">CRUD</abbr> 작업이 DID 메소드 규격에 반드시 지정되어 있어야 한다. 각 조작은 <a>DID 레지스트리</a>와 상호운용 가능한 클라이언트 구현을 빌드하고 시험할 수준의 세부사항을 지정해야 할 필요가 있다. 이러한 조작은 CKMS(cryptographic key management system)에 필요한 모든 조작을 효과적으로 수행할 수 있다. 예를 들면 키 등록, 키 교체, 키 회전(key rotation), 키 복구, 키 만료 들이다.
       </p>
       <p>
-Any <a>DID method</a> specification that does not support a specific operation,
-such as update or deactivate, MUST clearly state these limitations.
+업데이트 또는 비활성화와 같은 특정 작업을 지원하지 않는 <a>DID 메소드</a> 규격은 이러한 제한을 반드시 명확하게 명시해야 한다.
       </p>
 
       <section>
@@ -2133,9 +2107,7 @@ Create
         </h3>
 
         <p>
-The <a>DID method</a> specification MUST specify how a client creates a
-<a>DID</a> and its associated <a>DID document</a> on the <a>DID registry</a>,
-including all cryptographic operations necessary to establish proof of control.
+<a>DID 메소드</a> 규격은 클라이언트가 <a>DID</a> 및 관련 <a>DID 문서</a>를 <a>DID 레지스트리</a>에 어떻게 생성할지 명시해야 하며, 여기에는 제어증명 입증을 위한 모든 암호화 작업이 포함된다.
         </p>
       </section>
 
@@ -2145,9 +2117,7 @@ Read/Verify
         </h3>
 
         <p>
-The <a>DID method</a> specification MUST specify how a client uses a <a>DID</a>
-to request a <a>DID document</a> from the <a>DID registry</a>, including how the
-client can verify the authenticity of the response.
+<a>DID 메소드</a> 규격은 클라이언트가 <a>DID</a>를 사용하여 <a>DID 레지스트리</a>에 <a>DID 문서</a>를 요청하는 방법, 클라이언트가 응답의 진위를 확인할 수 있는 방법을 반드시 명시해야 한다.
         </p>
       </section>
 
@@ -2157,10 +2127,7 @@ Update
         </h3>
 
         <p>
-The <a>DID method</a> specification MUST specify how a client can update a
-<a>DID document</a> on the <a>DID registry</a>, including all cryptographic
-operations necessary to establish proof of control, <em>or</em> state that
-updates are not possible.
+<a>DID 메소드</a> 규격은 클라이언트가 <a>DID 레지스트리</a>의 <a>DID 문서</a>를 갱신 할 수 있는 방법을 반드시 명시해야 한다. 여기에는 제어증명 입증을 위한 모든 암호화 작업, <em>또는</em> 업데이트가 불가능하다는 상태가 포함된다.
         </p>
       </section>
 
@@ -2170,10 +2137,7 @@ Deactivate
         </h3>
 
         <p>
-The <a>DID method</a> specification MUST specify how a client can deactivate a
-<a>DID</a> on the <a>DID registry</a>, including all cryptographic operations
-necessary to establish proof of deactivation, <em>or</em> state that
-deactivation is not possible.
+<a>DID 메소드</a> 규격은 클라이언트가 <a>DID 레지스트리</a>의 <a>DID</a>를 비활성화 할 수 있는 방법을 반드시 명시해야 한다. 여기에는 제어증명 입증을 위한 모든 암호화 작업, <em>또는</em> 비활성화가 불가능하다는 상태가 포함된다.
         </p>
       </section>
     </section>
@@ -2183,30 +2147,15 @@ deactivation is not possible.
 Unique DID Method Names
       </h2>
       <p>
-The authors of a new <a>DID method</a> specification SHOULD use a method name
-that is unique among all <a>DID method</a> names known to them at the time of
-publication.
+새로운 <a>DID 메소드</a> 규격의 저자는 발표 당시 알려진 모든 <a>DID 메소드</a> 이름들과 중복되지 않는 고유한 메소드 이름을 사용해야만 한다.
       </p>
       <p>
-Because there is no central authority for allocating or approving
-<a>DID method</a> names, there is no way to know for certain if a specific
-<a>DID method</a> name is unique. To help with this challenge, the
-<a href="https://www.w3.org/community/credentials/">W3C Credentials Community Group</a>
-maintains a non-authoritative list of known <a>DID method</a> names and their
-associated specifications. For more information, see Appendix
-<a href="#registries"></a>.
+<a>DID 메소드</a> 이름을 할당하거나 승인 할 수 있는 권한을 가진 중앙기관이 없기 때문에 특정 <a>DID 메서드</a> 이름이 고유한 지 확인할 방법이 없다. 이 문제를 해결하기 위해 <a href="https://www.w3.org/community/credentials/">W3C Credentials Community Group</a>은 알려진 <a>DID 메소드</a> 이름과 관련 규격의 비권한 목록을 유지한다(Appendix <a href="#registries"></a> 참조)
       </p>
       <p>
-The [[DID-METHOD-REGISTRY]] is a tool for implementors to use when coming to
-consensus on a new method name, as well as an informative reference for software
-developers implementing <a>DID resolvers</a> for different <a>DID methods</a>.
-For more information about <a>DID resolvers</a> see Section
-<a href="#did-resolvers"></a>. The [[DID-METHOD-REGISTRY]] is not a definitive
-or official list of <a>DID methods</a>. Nonetheless, adding <a>DID method</a>
-names to the [[DID-METHOD-REGISTRY]] is encouraged so that other implementors
-and members of the community have a place to see an overview of existing
-<a>DID methods</a>. The lightweight criteria for inclusion are documented in the
-[[DID-METHOD-REGISTRY]].
+[[DID-METHOD-REGISTRY]]는 새로운 메소드 명칭을 합의할 때 구현자가 참조 할 수 있는 도구이며, 또한 다른 <a>DID 메소드</a>의 <a>DID 리졸버</a>를 구현하는 소프트웨어 개발자가 참조 할 수 있는 정보가 된다. 좀 더 많은 <a>DID 리졸버</a>에 대한 정보는 <a href="#did-resolvers"></a>을 참고 할 것.
+
+[[DID-METHOD-REGISTRY]]는 <a>DID 메소드</a>의 확정적 또는 공식적인 목록이 아니다. 그럼에도 불구하고, [[DID-METHOD-REGISTRY]]에 <a>DID 메소드</a> 이름을 추가하여 다른 구현자와 커뮤니티 구성원이 기존 <a>DID 메소드</a>의 개요를 한곳에서 볼 수 있도록 하는 것을 장려한다. <a>DID 메소드</a> 이름을 추가하기 위한 간략한 기준은 [[DID-METHOD-REGISTRY]]에 문서화되어 있다.
       </p>
     </section>
 
