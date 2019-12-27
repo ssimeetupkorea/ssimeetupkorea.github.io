@@ -141,22 +141,16 @@
 <body>
   <section id='abstract'>
     <p>
-<a>Decentralized identifiers</a> (DIDs) are a new type of identifier to
-provide verifiable, decentralized digital identity. These new identifiers are
-designed to enable the controller of a <a>DID</a> to prove control over
-it and to be implemented independently of any centralized registry, identity
-provider, or certificate authority. <a>DIDs</a> are URLs that relate a
-<a>DID subject</a> to a <a>DID document</a> allowing trustable interactions with
-that subject. <a>DID documents</a> are simple documents describing how to use
-that specific <a>DID</a>. Each <a>DID document</a> can express cryptographic
-material, verification methods, or <a>service endpoints</a>, which provide a
-set of mechanisms enabling a <a>DID controller</a> to prove control of the
-<a>DID</a>. <a>Service endpoints</a> enable trusted interactions with the
-<a>DID subject</a>.
+<a>탈중앙 식별자</a>(DIDs)란 검증가능하고 탈중앙화된 디지털 신원을 위한 새로운 형식의 식별자이다.  
+이러한 새로운 식별자는 <a>DID 컨트롤러</a>가 DID의 제어권을 증명하고, 중앙화된 레지스트리, 신원 제공자, 인증기관 등으로부터 독립적으로 구현할 수 있도록 설계되었다. 
+<a>DID</a>는 <a>DID 주체</a>와 관련된 URL로써, <a>DID 문서</a>라는 방식을 통해 해당 주체와 신뢰할 수 있는 상호작용을 가능하게하는 도구이다. 
+<a>DID 문서</a>는 특정 DID를 어떻게 사용하는지에 대해 설명해 놓은 간단한 문서이다. 
+각 <a>DID 문서</a>는 암호학적 요소, 검증 메소드, 서비스 엔드포인트 등으로 표현될 수 있다. 
+해당요소들은 <a>DID 컨트롤러</a>가 DID의 통제권에 대한 증명을 가능하게 하는 메커니즘 집합을 제공한다. 
+서비스 엔드포인트는 <a>DID 주체</a>와의 믿을 수 있는 상호작용을 가능하게 한다.
     </p>
     <p>
-This document specifies a common data model, a URL format, and a set of
-operations for <a>DIDs</a>, <a>DID documents</a>, and <a>DID methods</a>.
+본 문서는 일반 데이터 모델, URL 형식, <a>DID</a>를 위한 일련의 작동방식, <a>DID 문서</a> 그리고 <a>DID 메소드</a>에 대해 명시하고 있다.
     </p>
   </section>
 
@@ -222,8 +216,8 @@ Introduction
     </p>
 
     <p>
-개체들은 <a>탈중앙 식별자</a>(<a>DIDs</a>)에 의해 식별되며, 증명(예: 디지털 서명, 생체인식 등)을 통해 인증할 수 있다. <a>DIDs</a>는 <a>DID 문서들</a>(<a>DID documents</a>)을 참조한다. <a>DID 문서<a>는 <a>DID</a> 식별자와 주체가 상호 작용을 하기 위한 <a>서비스 엔드포인트</a>들을 포함한다. 프라이버시 디자인[<a href="https://en.wikipedia.org/wiki/Privacy_by_design">Privacy by
-Design</a>] 가이드라인에 따라, 개체들은 신원, 페르소나, 그리고 컨텍스트들에 따라 구분하고 싶은 바람을 따라 자신이 원하는 만큼 많은 <a>DIDs</a>(<a>DID문서</a>와 <a>서비스 엔드포인트</a>들이 포함된)를 가질 수 있다.
+개체들은 <a>탈중앙 식별자</a>(<a>DIDs</a>)에 의해 식별되며, 증명(예: 디지털 서명, 생체인식 등)을 통해 인증할 수 있다. <a>DIDs</a>는 <a>DID 문서들</a>(<a>DID documents</a>)을 참조한다. <a>DID 문서</a>는 <a>DID</a> 식별자와 주체가 상호 작용을 하기 위한 <a>서비스 엔드포인트</a>들을 포함한다. 프라이버시 디자인[<a href="https://en.wikipedia.org/wiki/Privacy_by_design">Privacy by
+Design</a>] 가이드라인에 따라, 개체들은 신원, 페르소나, 그리고 컨텍스트들에 따라 구분하고 싶은 바람을 따라 자신이 원하는 만큼 많은 <a>DIDs</a>(<a>DID 문서</a>와 <a>서비스 엔드포인트</a>들이 포함된)를 가질 수 있다.
     </p>
 
     <p>
@@ -235,11 +229,11 @@ Design</a>] 가이드라인에 따라, 개체들은 신원, 페르소나, 그리
     </p>
 
     <p class="note">
-참고로 <a>DID 메소드</a>들은 연합, 또는 중앙집중식 ID 관리 시스템에 등록된 식별자로도 사용될 수 있다. 이것을 위해, 모든 유형의 식별자 시스템에 <a>DIDs</a> 지원을 추가할 수 있다. 이로 인해 중앙집중, 연합 및 <a>분산 방식 식별자</a>들 사이의 상호 운용성이 형성 된다.
+참고로 <a>DID 메소드</a>들은 연합, 또는 중앙집중식 ID 관리 시스템에 등록된 식별자로도 사용될 수 있다. 이것을 위해, 모든 유형의 식별자 시스템에 <a>DIDs</a> 지원을 추가할 수 있다. 이로 인해 중앙집중, 연합 및 <a>탈중앙 식별자</a>들 사이의 상호 운용성이 형성 된다.
     </p>
 
     <p>
-이 규격의 첫번째 목적은 일반적인 <a>DID 스키마<a>와 일반적인 <a>DID 문서<a>들에서 동작하는 명령어 집합을 모든 <a>DID 레지스트리<a>에 구현될 수 있도록 정의하는 것 이다. 이 규격의 두번째 목적은 <a>DID 메소드<a>를 위한 적합 요구조건(특정 <a>DID 레지스트리<a>를 위한 특정 <a>DID 스키마<a>와 특정 <a>DID 문서<a>에서 동작하는 명령어 세트를 정의하는 별도의 규격)을 정의하기 위함이다.
+이 규격의 첫번째 목적은 일반적인 <a>DID 스키마</a>와 일반적인 <a>DID 문서</a>들에서 동작하는 명령어 집합을 모든 <a>DID 레지스트리</a>에 구현될 수 있도록 정의하는 것 이다. 이 규격의 두번째 목적은 <a>DID 메소드</a>를 위한 적합 요구조건(특정 <a>DID 레지스트리</a>를 위한 특정 <a>DID 스키마</a>와 특정 <a>DID 문서</a>에서 동작하는 명령어 세트를 정의하는 별도의 규격)을 정의하기 위함이다.
     </p>
 
     <p class="note">
@@ -324,7 +318,7 @@ Design Goals
     </h2>
 
     <p>
-<a>분산된 식별자들</a>은  [[?VC-DATA-MODEL]]과 같은 검증가능한 증명생태계와 같은 더 큰 시스템의 구성요소이며, 이 규격의 설계를 주도 했다. 이 절에는 이 규격의 기본 설계 목표가 요약되어 있다.
+<a>탈중앙 식별자들</a>은  [[?VC-DATA-MODEL]]과 같은 검증가능한 증명생태계와 같은 더 큰 시스템의 구성요소이며, 이 규격의 설계를 주도 했다. 이 절에는 이 규격의 기본 설계 목표가 요약되어 있다.
     </p>
 
     <table class="simple">
@@ -345,7 +339,7 @@ Description
 Decentralization
           </td>
           <td>
-글로벌 고유 식별자, 공개 확인 키, <a>서비스 엔드 포인트</a> 및 기타 메타 데이터의 등록을 포함한, 식별자 관리에서 중앙집중식 기관, 또는 단일실패점 요소를 제거해야 한다.
+글로벌 고유 식별자, 공개 확인 키, <a>서비스 엔드포인트</a> 및 기타 메타 데이터의 등록을 포함한, 식별자 관리에서 중앙집중식 기관, 또는 단일실패점 요소를 제거해야 한다.
           </td>
         </tr>
 
@@ -468,7 +462,7 @@ Interoperability
 
   <section class="informative">
     <h1>
-Terminology
+용어
     </h1>
 
     <div data-include="terms.html" data-oninclude="restrictReferences">
@@ -606,62 +600,50 @@ For more information, see Section <a href="#service-endpoints"></a>.
 
   <section class="normative">
     <h1>
-Decentralized Identifiers (DIDs)
+탈중앙 식별자 (DIDs)
     </h1>
-
     <p>
-The concept of a globally unique <a>decentralized identifier</a> is not new.
-<a>Universally Unique Identifiers</a> (UUIDs) were first developed in the 1980s
-and later became a standard feature of the Open Software Foundation’s
-<a href="https://en.wikipedia.org/wiki/Distributed_Computing_Environment">Distributed Computing Environment</a>.
-<a>UUIDs</a> achieve global uniqueness without a centralized registry service by
-using an algorithm that generates 128-bit values with sufficient entropy that
-the chance of collision are infinitesimally small. <a>UUIDs</a> are formally
-specified in [[RFC4122]] as a specific type of Unified Resource Name (URN).
+전역에서 유일한 <a>탈중앙 식별자</a>는 새로운 개념은 아니다. 
+<a>범용고유식별자</a>(UUIDs)는 1980년대에 처음 개발되었고 향후 개방소프트웨어재단의 <a href="https://en.wikipedia.org/wiki/Distributed_Computing_Environment">분산 컴퓨팅 환경</a>에서 표준 기능이 되었다. 
+<a>UUID</a>는 충돌 가능성이 무한히 작을 정도로 충분한 엔트로피를 가진 128bit 값을 생성하는 알고리즘을 통해 
+중앙화된 등록 서비스 없이도 글로벌 유일성을 가질 수 있다. 
+<a>UUID</a>는 [RFC4122]에서 URN(Unified Resource Name)의 특정 형식으로써 공식 명시되어 있다.
     </p>
 
     <p>
-A <a>DID</a> is similar to a <a>UUID</a> except that:
+<a>DID</a>는 아래 사항을 제외하고는 <a>UUID</a>와 유사하다:
     </p>
       <ul>
         <li>
-Like a URL, it can be resolved or dereferenced to a standard resource describing
-the subject. That is, a <a>DID document</a>. For more information, see Section
-<a href="#did-documents"></a>.
+URL과 동일하게, 주체에 대해 설명하는 일반 자원을 주소 분해(Resolve)하거나 역참조(Dereferenced)한다. 
+더 상세한 내용은 섹션 <a href="#did-documents">5. DID Documents</a> 참조.
         </li>
         <li>
-Unlike most resources returned when dereferencing URLs, a <a>DID document</a>
-usually contains cryptographic material enabling authentication of the
-<a>DID subject</a>.
+URL을 역참조 할 경우 반환되는 리소스와는 다르게, <a>DID 문서</a>는 일반적으로 <a>DID 주체</a>에 대한 인증을 가능하게 하는 암호학적 요소를 포함하고 있다.
         </li>
       </ul>
 
     <section>
       <h2>
-Generic DID Syntax
+일반 DID 구문
       </h2>
 
       <p>
-The generic <a>DID scheme</a> is a URI scheme conformant with [[!RFC3986]]. The
-<a>DID scheme</a> specializes only the scheme and authority components of a
-<a>DID URL</a>. The <code>path-abempty</code>, <code>query</code>, and
-<code>fragment</code> components are identical to the ABNF rules defined in
-[[!RFC3986]].
+일반 <a>DID 스키마</a>는 [[!RFC3986]]을 준수하는 URI 체계이다.
+<a>DID 스키마</a>는 <a>DID URL</a> 체계 및 권한 구성 요소에만 특화되어 있다. 
+<code>path-abempty</code>, <code>query</code>, 그리고 <code>fragment</code> 구성 요소들은 [[!RFC3986]]에서 정의된 ABNF 규칙과 동일하다.
       </p>
 
       <p class="note">
-The term <a>DID</a> refers only to the <a>URI</a> conforming to the
-<code>did</code> rule in the ABNF below. A <a>DID</a> always identifies the
-<a>DID subject</a>. The term <a>DID URL</a>, defined by the <code>did-url</code>
-rule, refers to a URL that begins with a <a>DID</a> followed by one or more
-additional components. A <a>DID URL</a> always identifies the resource to
-be located.
+<a>DID</a>라는 용어는 아래와 같이 ABNF의 <code>did</code> 규칙을 따르는 URI만을 의미한다. 
+<a>DID</a>는 <a>DID 주체</a>를 항상 식별한다. 
+<a>DID URL</a>이라는 용어는 <code>did-url</code> 규칙에 따라 정의되는데, <a>DID</a>로 시작하고 그 뒤에 하나 이상의 구성 요소가 추가되는 URL을 나타낸다. 
+<a>DID URL</a>은 찾아야 할 리소스를 항상 식별한다.
       </p>
 
       <p>
-The following is the ABNF definition using the syntax in [[!RFC5234]], which
-defines <code>ALPHA</code> and <code>DIGIT</code>. All other rule names not
-defined in this ABNF are defined in [[RFC3986]].
+아래는 <code>ALPHA</code>와 <code>DIGIT</code>을 정의하는 [[!RFC5234]] 구문을 사용하는 ABNF 정의에 대한 것이다. 
+ABNF에서 정의되지 않은 다른 모든 규칙 이름들은 RFC3986에 정의되어 있다.
       </p>
 
       <pre class="nohighlight">
@@ -689,50 +671,45 @@ the <a>DID method</a> itself.
 
     <section>
       <h2>
-Method-Specific Syntax
+메소드 특화 구문
       </h2>
 
       <p>
-A <a>DID method</a> specification MUST further restrict the generic <a>DID</a>
-syntax by defining its own <code>method-name</code> and its own
-<code>method-specific-id</code> syntax. For more information, see Section
-<a href="#did-methods"></a>.
+<a>DID 메소드</a> 명세는 반드시 <code>method-name</code>과  <code>method-specific-id</code> 구문을 정의함으로써 일반 DID 구문을 추가로 제한해야 한다.
+더 상세한 내용은 섹션 <a href="#did-methods">7. DID Methods</a> 참조.
       </p>
     </section>
 
     <section>
       <h2>
-Generic DID Parameter Names
+일반 DID 매개변수 이름
       </h2>
 
       <p>
-The <a>DID URL</a> syntax supports a simple, generalized format for parameters
-based on the matrix parameter syntax ([[MATRIX-URIS]]). The ABNF above does not
-specify any parameter names (the <code>param-name</code> rule).
+<a>DID URL</a> 구문은 matrix parameter 구문([[MATRIX-URIS]])을 기반의 매개변수를 위한 간단하고 일반화 된 포멧을 지원한다. 
+위의 ABNF는 매개변수 이름에 대해 어떠한 것도 특정하지 않는다 (<code>param-name</code> 규칙)
       </p>
       <p>
-Some generic DID parameter names (for example, for service selection) are
-completely independent of any specific <a>DID method</a> and MUST always
-function the same way for all <a>DIDs</a>. Other DID parameter names (for
-example, for versioning) MAY be supported by certain <a>DID methods</a>, but
-MUST operate uniformly across those <a>DID methods</a> that do support them.
+일부 일반 DID 매개변수 이름(예를들면, 서비스 선택을 위한)은 어떠한 특정 <a>DID 메소드</a>와 완전히 독립적이어야 하며, 
+반드시 모든 <a>DID</a>와 동일하게 작동해야만 한다. 
+그 외(예를들면, 버전관리를 위한)는 특정 <a>DID 메소드</a>에 의해 지원될 수 있지만, 
+반드시 <a>DID 메소드</a>가 그것을 지원하는 방식으로 동일하게 작동해야만 한다.
       </p>
       <p>
-Parameter names that are completely method-specific are described in Section
-<a href="#method-specific-did-parameter-names"></a>.
+메소드에 완전히 특화된 매개변수 이름은 <a href="#method-specific-did-parameter-names">
+4.4 Method-Specific DID Parameter Names</a>에서 설명하고 있다.
       </p>
       <p>
-The following table defines a set of generic DID parameter names.
+아래 표는 일반 DID 매개변수 이름 세트를 정의하고 있다:
       </p>
-
       <table class="simple">
         <thead>
           <tr>
             <th>
-Generic DID Parameter Name
+일반 DID 매개변수 이름
             </th>
             <th>
-Description
+설명
             </th>
           </tr>
         </thead>
@@ -743,8 +720,7 @@ Description
 <code>hl</code>
             </td>
             <td>
-A resource hash of the <a>DID document</a> to add integrity protection, as
-specified in [[HASHLINK]].
+[HASHLINK]에 명시된, 무결성 보호를 추가하기 위한 <a>DID 문서</a>의 자원 해시 
             </td>
           </tr>
           <tr>
@@ -752,7 +728,7 @@ specified in [[HASHLINK]].
 <code>service</code>
             </td>
             <td>
-Identifies a service from the <a>DID document</a> by service ID.
+서비스 ID를 통해 DID 문서로 부터 서비스를 식별
             </td>
           </tr>
           <tr>
@@ -760,9 +736,8 @@ Identifies a service from the <a>DID document</a> by service ID.
 <code>version-id</code>
             </td>
             <td>
-Identifies a specific version of a <a>DID document</a> to be resolved (the
-version ID could be sequential, or a <a>UUID</a>, or method-specific). Note that
-this parameter might not be supported by all <a>DID methods</a>.
+해석할 <a>DID 문서</a>의 특정 버전을 식별 (버전 ID는 순차적이거나 <a>UUID</a>이거나 메소드에 특화될 수 있음.
+이 매개변수는 모든 <a>DID 메소드</a>에서 지원하지 않을 수 있음에 주의
             </td>
           </tr>
 
@@ -771,29 +746,24 @@ this parameter might not be supported by all <a>DID methods</a>.
 <code>version-time</code>
             </td>
             <td>
-Identifies a certain version timestamp of a <a>DID document</a> to be resolved.
-That is, the <a>DID document</a> that was valid for a <a>DID</a> at a certain
-time. Note that this parameter might not be supported by all <a>DID methods</a>.
+해석할 <a>DID 문서</a>의 특정 버전 타임스탬프를 식별. 즉, 특정 시간의 <a>DID</a>에 대해 <a>DID 문서</a>가 유효하다는 것을 의미.
+이 매개변수는 모든 <a>DID 메소드</a>에서 지원하지 않을 수 있음에 주의
             </td>
           </tr>
         </tbody>
       </table>
 
       <p>
-The exact processing rules for these parameters are specified in
-[[DID-RESOLUTION]].
+위 매개변수들을 위한 정확한 처리 규칙은 [[DID-RESOLUTION]]에 명시되어 있다.
       </p>
 
       <p class="note">
-There might be additional parameters or options that are not part of the DID
-URL, but instead passed to a <a>DID resolver</a> <em>out-of-band</em>, that is,
-using a resolution protocol or some other mechanism. Such options could for
-example, control caching or the desired format of a resolution result. This is
-similar to HTTP, where caching or result format are expressed as HTTP headers
-instead of as part of an HTTP URL. The important distinction is that DID
-parameters that are part of the <a>DID URL</a> specify what resource is being
-identified, whereas <a>DID resolver</a> options that are not part of the
-<a>DID URL</a> control how that resource is dereferenced.
+DID URL에 포함되지는 않지만 <a>DID 리졸버</a>에 <em>대역외(Out-of-band)</em>로 전달하는 추가적인 매개변수나 옵션이 있을 수 있다. 
+예를들면, Resolution 프로토콜 혹은 다른 어떤 메커니즘을 사용하는 것이다. 
+이러한 옵션은 캐싱(Caching) 또는 기대하는 Resolution 결과에 대한 형식을 제어할 수도 있다. 
+이것은 HTTP와 유사하게 캐싱 또는 결과 형식이 HTTP URL의 일부가 아닌 HTTP 헤더에 표현되는 것과 같다.
+중요한 구별점은 <a>DID URL</a>의 일부가 아닌 DID 매개변수는 어떠한 자원이 식별되는지를 지정하는 반면, 
+<a>DID URL</a>의 일부가 아닌 <a>DID 리졸버</a> 옵션은 해당 자원이 어떻게 역참조하는지를 제어한다는 점이다.
       </p>
     </section>
 
@@ -1792,28 +1762,44 @@ Extensibility
 
       <ul>
         <li>
-복잡한 다중 엔터티 관계를 모델링하기위한 요구 사항은 그래프 기반 데이터 모델을 사용하여 제공된다.
+The requirement to model complex multi-entity relationships is
+provided through the use of a graph-based data model.
         </li>
 
         <li>
-중앙화 시스템에 의존하지 않고 데이터 모델의 정보를 설명하는 데 사용되는 기계 판독 가능 어휘를 확장 할 수 있도록하는 요구 사항은 [[LINKED-DATA]]를 사용하여 수행된다.
+The requirement to enable extending the machine-readable
+vocabularies used to describe information in the data model &mdash;
+without relying on a centralized system &mdash; is accomplished via
+the use of [[LINKED-DATA]].
         </li>
 
         <li>
-여러 유형의 암호화 증명 형식을 지원하기위한 요구 사항은 Linked Data Proofs[[LD-PROOFS]], Linked Data Signatures[[LD-SIGNATURES]] 및 다양한 서명 제품군을 사용하여 달성된다.
+The requirement to support multiple types of cryptographic proof
+formats is accomplished via the use of Linked Data Proofs
+[[LD-PROOFS]], Linked Data Signatures [[LD-SIGNATURES]], and a
+variety of signature suites.
         </li>
 
         <li>
-소프트웨어 개발자와 웹 페이지 제작자에게 자주 쓰이는 데이터 형식으로 위에서 설명한 모든 확장성 메커니즘을 제공하기위한 요구 사항은 [[JSON-LD]]를 사용하여 활성화된다.
+The requirement to provide all of the extensibility mechanisms
+outlined above in a data format that is popular among software
+developers and web page authors is enabled via the use of
+[[!JSON-LD]].
         </li>
       </ul>
 
       <p>
-데이터 모델링에 대한 이러한 접근 방식은 종종 “열린 세계 가정 (open world assumption)"이라고하며, 이는 누구나 다른 것에 대해 말할 수 있다는 것을 의미한다. 이 접근 방식은 종종 간단하고 예측 가능한 소프트웨어 시스템을 구축하는 것과 충돌하는 느낌이 든다. 프로그램 정확성과 확장 성의 균형을 맞추는 것은 폐쇄형 소프트웨어 시스템보다 열린 세계 가정에서 항상 더 어려워진다.
+This approach to data modeling is often called an "open world
+assumption", meaning that anyone can say anything about any other
+thing. This approach often feels in conflict with building simple
+and predictable software systems. Balancing extensibility with
+program correctness is always more challenging with an open world
+assumption than it is with closed software systems.
       </p>
 
       <p>
-이 섹션의 나머지 부분에서는 예제들를 통해 확장성과 프로그램 정확성을 모두 달성하는 방법에 대해 설명한다.
+The rest of this section describes how both extensibility and program
+correctness are achieved through a series of examples.
       </p>
 
       <p>
@@ -1834,7 +1820,8 @@ Extensibility
       </p>
 
       <p>
-개발자가 가장 먼저 할 일은 새로운 용어를 포함하는 JSON-LD 컨텍스트를 만드는 것이다:
+The first thing that a developer would do is create a JSON-LD Context
+containing the new term:
       </p>
 
       <pre class="example nohighlight" title="An example JSON-LD Context">
@@ -1871,7 +1858,13 @@ Extensibility
       </p>
 
       <p>
-확장된 JSON-LD Context가 이 사양에 지정된 용어의 확장 URL을 재정의하는 경우 무조건 오류가 발생해야 한다. 실수로 용어를 재정의 할 가능성을 피하기 위해 개발자는 확장 기능의 범위를 지정해야 한다. 예를 들어 다음 확장은 새 <code>PhotoStreamService</code> 용어의 범위를 지정하여 <code>service</code> 속성 내에서만 사용할 수 있다:
+Implementations MUST produce an error when an extension JSON-LD
+Context overrides the expanded URL for a term specified in this
+specification. To avoid the possibility of accidentally overriding
+terms, developers SHOULD scope their extensions. For example,
+the following extension scopes the new
+<code>PhotoStreamService</code> term so that it may only be used
+within the <code>service</code> property:
       </p>
 
       <pre class="example nohighlight" title="Scoping terms in a JSON-LD Context">
@@ -1887,7 +1880,12 @@ Extensibility
 }
       </pre>
       <p>
-개발자는 확장 JSON-LD Contexts의 가용성을 높이기 위해 노력해야 한다. 컨텍스트를 가져올 수없는 구현은 오류를 발생 시킨다. 확장 JSON-LD Contexts를 항상 사용 가능하게하는 전략에는 컨텍스트에 컨텐츠 주소가 지정된 URL 사용, 구현시 컨텍스트 문서 번들링 또는 컨텍스트의 적극적인 캐싱 사용이 포함된다.
+Developers are urged to ensure that extension JSON-LD Contexts are
+highly available. Implementations that cannot fetch a context will
+produce an error. Strategies for ensuring that extension JSON-LD
+Contexts are always available include using content-addressed URLs
+for contexts, bundling context documents with implementations, or
+enabling aggressive caching of contexts.
       </p>
     </section>
   </section>
@@ -2025,7 +2023,7 @@ DID Method Schemes
       </p>
 
       <p>
-메소드별 <a>DID 체계</a>를 위한 <a>DID 메소드<a> 규격에는 <a>DID</a>의 구성요소인 <code>method-specific-id</code>를 어떻게 생성하는지 반드시 명시가 되어있어야 한다. <code>method-specific-id</code>는 반드시 중앙화 된 레지스트리 서비스를 이용하지 않고 생성할 수 있어야 한다. <code>method-specific-id</code>는 범용(범세계)적으로 고유해야 한다. <code>did</code> 규칙은 <a href="#generic-did-syntax"></a>에 정의되어 있으며, 반드시 전세계적으로 고유해야 한다.
+메소드별 <a>DID 체계</a>를 위한 <a>DID 메소드</a> 규격에는 <a>DID</a>의 구성요소인 <code>method-specific-id</code>를 어떻게 생성하는지 반드시 명시가 되어있어야 한다. <code>method-specific-id</code>는 반드시 중앙화 된 레지스트리 서비스를 이용하지 않고 생성할 수 있어야 한다. <code>method-specific-id</code>는 범용(범세계)적으로 고유해야 한다. <code>did</code> 규칙은 <a href="#generic-did-syntax"></a>에 정의되어 있으며, 반드시 전세계적으로 고유해야 한다.
       </p>
 
       <p>
@@ -2094,7 +2092,7 @@ Unique DID Method Names
 새로운 <a>DID 메소드</a> 규격의 저자는 발표 당시 알려진 모든 <a>DID 메소드</a> 이름들과 중복되지 않는 고유한 메소드 이름을 사용해야만 한다.
       </p>
       <p>
-<a>DID 메소드</a> 이름을 할당하거나 승인 할 수 있는 권한을 가진 중앙기관이 없기 때문에 특정 <a>DID 메서드</a> 이름이 고유한 지 확인할 방법이 없다. 이 문제를 해결하기 위해 <a href="https://www.w3.org/community/credentials/">W3C Credentials Community Group</a>은 알려진 <a>DID 메소드</a> 이름과 관련 규격의 비권한 목록을 유지한다(Appendix <a href="#registries"></a> 참조)
+<a>DID 메소드</a> 이름을 할당하거나 승인 할 수 있는 권한을 가진 중앙기관이 없기 때문에 특정 <a>DID 메소드</a> 이름이 고유한 지 확인할 방법이 없다. 이 문제를 해결하기 위해 <a href="https://www.w3.org/community/credentials/">W3C Credentials Community Group</a>은 알려진 <a>DID 메소드</a> 이름과 관련 규격의 비권한 목록을 유지한다(Appendix <a href="#registries"></a> 참조)
       </p>
       <p>
 [[DID-METHOD-REGISTRY]]는 새로운 메소드 명칭을 합의할 때 구현자가 참조 할 수 있는 도구이며, 또한 다른 <a>DID 메소드</a>의 <a>DID 리졸버</a>를 구현하는 소프트웨어 개발자가 참조 할 수 있는 정보가 된다. 좀 더 많은 <a>DID 리졸버</a>에 대한 정보는 <a href="#did-resolvers"></a>을 참고 할 것.
@@ -2521,15 +2519,19 @@ The Role of Human-Friendly Identifiers
       </p>
 
       <p>
-이 문제에 대한 해결책들은 여러가지 사양들 별로 별도의 정의가 필요하다. 정의시 다음과 같은 사양들을 신중하게 고려하는 것 이 좋다.
+Solutions to this problem (and there are many) should be defined in separate
+specifications that reference this specification. It is strongly recommended
+that such specifications carefully consider the:
       </p>
 
       <ul>
         <li>
-대상 엔터티에 대한 사용자 친화적 식별자에 대해 믿을 수 없는 사용자들의 수많은 보안 공격
+Numerous security attacks based on deceiving users about the true human-friendly
+identifier for a target entity.
         </li>
         <li>
-본질적으로 연관 될 수 있는 사용자 친화적 식별자를 사용하는 경우의 개인 정보 보안, 특히 특정 정보 보안이 전 세계적으로 고유 한 정보 보안일 경우
+Privacy consequences of using human-friendly identifiers that are inherently
+correlatable, especially if they are globally unique.
         </li>
       <ul>
 
@@ -2551,7 +2553,6 @@ Immutability
         </p>
         <p>
 		불변성이 일부 사이버 보안 이점을 제공 할 수 있다는 개념은 캐싱 때문에 특히 관련이 있다. 전 세계 진실 소스에 연결된 <a>DID 방법들</a>의 경우 최신 버전의 <a>DID 문서</a>를 적시에 직접 조회 할 수 있다. 그러나 캐시 레이어는 결국 클라이언트와 해당 소스 사이에 있을 수 있다. 만약 그렇다면, 실제로 미묘하게 다른 <a>DID 문서</a>에있는 객체(object)의 속성이 주어진 상태를 가지고 있다고 믿으면 활용을 증대 할 수 있습니다. 일부 조회가 전체 <a>DID 문서</a>이고 다른 조회가 부분적인 데이터 인 경우 더 큰 맥락이 가정되는 경우에 특히 그렇습니다.
-        </p>
     </section>
 
   </section>
