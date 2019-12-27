@@ -1707,34 +1707,31 @@ Proof
       </h2>
 
       <p>
-A <code>proof</code> on a <a>DID document</a> is cryptographic proof of the
-integrity of the <a>DID document</a> according to either:
+	      <a>DID 문서</a>의 <code>proof</code>은 다음 중 하나에 따라 <a>DID 문서</a>의 무결성을 증명하는 암호화 증명이다:
       </p>
 
       <ol start="1">
         <li>
-The <a>DID subject</a> as defined in Section <a href="#did-subject"></a>, or:
+		섹션 5.2 <a href="#did-subject">DID 주체</a>에 정의 된 <a>DID 주체</a> 또는:
         </li>
 
         <li>
-The <a>DID controller</a> as defined in Section <a href="#authorization-and-delegation"></a>, if present.
+<a href="#authorization-and-delegation">권한 부여 및 위임</a>에 정의 된 DID 컨트롤러 (있는 경우).
         </li>
       </ol>
 
       <p>
-This proof is NOT proof of the binding between a <a>DID</a> and a <a>DID
-document</a> (see Section <a href="#binding-of-identity"></a>).
+	      이 증명은 <a>DID</a>와 <a>DID 문서</a>간의 연관성(binding) 대한 증명이 아니다 (섹션 9.3 신원의 바인딩 참조(<a href="#binding-of-identity"></a>)).
       </p>
 
       <p>
-A <a>DID document</a> MAY include a <code>proof</code> property. If so:
+	      <a>DID 문서</a>는 <code>proof</code> 속성을 포함 할 수 있다. 그렇다면:
       </p>
 
       <dl>
           <dt><dfn>proof</dfn></dt>
           <dd>
-The value of <code>proof</code> MUST be a valid JSON-LD proof as defined by
-<a href="https://w3c-dvcg.github.io/ld-signatures/">Linked Data Proofs</a>.
+<code>proof</code> 값은 무조건 링크 된 데이터 증명(<a href="https://w3c-dvcg.github.io/ld-signatures/">Linked Data Proofs</a>)에서 정의한 유효한 JSON-LD 증명이어야한다.
           </dd>
       </dl>
 
@@ -1760,9 +1757,7 @@ Extensibility
       </h2>
 
       <p>
-One of the goals of the <a>decentralized identifiers</a> data model is to
-enable permissionless innovation. This requires that the data model
-is extensible in a number of different ways:
+	      <a>탈중앙화 식별자</a> 데이터 모델의 목표 중 하나는 비허가형 혁신을 가능하게하는 것이다. 이를 위해서는 데이터 모델을 다양한 방법으로 확장 할 수 있어야 한다:
       </p>
 
       <ul>
@@ -1808,7 +1803,7 @@ correctness are achieved through a series of examples.
       </p>
 
       <p>
-Let us assume that we start with the following <a>DID document</a>:
+	      다음과 같은 <a>DID 문서</a>로 시작한다고 가정 해 본다:
       </p>
 
       <pre class="example nohighlight" title="A simple DID document">
@@ -1821,13 +1816,7 @@ Let us assume that we start with the following <a>DID document</a>:
 }
       </pre>
       <p>
-The contents of the <code>publicKey</code>,
-<code>authentication</code>, and <code>service</code> properties are
-not important for the purposes of this section. What is important is
-that the object above is a valid <a>DID document</a>. Let's assume
-that a developer wanted to extend the <a>DID document</a> to express
-an additional piece of information: the subject's public photo
-stream.
+이 섹션에서는 <code>publicKey</code>, <code>authentication</code> 및 <code>service</code> 속성의 내용이 중요하지 않다. 중요한 것은 위의 개체가 유효한 <a>DID 문서</a>라는 것이다. 개발자가 추가 정보를 표현하기 위해 <a>DID 문서</a>를 확장하고 싶다고 가정 하자. 추가정보는 피사체의 공개 사진 스트림이다.
       </p>
 
       <p>
@@ -1843,13 +1832,8 @@ containing the new term:
 }
       </pre>
       <p>
-Now that the JSON-LD Context has been created, the developer MUST
-publish it somewhere that is accessible to any <a>DID document</a>
-processor. For this example, let us assume that the JSON-LD Context
-above is published at the following URL:
-<code>did:example:contexts:987654321</code>. At this point, extending
-the first example in this section is a simple matter of including the
-context above and adding the new property to the <a>DID document</a>.
+	      JSON-LD 컨텍스트가 생성되었으므로 개발자는 <a>DID 문서</a> 프로세서에 액세스 할 수있는 어떤 위치에 이를 무조건 게시해야한다. 예를 들어, 우리가 JSON-LD 컨텍스트 위의 다음 URL에 게시되어 있다고 가정하자 :
+<code>did:example:contexts:987654321</code>. 이 시점에서이 섹션의 첫 번째 예제를 확장하는 것은 위의 컨텍스트를 포함하고 <a>DID 문서</a>에 새 속성을 추가하는 간단한 문제이다.
       </p>
 
       <pre class="example nohighlight" title="A DID document with a custom extension">
@@ -1866,23 +1850,11 @@ context above and adding the new property to the <a>DID document</a>.
 }
       </pre>
       <p>
-The examples so far have shown that it is easy to extend the
-<a>decentralized identifiers</a> data model in a permissionless and
-decentralized way. The mechanism also ensures that <a>decentralized
-identifiers</a> created in this way prevent namespace conflicts and
-semantic ambiguity.
+	      지금까지의 예시에서는 <a>탈중앙화 식별자</a> 데이터 모델을 탈중앙화 방식으로 쉽게 확장 할 수 있음을 보여주었다. 또한 이 방식으로 생성 된 <a>탈중앙화 식별자</a>가 네임 스페이스 충돌 및 의미상 모호성을 방지한다.
       </p>
 
       <p>
-An extensibility model that is this dynamic does increase
-implementation burden. Software written for such a system will have
-to determine if accepting <a>DID document</a>s with extensions is
-acceptable based on the risk profile of the application. Some
-applications may choose to accept but ignore extensions, others may
-choose to only accept certain extensions, while highly secure
-environments may disallow extensions. These decisions are up to the
-application developers and are specifically not the domain of this
-specification.
+	      동적 확장성 모델은 구현 부담을 증가시킨다. 이러한 시스템 용으로 작성된 소프트웨어는 응용 프로그램의 위험 프로파일에 따라 확장명이 포함 된 <a>DID 문서</a>를 수락 할 수 있는지 여부를 결정해야한다. 일부 응용 프로그램은 확장을 허용하지만 무시하도록 선택하고 다른 응용 프로그램은 특정 확장만 허용하도록 선택할 수 있지만 보안 수준이 높은 환경에서는 확장이 허용되지 않을 수 있다. 이러한 결정은 응용 프로그램 개발자에게 달려 있으며 특히 이 사양의 영역이 아니다.
       </p>
 
       <p>
@@ -2539,23 +2511,11 @@ The Role of Human-Friendly Identifiers
       </h2>
 
       <p>
-<a>DIDs</a> achieve global uniqueness without the need for a central
-registration authority. This comes, however, at the cost of human memorability.
-The algorithms capable of generating globally unique identifiers automatically
-produce random strings of characters that have no human meaning. This
-demonstrates the axiom about identifiers described in
-<a href="https://en.wikipedia.org/wiki/Zooko%27s_triangle">Zooko's Triangle</a>:
-"human-meaningful, decentralized, secure &mdash; pick any two".
+	      <a>DID들</a>은 중앙 등록 기관이 없어도 글로벌 독창성을 달성한다. 그러나 이것은 인간의 기억력을 희생시키면서 발생한다. 전역적으로 고유한 식별자를 생성 할 수 있는 알고리즘은 의미가없는 임의의 문자열을 자동으로 생성한다. 이것은 Zooko의 Triangle(<a href="https://en.wikipedia.org/wiki/Zooko%27s_triangle">Zooko's Triangle</a>)으로 알려진 식별자에 대한 공리를 보여준다 : "의미, 탈중앙화, 안전. 셋 중 아무거나 둘을 선택하십시오".
       </p>
 
       <p>
-There are of course many use cases where it is desirable to
-discover a <a>DID</a> when starting from a human-friendly identifier. For
-example, a natural language name, a domain name, or a conventional address for
-a <a>DID controller</a>, such as a mobile telephone number, email address,
-Twitter handle, or blog URL. However, the problem of mapping human-friendly
-identifiers to <a>DIDs</a> (and doing so in a way that can be verified and
-trusted) is outside the scope of this specification.
+	      물론 인간 친화적인 식별자 (이메일 주소, Twitter 핸들 또는 블로그 URL등과 같은 <a>DID 컨트롤러</a>의 주소, 자연어 이름, 도메인 이름 또는 휴대 전화 번호)에서 시작할 때 <a>DID</a>를 발견하는 것이 바람직한 많은 경우가 있다. 그러나 사람에게 친숙한 식별자를 <a>DID들</a>에 매핑 (및 확인 및 신뢰할 수있는 방식으로)하는 문제는 다른 이야기 이다.
       </p>
 
       <p>
@@ -2576,8 +2536,7 @@ correlatable, especially if they are globally unique.
       <ul>
 
       <p class="note">
-A draft specification for discovering a <a>DID</a> from domain names and email
-addresses using DNS lookups is available at [[DNS-DID]].
+	      DNS 조회를 사용하여 도메인 이름 및 전자 메일 주소에서 <a>DID</a>를 검색하기위한 초안 사양은 [[DNS-DID]]에 있다.
 	  </p>
     </section>
 
@@ -2587,43 +2546,13 @@ Immutability
         </h2>
 
         <p>
-Many cybersecurity abuses hinge on exploiting gaps between reality and the
-assumptions of rational, good-faith actors. Like any ecosystem, the <a>DID</a>
-ecosystem has some potential for this to occur. Because this specification is
-focused on a data model instead of a protocol, it offers no opinion about many
-aspects of how that model is put to use. However, individual <a>DID methods</a>
-might want to consider constraints that would eliminate behaviors or semantics
-they do not need. The more <em>locked down</em> a <a>DID method</a> is, while
-providing the same set of features, the less it can be manipulated by malicious
-actors.
+		많은 사이버 보안 침해는 현실과 합리적이고 선의의 이용자들의 이상 사이의 격차를 이용하는 데 달려 있다. 다른 생태계와 마찬가지로, <a>DID</a> 생태계는 이것이 일어날 가능성이 있다. 이 사양은 프로토콜이 아닌 데이터 모델에 중점을 두기 때문에 해당 모델의 사용 방식에 대한 여러 측면에 대한 의견을 제시하지 않았다. 그러나 개별 <a>DID 방법들</a>은 필요하지 않은 동작이나 의미를 제거하는 제약 조건을 고려할 수 있다. <a>DID 방법</a>이 <em>잠금</em>(<em>locked down</em>)상태 일수록 동일한 기능 세트를 제공하는 반면 악의적인 행위자가 조작 할 수있는 수준은 줄어 든다.
         </p>
         <p>
-As an example, consider the flexibility that the data model offers with respect
-to updating. A single edit to a <a>DID document</a> can change anything and
-everything except the root <code>id</code> property of the document. And any
-individual JSON object in the data model can change all of its properties except
-its <code>id</code>. But is it actually desirable for a <a>service endpoint</a>
-to change its <code>type</code> after it is defined? Or for a key to change its
-value? Or would it be better to require a new <code>id</code> when certain
-fundamental properties of an object change? Malicious takeovers of a web site
-often aim for an outcome where the site keeps its identifier (the host name),
-but gets subtle, dangerous changes underneath. If certain properties of the site
-were required by the specification to be immutable (for example, the
-<a target="_blank" href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)">ASN</a>
-associated with its IP address), such attacks might be much harder and more
-expensive to carry out, and anomaly detection would be easier.
+		예를 들어, 데이터 모델이 업데이트와 관련하여 제공하는 유연성을 고려해보자. <a>DID 문서</a>를 한 번만 편집하면 문서의 루트 ID 속성을 제외한 모든 항목을 변경할 수 있으며 데이터 모델의 개별 JSON 객체는 root <code>id</code>를 제외한 모든 속성을 변경할 수 있다. 그러나 <a>서비스 엔드 포인트</a>가 일단 정의되면 <code>type</code>을 변경하는 것이 실제로 바람직한가? 아니면 가치를 바꾸는 열쇠가 필요한가? 아니면 객체의 특정 기본 속성이 변경 될 때 새로운 <code>id</code>를 요구하는 것이 더 좋은가? 웹 사이트의 악의적인 인수는 종종 사이트가 자신의 식별자 (호스트 이름)를 유지하지만 그 아래에 미묘하고 위험한 변화를 가져 오는 결과를 목표로 한다. 사양에 따라 사이트의 특정 속성을 변경할 수없는 경우 (예 : IP 주소와 관련된 ASN) 이러한 공격을 수행하는 데 훨씬 더 어렵고 비용이 많이 들며 이상 탐지가 더 쉬울 수 있다.
         </p>
         <p>
-The notion that immutability provides some cybersecurity benefits is
-particularly relevant because of caching. For <a>DID methods</a> tied to a
-global source of truth, a direct, just-in-time lookup of the latest version of a
-<a>DID document</a> is always possible. However, it seems likely that layers of
-cache might eventually sit between a client and that source of truth. If they
-do, believing the attributes of an object in the <a>DID document</a> to have a
-given state, when they are actually subtly different, might invite exploits.
-This is particularly true if some lookups are of a full <a>DID document</a>, and
-others are of partial data, where the larger context is assumed.
-        </p>
+		불변성이 일부 사이버 보안 이점을 제공 할 수 있다는 개념은 캐싱 때문에 특히 관련이 있다. 전 세계 진실 소스에 연결된 <a>DID 방법들</a>의 경우 최신 버전의 <a>DID 문서</a>를 적시에 직접 조회 할 수 있다. 그러나 캐시 레이어는 결국 클라이언트와 해당 소스 사이에 있을 수 있다. 만약 그렇다면, 실제로 미묘하게 다른 <a>DID 문서</a>에있는 객체(object)의 속성이 주어진 상태를 가지고 있다고 믿으면 활용을 증대 할 수 있습니다. 일부 조회가 전체 <a>DID 문서</a>이고 다른 조회가 부분적인 데이터 인 경우 더 큰 맥락이 가정되는 경우에 특히 그렇습니다.
     </section>
 
   </section>
