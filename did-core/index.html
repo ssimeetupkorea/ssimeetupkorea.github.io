@@ -141,22 +141,16 @@
 <body>
   <section id='abstract'>
     <p>
-<a>Decentralized identifiers</a> (DIDs) are a new type of identifier to
-provide verifiable, decentralized digital identity. These new identifiers are
-designed to enable the controller of a <a>DID</a> to prove control over
-it and to be implemented independently of any centralized registry, identity
-provider, or certificate authority. <a>DIDs</a> are URLs that relate a
-<a>DID subject</a> to a <a>DID document</a> allowing trustable interactions with
-that subject. <a>DID documents</a> are simple documents describing how to use
-that specific <a>DID</a>. Each <a>DID document</a> can express cryptographic
-material, verification methods, or <a>service endpoints</a>, which provide a
-set of mechanisms enabling a <a>DID controller</a> to prove control of the
-<a>DID</a>. <a>Service endpoints</a> enable trusted interactions with the
-<a>DID subject</a>.
+<a>탈중앙 식별자</a>(DIDs)란 검증가능하고 탈중앙화된 디지털 신원을 위한 새로운 형식의 식별자이다.  
+이러한 새로운 식별자는 <a>DID 컨트롤러</a>가 DID의 제어권을 증명하고, 중앙화된 레지스트리, 신원 제공자, 인증기관 등으로부터 독립적으로 구현할 수 있도록 설계되었다. 
+<a>DID</a>는 <a>DID 주체</a>와 관련된 URL로써, <a>DID 문서</a>라는 방식을 통해 해당 주체와 신뢰할 수 있는 상호작용을 가능하게하는 도구이다. 
+<a>DID 문서</a>는 특정 DID를 어떻게 사용하는지에 대해 설명해 놓은 간단한 문서이다. 
+각 <a>DID 문서</a>는 암호학적 요소, 검증 메소드, 서비스 엔드포인트 등으로 표현될 수 있다. 
+해당요소들은 <a>DID 컨트롤러</a>가 DID의 통제권에 대한 증명을 가능하게 하는 메커니즘 집합을 제공한다. 
+서비스 엔드포인트는 <a>DID 주체</a>와의 믿을 수 있는 상호작용을 가능하게 한다.
     </p>
     <p>
-This document specifies a common data model, a URL format, and a set of
-operations for <a>DIDs</a>, <a>DID documents</a>, and <a>DID methods</a>.
+본 문서는 일반 데이터 모델, URL 형식, <a>DID</a>를 위한 일련의 작동방식, <a>DID 문서</a> 그리고 <a>DID 메소드</a>에 대해 명시하고 있다.
     </p>
   </section>
 
@@ -606,62 +600,50 @@ For more information, see Section <a href="#service-endpoints"></a>.
 
   <section class="normative">
     <h1>
-Decentralized Identifiers (DIDs)
+탈중앙 식별자 (DIDs)
     </h1>
-
     <p>
-The concept of a globally unique <a>decentralized identifier</a> is not new.
-<a>Universally Unique Identifiers</a> (UUIDs) were first developed in the 1980s
-and later became a standard feature of the Open Software Foundation’s
-<a href="https://en.wikipedia.org/wiki/Distributed_Computing_Environment">Distributed Computing Environment</a>.
-<a>UUIDs</a> achieve global uniqueness without a centralized registry service by
-using an algorithm that generates 128-bit values with sufficient entropy that
-the chance of collision are infinitesimally small. <a>UUIDs</a> are formally
-specified in [[RFC4122]] as a specific type of Unified Resource Name (URN).
+전역에서 유일한 <a>탈중앙 식별자</a>는 새로운 개념은 아니다. 
+<a>범용고유식별자</a>(UUIDs)는 1980년대에 처음 개발되었고 향후 개방소프트웨어재단의 <a href="https://en.wikipedia.org/wiki/Distributed_Computing_Environment">분산 컴퓨팅 환경</a>에서 표준 기능이 되었다. 
+<a>UUID</a>는 충돌 가능성이 무한히 작을 정도로 충분한 엔트로피를 가진 128bit 값을 생성하는 알고리즘을 통해 
+중앙화된 등록 서비스 없이도 글로벌 유일성을 가질 수 있다. 
+<a>UUID</a>는 [RFC4122]에서 URN(Unified Resource Name)의 특정 형식으로써 공식 명시되어 있다.
     </p>
 
     <p>
-A <a>DID</a> is similar to a <a>UUID</a> except that:
+<a>DID</a>는 아래 사항을 제외하고는 <a>UUID</a>와 유사하다:
     </p>
       <ul>
         <li>
-Like a URL, it can be resolved or dereferenced to a standard resource describing
-the subject. That is, a <a>DID document</a>. For more information, see Section
-<a href="#did-documents"></a>.
+URL과 동일하게, 주체에 대해 설명하는 일반 자원을 주소 분해(Resolve)하거나 역참조(Dereferenced)한다. 
+더 상세한 내용은 섹션 <a href="#did-documents">5. DID Documents</a> 참조.
         </li>
         <li>
-Unlike most resources returned when dereferencing URLs, a <a>DID document</a>
-usually contains cryptographic material enabling authentication of the
-<a>DID subject</a>.
+URL을 역참조 할 경우 반환되는 리소스와는 다르게, <a>DID 문서</a>는 일반적으로 <a>DID 주체</a>에 대한 인증을 가능하게 하는 암호학적 요소를 포함하고 있다.
         </li>
       </ul>
 
     <section>
       <h2>
-Generic DID Syntax
+일반 DID 구문
       </h2>
 
       <p>
-The generic <a>DID scheme</a> is a URI scheme conformant with [[!RFC3986]]. The
-<a>DID scheme</a> specializes only the scheme and authority components of a
-<a>DID URL</a>. The <code>path-abempty</code>, <code>query</code>, and
-<code>fragment</code> components are identical to the ABNF rules defined in
-[[!RFC3986]].
+일반 <a>DID 스키마</a>는 [[!RFC3986]]을 준수하는 URI 체계이다.
+<a>DID 스키마</a>는 <a>DID URL</a> 체계 및 권한 구성 요소에만 특화되어 있다. 
+<code>path-abempty</code>, <code>query</code>, 그리고 <code>fragment</code> 구성 요소들은 [[!RFC3986]]에서 정의된 ABNF 규칙과 동일하다.
       </p>
 
       <p class="note">
-The term <a>DID</a> refers only to the <a>URI</a> conforming to the
-<code>did</code> rule in the ABNF below. A <a>DID</a> always identifies the
-<a>DID subject</a>. The term <a>DID URL</a>, defined by the <code>did-url</code>
-rule, refers to a URL that begins with a <a>DID</a> followed by one or more
-additional components. A <a>DID URL</a> always identifies the resource to
-be located.
+<a>DID</a>라는 용어는 아래와 같이 ABNF의 <code>did</code> 규칙을 따르는 URI만을 의미한다. 
+<a>DID</a>는 <a>DID 주체</a>를 항상 식별한다. 
+<a>DID URL</a>이라는 용어는 <code>did-url</code> 규칙에 따라 정의되는데, <a>DID</a>로 시작하고 그 뒤에 하나 이상의 구성 요소가 추가되는 URL을 나타낸다. 
+<a>DID URL</a>은 찾아야 할 리소스를 항상 식별한다.
       </p>
 
       <p>
-The following is the ABNF definition using the syntax in [[!RFC5234]], which
-defines <code>ALPHA</code> and <code>DIGIT</code>. All other rule names not
-defined in this ABNF are defined in [[RFC3986]].
+아래는 <code>ALPHA</code>와 <code>DIGIT</code>을 정의하는 [[!RFC5234]] 구문을 사용하는 ABNF 정의에 대한 것이다. 
+ABNF에서 정의되지 않은 다른 모든 규칙 이름들은 RFC3986에 정의되어 있다.
       </p>
 
       <pre class="nohighlight">
@@ -689,50 +671,45 @@ the <a>DID method</a> itself.
 
     <section>
       <h2>
-Method-Specific Syntax
+메소드 특화 구문
       </h2>
 
       <p>
-A <a>DID method</a> specification MUST further restrict the generic <a>DID</a>
-syntax by defining its own <code>method-name</code> and its own
-<code>method-specific-id</code> syntax. For more information, see Section
-<a href="#did-methods"></a>.
+<a>DID 메소드</a> 명세는 반드시 <code>method-name</code>과  <code>method-specific-id</code> 구문을 정의함으로써 일반 DID 구문을 추가로 제한해야 한다.
+더 상세한 내용은 섹션 <a href="#did-methods">7. DID Methods</a> 참조.
       </p>
     </section>
 
     <section>
       <h2>
-Generic DID Parameter Names
+일반 DID 매개변수 이름
       </h2>
 
       <p>
-The <a>DID URL</a> syntax supports a simple, generalized format for parameters
-based on the matrix parameter syntax ([[MATRIX-URIS]]). The ABNF above does not
-specify any parameter names (the <code>param-name</code> rule).
+<a>DID URL</a> 구문은 matrix parameter 구문([[MATRIX-URIS]])을 기반의 매개변수를 위한 간단하고 일반화 된 포멧을 지원한다. 
+위의 ABNF는 매개변수 이름에 대해 어떠한 것도 특정하지 않는다 (<code>param-name</code> 규칙)
       </p>
       <p>
-Some generic DID parameter names (for example, for service selection) are
-completely independent of any specific <a>DID method</a> and MUST always
-function the same way for all <a>DIDs</a>. Other DID parameter names (for
-example, for versioning) MAY be supported by certain <a>DID methods</a>, but
-MUST operate uniformly across those <a>DID methods</a> that do support them.
+일부 일반 DID 매개변수 이름(예를들면, 서비스 선택을 위한)은 어떠한 특정 <a>DID 메소드</a>와 완전히 독립적이어야 하며, 
+반드시 모든 <a>DID</a>와 동일하게 작동해야만 한다. 
+그 외(예를들면, 버전관리를 위한)는 특정 <a>DID 메소드</a>에 의해 지원될 수 있지만, 
+반드시 <a>DID 메소드</a>가 그것을 지원하는 방식으로 동일하게 작동해야만 한다.
       </p>
       <p>
-Parameter names that are completely method-specific are described in Section
-<a href="#method-specific-did-parameter-names"></a>.
+메소드에 완전히 특화된 매개변수 이름은 <a href="#method-specific-did-parameter-names">
+4.4 Method-Specific DID Parameter Names</a>에서 설명하고 있다.
       </p>
       <p>
-The following table defines a set of generic DID parameter names.
+아래 표는 일반 DID 매개변수 이름 세트를 정의하고 있다:
       </p>
-
       <table class="simple">
         <thead>
           <tr>
             <th>
-Generic DID Parameter Name
+일반 DID 매개변수 이름
             </th>
             <th>
-Description
+설명
             </th>
           </tr>
         </thead>
@@ -743,8 +720,7 @@ Description
 <code>hl</code>
             </td>
             <td>
-A resource hash of the <a>DID document</a> to add integrity protection, as
-specified in [[HASHLINK]].
+[HASHLINK]에 명시된, 무결성 보호를 추가하기 위한 <a>DID 문서</a>의 자원 해시 
             </td>
           </tr>
           <tr>
@@ -752,7 +728,7 @@ specified in [[HASHLINK]].
 <code>service</code>
             </td>
             <td>
-Identifies a service from the <a>DID document</a> by service ID.
+서비스 ID를 통해 DID 문서로 부터 서비스를 식별
             </td>
           </tr>
           <tr>
@@ -760,9 +736,8 @@ Identifies a service from the <a>DID document</a> by service ID.
 <code>version-id</code>
             </td>
             <td>
-Identifies a specific version of a <a>DID document</a> to be resolved (the
-version ID could be sequential, or a <a>UUID</a>, or method-specific). Note that
-this parameter might not be supported by all <a>DID methods</a>.
+해석할 <a>DID 문서</a>의 특정 버전을 식별 (버전 ID는 순차적이거나 <a>UUID</a>이거나 메소드에 특화될 수 있음.
+이 매개변수는 모든 <a>DID 메소드</a>에서 지원하지 않을 수 있음에 주의
             </td>
           </tr>
 
@@ -771,29 +746,24 @@ this parameter might not be supported by all <a>DID methods</a>.
 <code>version-time</code>
             </td>
             <td>
-Identifies a certain version timestamp of a <a>DID document</a> to be resolved.
-That is, the <a>DID document</a> that was valid for a <a>DID</a> at a certain
-time. Note that this parameter might not be supported by all <a>DID methods</a>.
+해석할 <a>DID 문서</a>의 특정 버전 타임스탬프를 식별. 즉, 특정 시간의 <a>DID</a>에 대해 <a>DID 문서</a>가 유효하다는 것을 의미.
+이 매개변수는 모든 <a>DID 메소드</a>에서 지원하지 않을 수 있음에 주의
             </td>
           </tr>
         </tbody>
       </table>
 
       <p>
-The exact processing rules for these parameters are specified in
-[[DID-RESOLUTION]].
+위 매개변수들을 위한 정확한 처리 규칙은 [[DID-RESOLUTION]]에 명시되어 있다.
       </p>
 
       <p class="note">
-There might be additional parameters or options that are not part of the DID
-URL, but instead passed to a <a>DID resolver</a> <em>out-of-band</em>, that is,
-using a resolution protocol or some other mechanism. Such options could for
-example, control caching or the desired format of a resolution result. This is
-similar to HTTP, where caching or result format are expressed as HTTP headers
-instead of as part of an HTTP URL. The important distinction is that DID
-parameters that are part of the <a>DID URL</a> specify what resource is being
-identified, whereas <a>DID resolver</a> options that are not part of the
-<a>DID URL</a> control how that resource is dereferenced.
+DID URL에 포함되지는 않지만 <a>DID 리졸버</a>에 <em>대역외(Out-of-band)</em>로 전달하는 추가적인 매개변수나 옵션이 있을 수 있다. 
+예를들면, Resolution 프로토콜 혹은 다른 어떤 메커니즘을 사용하는 것이다. 
+이러한 옵션은 캐싱(Caching) 또는 기대하는 Resolution 결과에 대한 형식을 제어할 수도 있다. 
+이것은 HTTP와 유사하게 캐싱 또는 결과 형식이 HTTP URL의 일부가 아닌 HTTP 헤더에 표현되는 것과 같다.
+중요한 구별점은 <a>DID URL</a>의 일부가 아닌 DID 매개변수는 어떠한 자원이 식별되는지를 지정하는 반면, 
+<a>DID URL</a>의 일부가 아닌 <a>DID 리졸버</a> 옵션은 해당 자원이 어떻게 역참조하는지를 제어한다는 점이다.
       </p>
     </section>
 
