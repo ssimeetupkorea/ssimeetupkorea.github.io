@@ -1415,51 +1415,47 @@ responsibility of <a>DID resolvers</a> and other clients. See Section
 
     <section>
       <h2>
-Authentication
+인증
       </h2>
 
       <p>
-Authentication is the mechanism by which <a>DID controllers</a> can
-cryptographically prove that they are associated with a <a>DID</a>. For more
-information, see Section <a href="#binding-of-identity"></a>. Note that
-Authentication is separate from Authorization because <a>DID controllers</a>
-might wish to enable others to update their <a>DID document</a> (for example, to
-assist with key recovery, as discussed in Section
-<a href="#key-revocation-and-recovery"></a>) without enabling them to prove
-control (and thus be able to impersonate the <a>DID controller(s)</a>).
+인증은 <a>DID 컨트롤러</a>가 해당 DID와 연결되어 있다는 것을 암호화 방식으로 
+증명할 수 있는 메커니즘이다. <a href="#binding-of-identity"></a>을 참조. 
+DID 컨트롤러는 다른 사람이 자신의 DID 문서에 대한 제어 권한을 증명하지 않고도 
+<a>DID 문서</a>를 업데이트하도록 (예. <a href="#key-revocation-and-recovery"></a>에서 
+설명하고 있는 키 복구 지원 참조) 인증과 권한 부여가 분리되어 있다
+(그러므로 <a>DID 컨트롤러</a>에 대한 위장이 가능함).
       </p>
 
       <p>
-A <a>DID document</a> MAY include an <code>authentication</code>
-property. If so:
+<a>DID 문서</a>는 무조건 <code>authentication</code> 속성을 포함해야한다. 그렇다면:
       </p>
       <dl>
           <dt><dfn>authentication</dfn></dt>
           <dd>
-The value of the <code>authentication</code> property SHOULD be
-an array of verification methods. Each verification method MAY be embedded
-or referenced. An example of a verification method is a public key (see
-Section <a href="#public-keys"></a>).
+<code>authentication</code> 속성 값은 검증 메소드의 배열이어야 한다.
+각각의 검증 방법은 포함되거나 참조될 수 있다. 
+검증 방법의 예로는 공개키 방식이 있다 (<a href="#public-keys"></a>참조).
           </dd>
       </dl>
 
       <p>
-Example:
+예제:
       </p>
 
-      <pre class="example nohighlight" title="Authentication field containing three verification methods">
+      <pre class="example nohighlight" title="세가지 검증 방법이 포함 된 인증 속성값">
 {
   "@context": "https://www.w3.org/ns/did/v1",
   "id": "did:example:123456789abcdefghi",
   <span class="comment">...</span>
   "authentication": [
-    <span class="comment">// this method can be used to authenticate as did:...fghi</span>
+    <span class="comment">// 이 메소드는 DID(…fghi)로 인증시 사용할 수 있다</span>
     "did:example:123456789abcdefghi#keys-1",
-    <span class="comment">// this method can be used to authenticate as did:...fghi</span>
+    <span class="comment">// 이 메소드는 DID(…fghi)로 인증시 사용할 수 있다</span>
     "did:example:123456789abcdefghi#biometric-1",
-    <span class="comment">// this method is *only* authorized for authentication, it may not</span>
-    <span class="comment">// be used for any other proof purpose, so its full description is</span>
-    <span class="comment">// embedded here rather than using only a reference</span>
+    <span class="comment">// 이 방법은 인증을 위해 *전용*으로 권한을 부여받았으며,</span>
+    <span class="comment">// 다른 증명 목적으로 사용될 수 없다.</span>
+    <span class="comment">// 전체 설명은 참조를 사용하지 않고 포함된다.</span>
     {
       "id": "did:example:123456789abcdefghi#keys-2",
       "type": "Ed25519VerificationKey2018",
@@ -1474,58 +1470,52 @@ Example:
 
     <section>
       <h2>
-Authorization and Delegation
+인가 및 위임
       </h2>
 
       <p>
-Authorization is the mechanism used to state how operations may be
-performed on behalf of the <a>DID subject</a>. Delegation is the
-mechanism that the subject uses to authorize others to act
-on their behalf. Note that Authorization is separate from
-Authentication as explained in Section <a href="#authentication"></a>.
-This is particularly important for key
-recovery in the case of key loss, when the subject no longer has
-access to their keys, or key compromise, where the <a>DID controller</a>'s
-trusted third parties need to override malicious activity by an attacker. See
-Section <a href="#security-considerations"></a>.
+인가는 DID 주체를 대신하여 작업이 어떻게 수행되는지에 대해서 설명하는데 쓰이는 
+메커니즘이다. 위임은 다른 사람이 <a>DID 주체</a>를 대신할 수 있도록 권한을 부여하는데 
+사용하는 메커니즘이다. <a href="#authentication"></a>에서 설명한 바와 같이 인증과 
+인가는 분리되어 있다. 이는 키의 분실로 더 이상 키에 액세스 할 수 없거나 키가 유출되어 
+<a>DID 컨트롤러</a>의 제3신뢰기관들(trusted third parties)이 공격자의 악의적인 
+활동의 무효화(override)가 필요한 경우 키를 복구하기 위해 중요하다. 
+<a href="#security-considerations"></a> 참고. 
       </p>
 
       <p>
-Each <a>DID method</a> MUST define how authorization and delegation are
-implemented, including any necessary cryptographic operations.
+각 <a>DID 메소드</a>는 필수적인 암호화 연산을 포함하여 인가 및 위임이 구현되는 
+방법을 정의해야 한다. 
       </p>
 
       <p>
-There are at least two suggested methods for implementing
-Authorization and Delegation, which may be layered:
+인가 및 위임의 구현 방법에 대하여 최소한 2가지 방법이 제안되어 있으며 
+이는 서로 겹쳐 사용할 수 있다:
       </p>
 
       <ol>
         <li>
-A <a>DID registry</a> could implement a coarse
-grained <code>controller</code> pattern by enabling <a>DID documents</a> to
-express the <a>DID</a> of another <a>DID controller</a> that controls it, or
-additionally,
+<a>DID 레지스트리</a>는 <a>DID 문서</a>가 제어하는 다른 <a>DID 컨트롤러</a>의 
+<a>DID</a>를 표현하거나 추가하여 간략한 <code>controller</code> 패턴을 구현할 수 있다.
         </li>
 
         <li>
-A <a>DID registry</a> could implement a
-Capabilities-based approach that enables further fine-grained control
-of authorization and delegation.
+<a>DID 레지스트리</a>는 인가 및 위임을 정교하게 제어 할 수 있는 기능 기반 
+접근 방식으로 구현할 수 있다.
         </li>
       </ol>
 
       <p>
-Example:
+예제:
       </p>
 
-      <pre class="example nohighlight" title="DID document with a controller property">
+      <pre class="example nohighlight" title="controller 속성이 있는 DID 문서">
 {
   "@context": "https://www.w3.org/ns/did/v1",
   "id": "did:example:123456789abcdefghi",
   "controller": "did:example:bcehfew7h32f32h7af3",
   "service": [{
-    <span class="comment">// used to retrieve Verifiable Credentials associated with the DID</span>
+    <span class="comment">// DID와 관련된 검증 가능 자격 증명의 검색 시 사용</span>
     "type": "VerifiableCredentialService",
     "serviceEndpoint": "https://example.com/vc/"
   }]
@@ -1535,29 +1525,27 @@ Example:
 
     <section>
       <h2>
-Service Endpoints
+서비스 엔드포인트
       </h2>
 
       <p>
-One of the primary purposes of a <a>DID document</a> is to enable
-discovery of <a>service endpoints</a>. A <a>service
-endpoint</a> can be any type of service the <a>DID subject</a> wishes to
-advertise, including <a>decentralized identity management</a> services for
-further discovery, authentication, authorization, or interaction.
+<a>DID 문서</a>의 주요 목적은 <a>서비스 엔드포인트</a>를 검색할 수 있게 하는 것이다. 
+<a>서비스 엔드포인트</a>는 추가 탐색, 인증, 인가 또는 상호작용을 위한 
+<a>분산 ID 관리 서비스</a>를 포함하여 <a>DID 주체</a>가 공시하는 모든 유형의 
+서비스를 나타낼 수 있다.
       </p>
 
       <p>
-A <a>DID document</a> MAY include a <code>service</code> property. If so:
+<a>DID 문서</a>는 <code>service</code> 속성을 포함 할 수도 있다. 그렇다면:
       </p>
 
       <dl>
           <dt><dfn>service</dfn></dt>
           <dd>
-The value of the <code>service</code> property SHOULD be an array
-of <a>service endpoint</a> objects. Each service endpoint MUST
-have <code>type</code> and <code>serviceEndpoint</code> properties,
-SHOULD have an <code>id</code> property, and MAY include additional
-properties.
+<code>service</code> 속성의 값은 반드시 <a>서비스 엔드포인트</a>의 배열이어야 한다.
+각 <a>서비스 엔드포인트</a>에는 무조건 <code>type</code>, 
+<code>serviceEndpoint</code> 및 <code>id</code> 속성이 포함되어야 하며 
+추가적인 속성이 포함될 수 있다.
           </dd>
       </dl>
 
@@ -1569,22 +1557,20 @@ produce an error in that case.
       </p>
 
       <p>
-The value of the <code>serviceEndpoint</code> property MUST be a
-JSON-LD object or a valid <a>URI</a> conforming to [[RFC3986]] and
-normalized according to the rules in section 6 of [[RFC3986]] and to
-any normalization rules in its applicable URI scheme specification.
+<code>serviceEndpoint</code> 속성의 값은 JSON-LD 객체이거나 [[RFC3986]]을 따르는 
+유효한 <a>URI</a>이어야하고, [[RFC3986]]의 6장 규칙 및 그 밖의 적용 가능한 
+URI 스킴 명세서의 규칙에 따라 정규화되어야 한다.
       </p>
 
       <p>
-It is expected that the <a>service endpoint</a> protocol is
-published in an open standard specification.
+<a>서비스 엔드포인트</a> 프로토콜은 표준 명세서로 공개되어야 한다.
       </p>
 
       <p>
-Example:
+예제:
       </p>
 
-      <pre class="example nohighlight" title="Various service endpoints">
+      <pre class="example nohighlight" title="다양한 서비스 엔드포인트">
 {
   "service": [{
     "id": "did:example:123456789abcdefghi#openid",
@@ -1632,33 +1618,32 @@ Example:
 }
 </pre>
       <p>
-See Sections <a href="#did-method-schemes"></a>
-and <a href="#authentication"></a> for further security
-considerations regarding authentication <a>service endpoints</a>.
+<a>서비스 엔드포인트</a>에 대한 추가 보안 고려 사항은 
+<a href="#did-method-schemes"></a> 및 <a href="#authentication"></a>을 참조
       </p>
     </section>
 
     <section>
       <h2>
-Created
+생성
       </h2>
 
       <p>
-A <a>DID document</a> SHOULD include a <code>created</code> property. If so:
+<a>DID 문서</a>에는 <code>created</code> 속성이 포함되어야 한다. 그렇다면:
       </p>
 
       <dl>
           <dt><dfn>created</dfn></dt>
           <dd>
-The value of <code>created</code> MUST be a valid XML datetime value as
-defined in section 3.3.7 of <a href="https://www.w3.org/TR/xmlschema11-2/">
-W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</a> [[!XMLSCHEMA11-2]].
-This datetime value MUST be normalized to UTC 00:00 as indicated by the trailing "Z".
+<code>created</code> 속성 값은 <a href="https://www.w3.org/TR/xmlschema11-2/"> 
+W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</a> 
+[[!XMLSCHEMA11-2]] 3.3.7장에 정의된 유효한 XML 날짜 및 시간이다.
+날짜 및 시간 값은 "Z" 끝나게 표시되는 UTC 00:00으로 정규화되어야 한다.
           </dd>
       </dl>
 
       <p>
-Example:
+예제:
       </p>
 
       <pre class="example nohighlight">
@@ -1670,28 +1655,27 @@ Example:
 
     <section>
       <h2>
-Updated
+갱신
       </h2>
 
       <p>
-Standard metadata for identifier records includes a timestamp of the
-most recent change.
+식별자 레코드의 표준 메타 데이터에는 가장 최근의 갱신에 대한 타임스탬프가 포함된다.
       </p>
 
       <p>
-A <a>DID document</a> SHOULD include an <code>updated</code> property. If so:
+<a>DID 문서</a>에는 <code>updated</code> 속성이 포함되어야 한다. 그렇다면:
       </p>
 
       <dl>
           <dt><dfn>updated</dfn></dt>
           <dd>
-The <code>updated</code> value MUST follow the same formatting rules as the
-<code>created</code> property (see Section <a href="#created"></a>).
+<code>updated</code> 속성 값은 무조건 <code>created</code> 속성과 동일한 
+규칙을 따른다 (<a href="#created"></a> 참조).
           </dd>
       </dl>
 
       <p>
-Example:
+예제:
       </p>
 
       <pre class="example nohighlight">
