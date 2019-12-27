@@ -2109,146 +2109,129 @@ The interfaces and algorithms for resolving <a>DIDs</a> and dereferencing
 
   <section class="informative">
     <h1>
-Security Considerations
+보안 고려사항 (Security Considerations)
     </h1>
 
-    <p class="note" title="Note to implementers">
-During the Implementer’s Draft stage, this
-section focuses on security topics that should be important in early
-implementations. The editors are also seeking feedback on threats and
-threat mitigations that should be reflected in this section or
-elsewhere in the spec. As the root identifier records for <a>decentralized
-identifiers</a> (DIDs) and <a>DID documents</a> are a vital component of
-<a>decentralized identity management</a>. They are also the foundational
-building blocks of <a>decentralized public key infrastructure</a> (DPKI)
-as an augmentation to conventional X.509 certificates. As such, <a>DIDs</a> are
-designed to operate under the general Internet threat model used by
-many IETF standards. We assume uncompromised endpoints, but allow
-messages to be read or corrupted on the network. Protecting against an
-attack when a system is compromised requires external key-signing
-hardware. See also Section <a href="#key-revocation-and-recovery"></a>
-regarding key revocation and recovery. For their part, the <a>DLTs</a> hosting
-<a>DIDs</a> and <a>DID documents</a> have special security properties for preventing
-active attacks. Their design uses public/private key cryptography to
-allow operation on passively monitored networks without risking
-compromise of private keys. This is what makes <a>DID</a> architecture and
-decentralized identity possible.
+    <p class="note" title="개발자 참고사항">
+개발자의 초안 단계에서 이 장은 초기 구현에 중요한 보안 주제에 중점을 둔다. 
+또한, 편집자들은 본 장 또는 사양의 다른 부분에 반영되어야만 하는 위협 및 위협 완화에 
+대한 피드백을 탐색한다. <a>탈중앙 식별자(DIDs)</a> 및 <a>DID 문서</a>에 대한 
+루트 식별자 레코드는 <a>분산 ID 관리</a>의 필수 구성 요소이다. 또한 기존 X.509 인증서를 
+보완하는 <a>분산 공개키 기반 구조</a> (DPKI)의 기본 구성 요소이다. 따라서 <a>DID</a>는 
+많은 IETF 표준에서 사용하는 일반적인 인터넷 위협 모델에서 작동하도록 설계되었다. 우리는 
+침해되지 않는 엔드포인트를 가정하지만 네트워크상에서 메시지가 읽혀지거나, 손상될 수 
+있음을 고려해야 한다. 시스템이 손상되었을 때 공격으로부터 보호하려면 외부 키 서명 
+하드웨어가 필요하다. 키 폐기 및 복구에 관한 <a href="#key-revocation-and-recovery"></a> 
+참조. <a>DID</a> 및 <a>DID 문서</a>를 호스팅하는 <a>DLT</a>에는 능동적인 공격을 
+방지하기 위한 특별한 보안속성이 있다. 이 설계는 공개키 암호화를 사용하여 개인키가 
+손상 될 위험없이 수동적으로 모니터링되는 네트워크에서 작동할 수 있다. 
+이로 인하여 <a>DID</a> 아키텍처와 분산 ID를 가능하게 한다.
     </p>
 
     <section>
       <h2>
-Requirements of DID Method Specifications
+DID 메소드 사양의 요구 사항
       </h2>
 
       <p>
-The requirements for <a>DID method</a> specifications are as follows:
+<a>DID 메소드</a>의 요구사항 명세는 다음과 같다:
       </p>
       <ul>
         <li>
-<a>DID method</a> specifications MUST include their own Security Considerations
-section.
+<a>DID 메소드</a> 사양에는 무조건 자체 보안 고려 사항 항목이 포함되어야 한다.
         </li>
 
         <li>
-This section MUST consider all the requirements mentioned in Section 5 of
-[[RFC3552]] (page 27) for the <a>DID</a> operations defined in the
-specification. In particular:
+본 장은 무조건 [[RFC3552]] (27p) 5장 <a>DID</a> 연산에 언급된 모든 요구 사항을 
+고려해야 한다. 특히:
 
       <p class="issue">
-Discussions at Rebooting the Web of Trust 5 resulted in consensus to
-move Authorization to <a>DID method</a> specifications. It is currently
-expected that there will be an attempt to create a generalized
-authorization mechanism that is build on object capabilities.
+차세대 Web of Trust 5에 대한 논의는 권한 부여를 DID 메소드 명세서로 이동하도록 
+합의되었다. 현재 객체 기능을 기반으로 한 일반화된 권한 부여 메커니즘을 작성하려는 
+시도가 기대된다.
       </p>
 
           <ul>
             <li>
-At least the following forms of attack MUST be considered: eavesdropping,
-replay, message insertion, deletion, modification, and man-in-the-middle.
+최소한 무조건 다음과 같은 형태의 공격을 고려해야만 한다: 
+도청(eavesdropping), 재생(replay), 메시지 삽입(message insertion), 삭제(deletion), 
+수정(modification), 중간자 공격(man-in-the-middle).
             </li>
             <li>
-Potential denial of service attacks MUST be identified as well. 
+또한 잠재적인 서비스 거부 공격(DoS)도 식별해야 한다.
             </li>
             <li>
-If the protocol incorporates cryptographic protection mechanisms, clearly
-indicate which portions of the data are protected and what the protections are.
-For example, integrity only, confidentiality, endpoint authentication, and so
-on.
+프로토콜에 암호화 보호 메커니즘이 통합된 경우 무조건 보호되는 데이터 부분과 보호 대상 
+(즉, 무결성 전용, 기밀성 또는 엔드포인트 인증 등)이 명확하게 표시되어야 한다. 
             </li>
             <li>
-Give an indication to what sorts of attacks the cryptographic protection is
-susceptible. 
+암호학적 보호가 어떤 종류의 공격에 취약한지 작성해야 한다. 
             </li>
             <li>
-Data which is to be held secret (keying material, random seeds, and so on) is to
-be clearly labeled.
+비밀로 유지해야하는 데이터 (키 재료, 랜덤시드 등)는 명확하게 표시해야 한다. 
             </li>
             <li>
-If the technology involves authentication, particularly user-host
-authentication, the security of the authentication method MUST be clearly
-specified.
+만일 본 기술에 인증, 특히 사용자-호스트 인증이 포함된 경우 
+무조건 인증 방법의 보안을 명확하게 명시해야 한다.
+
             </li>
           </ul>
         </li>
 
         <li>
-This section MUST discuss, per Section 5 of [[RFC3552]], residual risks (such as
-the risks from compromise in a related protocol, incorrect implementation, or
-cipher) after threat mitigation was deployed.
+또한 본 장은 [[RFC3552]] 5장에 따라 위협 완화가 전개 된 후의 잔류 위험 
+(예를 들어 관련 프로토콜의 손상, 잘못된 구현 또는 암호)과 관련된 위험에 대해 
+논의해야만 한다.
         </li>
 
         <li>
-This section MUST provide integrity protection and update authentication for all
-operations required by Section <a href="#did-operations"></a>.
+본 장은 <a href="#did-operations"></a>에 요구된 필요한 모든 연산에 대하여 
+무결성 보호 및 인증 업데이트를 제공해야 한다.
         </li>
 
         <li>
-Where <a>DID methods</a> make use of peer-to-peer computing resources, such as
-with all known <a>DLTs</a>, the expected burdens of those resources SHOULD be
-discussed in relation to denial of service.
+<a>DID 메소드</a>가 P2P 컴퓨팅 리소스 (예를 들어 널리 알려진 <a>DLT</a>와 같은)를 
+사용하는 경우 해당 리소스의 예상 부담은 서비스 거부(DoS)와 관련하여 
+무조건 논의해야만 한다.
         </li>
 
         <li>
-Method-specific endpoint authentication MUST be discussed. Where
-<a>DID methods</a> make use of <a>DLTs</a> with varying network topology,
-sometimes offered as <em>light node</em> or
-<em><a href="https://en.bitcoin.it/wiki/Thin_Client_Security">thin client</a></em>
-implementations to reduce required computing resources, the security assumptions
-of the topology available to implementations of the <a>DID method</a> MUST be
-discussed.
+메소드 별 엔드포인트 인증에 대해 무조건 논의해야 한다. <a>DID 메소드</a>가 다양한 
+네트워크 토폴로지와 함께 <a>DLT</a>를 사용하거나 컴퓨팅 리소스를 줄이기 위해 <em>light node</em> 또는 
+<em><a href="https://en.bitcoin.it/wiki/Thin_Client_Security">thin client</a></em> 
+구현으로 제공되는 경우 <a>DID 메소드</a> 구현에 사용할 수 있는 토폴로지의 보안 가정을 
+무조건 논의해야만 한다.
         </li>
 
         <li>
-<a>DID methods</a> MUST discuss the policy mechanism by which <a>DIDs</a> are
-proven to be uniquely assigned. A <a>DID</a> fits the functional definition
-of a URN, as defined in [[RFC8141]]. That is, a <a>DID</a> is a persistent
-identifier that is assigned once to a resource and never reassigned to a
-different resource. This is particularly important in a security context because
-a <a>DID</a> might be used to identify a specific party subject to a specific
-set of authorization rights.
+<a>DID 메소드</a>은 <a>DID</a>가 고유하게 할당된 것이므로 할당된 정책 메커니즘을 
+무조건 논의해야만 한다. <a>DID</a>는 [[RFC8141]]에 정의된 바와 같이 자원에 한 번만 
+할당되고 다시 할당되지 않는 영구 식별자인 URN의 기능 정의에 적합하다. 
+<a>DID</a>는 특정 권한 집합에 따라 특정 집단을 식별하는 데 사용될 수 있기 때문에 
+보안 컨텍스트에서 특히 중요하다.
         </li>
 
         <li>
-<a>DID methods</a> that introduce new authentication <a>service endpoint</a>
-types (see Section <a href="#service-endpoints"></a>) SHOULD consider the
-security requirements of the supported authentication protocol.
+새로운 인증 <a>서비스 엔드포인트</a> 유형을 소개하는 
+<a>DID 메소드</a> (<a href="#service-endpoints"></a> 참조)는 지원되는 
+인증 프로토콜의 보안 요구 사항을 고려해야 한다.
         </li>
       </ul>
     </section>
 
     <section>
       <h2>
-Choosing DID Resolvers
+DID 리졸버 선택
       </h2>
 
       <p>
-The [[DID-METHOD-REGISTRY]] is an informative list of <a>DID method</a> names
-and their corresponding <a>DID method</a> specifications. Implementors need to
-bear in mind that there is no central authority to mandate which
-<a>DID method</a> specification is to be used with any specific
-<a>DID method</a> name, but can use the [[DID-METHOD-REGISTRY]] to make an
-informed decision when choosing which <a>DID resolver</a> implementations to
-use.
+[[DID-METHOD-REGISTRY]]는 <a>DID 메소드</a> 이름 및 해당 <a>DID 메소드</a> 사양에 
+대한 정보를 제공하는 목록이다. 개발자는 특정 <a>DID 메소드</a> 이름과 함께 
+사용해야하는 <a>DID 메소드</a> 사양을 위임 할 CA가 없다는 것을 알아두어야 하지만, 
+<a>DID 메서드</a> 사양은 특정 <a>DID 메서드</a> 이름과 함께 사용해야 하고 
+[[DID-METHOD-REGISTRY]]를 사용하여 사용할 <a>DID 리졸버</a> 구현을 선택할 때 
+결정을 내릴 수 있다.
+
       </p>
     </section>
 
