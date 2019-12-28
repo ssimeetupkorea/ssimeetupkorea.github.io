@@ -1042,28 +1042,27 @@ MUST NOT override the terms defined in the generic <a>DID</a> context.
 
     <section>
       <h2>
-DID Subject
+DID 주체
       </h2>
 
       <p>
-The <a>DID subject</a> is denoted with the <code>id</code> property.
-This is the entity that the <a>DID document</a> is about, i.e.,
-it is the entity identified by the <a>DID</a> and described by the <a>DID document</a>.
+<a>DID 주체</a>는 <code>id</code> 속성으로 표시된다.
+DID 주체는 <a>DID</a>가 식별하고 <a>DID 문서</a>가 설명하고자 하는 항목을 말한다.
       </p>
 
       <p>
-<a>DID documents</a> MUST include the <code>id</code> property.
+<a>DID 문서들</a>은 반드시 <code>id</code> 속성을 포함해야 한다.
       </p>
 
       <dl>
           <dt><dfn>id</dfn></dt>
           <dd>
-The value of <code>id</code> MUST be a single valid <a>DID</a>.
+<code>id</code>의 값은 반드시 하나의 유효한 <a>DID</a>이어야 한다.
           </dd>
       </dl>
 
       <p>
-Example:
+예시:
       </p>
 
       <pre class="example nohighlight">
@@ -1072,12 +1071,10 @@ Example:
 }
       </pre>
       <p class="note">
-<a>DID method</a> specifications can create intermediate representations of
-a <a>DID document</a> that do not contain the <code>id</code> key, such as
-when a <a>DID resolver</a> is performing resolution. However, the fully
-resolved <a>DID document</a> always contains a valid <code>id</code> property.
-The value of <code>id</code> in the resolved <a>DID document</a> is expected
-to match the <a>DID</a> that was resolved.
+어떤 <a>DID 메소드</a> 규격은 <a>DID 리졸버</a>가 DID 해석을 수행하는 것과 같은 경우에
+<code>id</code>라는 키를 가지고 있지 않은 중간 형태의 <a>DID 문서</a>를 생성할 수도 있다. 
+그러나, (중간 형태가 아닌) 완전하게 해석된 <a>DID 문서</a>는 항상 유효한 <code>id</code> 속성을 가지고 있다.
+해석된 <a>DID 문서</a>에 있는 <code>id</code>의 값은 해석한 <a>DID</a>와 같아야 한다.
       </p>
     </section>
     <!-- section>
@@ -1149,7 +1146,7 @@ Example:
 
     <section>
       <h2>
-Public Keys
+공개키
       </h2>
 
       <p>
