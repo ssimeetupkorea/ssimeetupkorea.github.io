@@ -169,7 +169,7 @@
   </div>
   <section id='abstract'>
     <p>
-      <a>탈중앙 식별자</a>(DIDs)란 검증가능하고 탈중앙화된 디지털 신원을 위한 새로운 형식의 식별자이다.
+      <a>탈중앙 식별자</a>(DIDs)는 검증가능하고 탈중앙화된 디지털 신원을 위한 새로운 형식의 식별자이다.
       이러한 새로운 식별자는 <a>DID 컨트롤러</a>가 DID의 제어권을 증명하고, 중앙화된 레지스트리, 신원 제공자, 인증기관 등으로부터 독립적으로 구현할 수 있도록 설계되었다.
       <a>DID</a>는 <a>DID 주체</a>와 관련된 URL로써, <a>DID 문서</a>라는 방식을 통해 해당 주체와 신뢰할 수 있는 상호작용을 가능하게하는 도구이다.
       <a>DID 문서</a>는 특정 DID를 어떻게 사용하는지에 대해 설명해 놓은 간단한 문서이다.
@@ -1679,111 +1679,111 @@ Example:
         <a>서비스 엔드포인트</a>에 대한 추가 보안 고려 사항은
         <a href="#did-method-schemes"></a> 및 <a href="#authentication"></a>을 참조
       </p>
-    </sectionㅑㅇ >
+      </sectionㅑㅇ>
 
-    <section id="created">
-      <h2>
-        생성
-      </h2>
+      <section id="created">
+        <h2>
+          생성
+        </h2>
 
-      <p>
-        <a>DID 문서</a>에는 <code>created</code> 속성이 포함되어야 한다. 그렇다면:
-      </p>
+        <p>
+          <a>DID 문서</a>에는 <code>created</code> 속성이 포함되어야 한다. 그렇다면:
+        </p>
 
-      <dl>
-        <dt><dfn>created</dfn></dt>
-        <dd>
-          <code>created</code> 속성 값은 <a href="https://www.w3.org/TR/xmlschema11-2/">
-            W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</a>
-          [[!XMLSCHEMA11-2]] 3.3.7장에 정의된 유효한 XML 날짜 및 시간이다.
-          날짜 및 시간 값은 "Z" 끝나게 표시되는 UTC 00:00으로 정규화되어야 한다.
-        </dd>
-      </dl>
+        <dl>
+          <dt><dfn>created</dfn></dt>
+          <dd>
+            <code>created</code> 속성 값은 <a href="https://www.w3.org/TR/xmlschema11-2/">
+              W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</a>
+            [[!XMLSCHEMA11-2]] 3.3.7장에 정의된 유효한 XML 날짜 및 시간이다.
+            날짜 및 시간 값은 "Z" 끝나게 표시되는 UTC 00:00으로 정규화되어야 한다.
+          </dd>
+        </dl>
 
-      <p>
-        예제:
-      </p>
+        <p>
+          예제:
+        </p>
 
-      <pre class="example nohighlight">
+        <pre class="example nohighlight">
 {
   "created": "2002-10-10T17:00:00Z"
 }
 </pre>
-    </section>
+      </section>
 
-    <section id="updated">
-      <h2>
-        갱신
-      </h2>
+      <section id="updated">
+        <h2>
+          갱신
+        </h2>
 
-      <p>
-        식별자 레코드의 표준 메타 데이터에는 가장 최근의 갱신에 대한 타임스탬프가 포함된다.
-      </p>
+        <p>
+          식별자 레코드의 표준 메타 데이터에는 가장 최근의 갱신에 대한 타임스탬프가 포함된다.
+        </p>
 
-      <p>
-        <a>DID 문서</a>에는 <code>updated</code> 속성이 포함되어야 한다. 그렇다면:
-      </p>
+        <p>
+          <a>DID 문서</a>에는 <code>updated</code> 속성이 포함되어야 한다. 그렇다면:
+        </p>
 
-      <dl>
-        <dt><dfn>updated</dfn></dt>
-        <dd>
-          <code>updated</code> 속성 값은 무조건 <code>created</code> 속성과 동일한
-          규칙을 따른다 (<a href="#created"></a> 참조).
-        </dd>
-      </dl>
+        <dl>
+          <dt><dfn>updated</dfn></dt>
+          <dd>
+            <code>updated</code> 속성 값은 무조건 <code>created</code> 속성과 동일한
+            규칙을 따른다 (<a href="#created"></a> 참조).
+          </dd>
+        </dl>
 
-      <p>
-        예제:
-      </p>
+        <p>
+          예제:
+        </p>
 
-      <pre class="example nohighlight">
+        <pre class="example nohighlight">
 {
   "updated": "2016-10-17T02:41:00Z"
 }
 </pre>
-    </section>
+      </section>
 
-    <section>
-      <h2>
-        Proof
-      </h2>
+      <section>
+        <h2>
+          Proof
+        </h2>
 
-      <p>
-        <a>DID 문서</a>의 <code>proof</code>은 다음 중 하나에 따라 <a>DID 문서</a>의 무결성을 증명하는 암호화 증명이다:
-      </p>
+        <p>
+          <a>DID 문서</a>의 <code>proof</code>은 다음 중 하나에 따라 <a>DID 문서</a>의 무결성을 증명하는 암호화 증명이다:
+        </p>
 
-      <ol start="1">
-        <li>
-          섹션 5.2 <a href="#did-subject">DID 주체</a>에 정의 된 <a>DID 주체</a> 또는:
-        </li>
+        <ol start="1">
+          <li>
+            섹션 5.2 <a href="#did-subject">DID 주체</a>에 정의 된 <a>DID 주체</a> 또는:
+          </li>
 
-        <li>
-          <a href="#authorization-and-delegation">권한 부여 및 위임</a>에 정의 된 DID 컨트롤러 (있는 경우).
-        </li>
-      </ol>
+          <li>
+            <a href="#authorization-and-delegation">권한 부여 및 위임</a>에 정의 된 DID 컨트롤러 (있는 경우).
+          </li>
+        </ol>
 
-      <p>
-        이 증명은 <a>DID</a>와 <a>DID 문서</a>간의 연관성(binding) 대한 증명이 아니다 (섹션 9.3 신원의 바인딩 참조(<a
-          href="#binding-of-identity"></a>)).
-      </p>
+        <p>
+          이 증명은 <a>DID</a>와 <a>DID 문서</a>간의 연관성(binding) 대한 증명이 아니다 (섹션 9.3 신원의 바인딩 참조(<a
+            href="#binding-of-identity"></a>)).
+        </p>
 
-      <p>
-        <a>DID 문서</a>는 <code>proof</code> 속성을 포함 할 수 있다. 그렇다면:
-      </p>
+        <p>
+          <a>DID 문서</a>는 <code>proof</code> 속성을 포함 할 수 있다. 그렇다면:
+        </p>
 
-      <dl>
-        <dt><dfn>proof</dfn></dt>
-        <dd>
-          <code>proof</code> 값은 무조건 링크 된 데이터 증명(<a href="https://w3c-dvcg.github.io/ld-signatures/">Linked Data
-            Proofs</a>)에서 정의한 유효한 JSON-LD 증명이어야한다.
-        </dd>
-      </dl>
+        <dl>
+          <dt><dfn>proof</dfn></dt>
+          <dd>
+            <code>proof</code> 값은 무조건 링크 된 데이터 증명(<a href="https://w3c-dvcg.github.io/ld-signatures/">Linked Data
+              Proofs</a>)에서 정의한 유효한 JSON-LD 증명이어야한다.
+          </dd>
+        </dl>
 
-      <p>
-        Example:
-      </p>
+        <p>
+          Example:
+        </p>
 
-      <pre class="example nohighlight" title="A signature-based proof">
+        <pre class="example nohighlight" title="A signature-based proof">
 {
   "proof": {
     "type": "LinkedDataSignature2015",
@@ -1793,64 +1793,64 @@ Example:
   }
 }
 </pre>
-    </section>
+      </section>
 
-    <section>
-      <h2>
-        Extensibility
-      </h2>
+      <section>
+        <h2>
+          Extensibility
+        </h2>
 
-      <p>
-        <a>탈중앙화 식별자</a> 데이터 모델의 목표 중 하나는 비허가형 혁신을 가능하게하는 것이다. 이를 위해서는 데이터 모델을 다양한 방법으로 확장 할 수 있어야 한다:
-      </p>
+        <p>
+          <a>탈중앙화 식별자</a> 데이터 모델의 목표 중 하나는 비허가형 혁신을 가능하게하는 것이다. 이를 위해서는 데이터 모델을 다양한 방법으로 확장 할 수 있어야 한다:
+        </p>
 
-      <ul>
-        <li>
-          The requirement to model complex multi-entity relationships is
-          provided through the use of a graph-based data model.
-        </li>
+        <ul>
+          <li>
+            The requirement to model complex multi-entity relationships is
+            provided through the use of a graph-based data model.
+          </li>
 
-        <li>
-          The requirement to enable extending the machine-readable
-          vocabularies used to describe information in the data model &mdash;
-          without relying on a centralized system &mdash; is accomplished via
-          the use of [[LINKED-DATA]].
-        </li>
+          <li>
+            The requirement to enable extending the machine-readable
+            vocabularies used to describe information in the data model &mdash;
+            without relying on a centralized system &mdash; is accomplished via
+            the use of [[LINKED-DATA]].
+          </li>
 
-        <li>
-          The requirement to support multiple types of cryptographic proof
-          formats is accomplished via the use of Linked Data Proofs
-          [[LD-PROOFS]], Linked Data Signatures [[LD-SIGNATURES]], and a
-          variety of signature suites.
-        </li>
+          <li>
+            The requirement to support multiple types of cryptographic proof
+            formats is accomplished via the use of Linked Data Proofs
+            [[LD-PROOFS]], Linked Data Signatures [[LD-SIGNATURES]], and a
+            variety of signature suites.
+          </li>
 
-        <li>
-          The requirement to provide all of the extensibility mechanisms
-          outlined above in a data format that is popular among software
-          developers and web page authors is enabled via the use of
-          [[!JSON-LD]].
-        </li>
-      </ul>
+          <li>
+            The requirement to provide all of the extensibility mechanisms
+            outlined above in a data format that is popular among software
+            developers and web page authors is enabled via the use of
+            [[!JSON-LD]].
+          </li>
+        </ul>
 
-      <p>
-        This approach to data modeling is often called an "open world
-        assumption", meaning that anyone can say anything about any other
-        thing. This approach often feels in conflict with building simple
-        and predictable software systems. Balancing extensibility with
-        program correctness is always more challenging with an open world
-        assumption than it is with closed software systems.
-      </p>
+        <p>
+          This approach to data modeling is often called an "open world
+          assumption", meaning that anyone can say anything about any other
+          thing. This approach often feels in conflict with building simple
+          and predictable software systems. Balancing extensibility with
+          program correctness is always more challenging with an open world
+          assumption than it is with closed software systems.
+        </p>
 
-      <p>
-        The rest of this section describes how both extensibility and program
-        correctness are achieved through a series of examples.
-      </p>
+        <p>
+          The rest of this section describes how both extensibility and program
+          correctness are achieved through a series of examples.
+        </p>
 
-      <p>
-        다음과 같은 <a>DID 문서</a>로 시작한다고 가정 해 본다:
-      </p>
+        <p>
+          다음과 같은 <a>DID 문서</a>로 시작한다고 가정 해 본다:
+        </p>
 
-      <pre class="example nohighlight" title="A simple DID document">
+        <pre class="example nohighlight" title="A simple DID document">
 {
   "@context": "https://example.org/example-method/v1",
   "id": "did:example:123456789abcdefghi",
@@ -1859,31 +1859,31 @@ Example:
   "service": [{ <span class="comment">...</span> }]
 }
       </pre>
-      <p>
-        이 섹션에서는 <code>publicKey</code>, <code>authentication</code> 및 <code>service</code> 속성의 내용이 중요하지 않다. 중요한 것은 위의
-        개체가 유효한 <a>DID 문서</a>라는 것이다. 개발자가 추가 정보를 표현하기 위해 <a>DID 문서</a>를 확장하고 싶다고 가정 하자. 추가정보는 피사체의 공개 사진 스트림이다.
-      </p>
+        <p>
+          이 섹션에서는 <code>publicKey</code>, <code>authentication</code> 및 <code>service</code> 속성의 내용이 중요하지 않다. 중요한 것은 위의
+          개체가 유효한 <a>DID 문서</a>라는 것이다. 개발자가 추가 정보를 표현하기 위해 <a>DID 문서</a>를 확장하고 싶다고 가정 하자. 추가정보는 피사체의 공개 사진 스트림이다.
+        </p>
 
-      <p>
-        The first thing that a developer would do is create a JSON-LD Context
-        containing the new term:
-      </p>
+        <p>
+          The first thing that a developer would do is create a JSON-LD Context
+          containing the new term:
+        </p>
 
-      <pre class="example nohighlight" title="An example JSON-LD Context">
+        <pre class="example nohighlight" title="An example JSON-LD Context">
 {
   "@context": {
     "PhotoStreamService": "https://example.com/vocab#PhotoStreamService"
   }
 }
       </pre>
-      <p>
-        JSON-LD 컨텍스트가 생성되었으므로 개발자는 <a>DID 문서</a> 프로세서에 액세스 할 수있는 어떤 위치에 이를 무조건 게시해야한다. 예를 들어, 우리가 JSON-LD 컨텍스트 위의 다음
-        URL에 게시되어 있다고 가정하자 :
-        <code>did:example:contexts:987654321</code>. 이 시점에서이 섹션의 첫 번째 예제를 확장하는 것은 위의 컨텍스트를 포함하고 <a>DID 문서</a>에 새 속성을
-        추가하는 간단한 문제이다.
-      </p>
+        <p>
+          JSON-LD 컨텍스트가 생성되었으므로 개발자는 <a>DID 문서</a> 프로세서에 액세스 할 수있는 어떤 위치에 이를 무조건 게시해야한다. 예를 들어, 우리가 JSON-LD 컨텍스트 위의 다음
+          URL에 게시되어 있다고 가정하자 :
+          <code>did:example:contexts:987654321</code>. 이 시점에서이 섹션의 첫 번째 예제를 확장하는 것은 위의 컨텍스트를 포함하고 <a>DID 문서</a>에 새 속성을
+          추가하는 간단한 문제이다.
+        </p>
 
-      <pre class="example nohighlight" title="A DID document with a custom extension">
+        <pre class="example nohighlight" title="A DID document with a custom extension">
 {
   "@context": "https://example.org/example-method/v1",
   "id": "did:example:123456789abcdefghi",
@@ -1896,28 +1896,29 @@ Example:
   }</span>]
 }
       </pre>
-      <p>
-        지금까지의 예시에서는 <a>탈중앙화 식별자</a> 데이터 모델을 탈중앙화 방식으로 쉽게 확장 할 수 있음을 보여주었다. 또한 이 방식으로 생성 된 <a>탈중앙화 식별자</a>가 네임 스페이스 충돌 및
-        의미상 모호성을 방지한다.
-      </p>
+        <p>
+          지금까지의 예시에서는 <a>탈중앙화 식별자</a> 데이터 모델을 탈중앙화 방식으로 쉽게 확장 할 수 있음을 보여주었다. 또한 이 방식으로 생성 된 <a>탈중앙화 식별자</a>가 네임 스페이스 충돌
+          및
+          의미상 모호성을 방지한다.
+        </p>
 
-      <p>
-        동적 확장성 모델은 구현 부담을 증가시킨다. 이러한 시스템 용으로 작성된 소프트웨어는 응용 프로그램의 위험 프로파일에 따라 확장명이 포함 된 <a>DID 문서</a>를 수락 할 수 있는지 여부를
-        결정해야한다. 일부 응용 프로그램은 확장을 허용하지만 무시하도록 선택하고 다른 응용 프로그램은 특정 확장만 허용하도록 선택할 수 있지만 보안 수준이 높은 환경에서는 확장이 허용되지 않을 수 있다.
-        이러한 결정은 응용 프로그램 개발자에게 달려 있으며 특히 이 사양의 영역이 아니다.
-      </p>
+        <p>
+          동적 확장성 모델은 구현 부담을 증가시킨다. 이러한 시스템 용으로 작성된 소프트웨어는 응용 프로그램의 위험 프로파일에 따라 확장명이 포함 된 <a>DID 문서</a>를 수락 할 수 있는지 여부를
+          결정해야한다. 일부 응용 프로그램은 확장을 허용하지만 무시하도록 선택하고 다른 응용 프로그램은 특정 확장만 허용하도록 선택할 수 있지만 보안 수준이 높은 환경에서는 확장이 허용되지 않을 수 있다.
+          이러한 결정은 응용 프로그램 개발자에게 달려 있으며 특히 이 사양의 영역이 아니다.
+        </p>
 
-      <p>
-        Implementations MUST produce an error when an extension JSON-LD
-        Context overrides the expanded URL for a term specified in this
-        specification. To avoid the possibility of accidentally overriding
-        terms, developers SHOULD scope their extensions. For example,
-        the following extension scopes the new
-        <code>PhotoStreamService</code> term so that it may only be used
-        within the <code>service</code> property:
-      </p>
+        <p>
+          Implementations MUST produce an error when an extension JSON-LD
+          Context overrides the expanded URL for a term specified in this
+          specification. To avoid the possibility of accidentally overriding
+          terms, developers SHOULD scope their extensions. For example,
+          the following extension scopes the new
+          <code>PhotoStreamService</code> term so that it may only be used
+          within the <code>service</code> property:
+        </p>
 
-      <pre class="example nohighlight" title="Scoping terms in a JSON-LD Context">
+        <pre class="example nohighlight" title="Scoping terms in a JSON-LD Context">
 {
   "@context": {
     <span class="highlight">"service": {
@@ -1929,17 +1930,17 @@ Example:
   }
 }
       </pre>
-      <p>
-        Developers are urged to ensure that extension JSON-LD Contexts are
-        highly available. Implementations that cannot fetch a context will
-        produce an error. Strategies for ensuring that extension JSON-LD
-        Contexts are always available include using content-addressed URLs
-        for contexts, bundling context documents with implementations, or
-        enabling aggressive caching of contexts.
-      </p>
+        <p>
+          Developers are urged to ensure that extension JSON-LD Contexts are
+          highly available. Implementations that cannot fetch a context will
+          produce an error. Strategies for ensuring that extension JSON-LD
+          Contexts are always available include using content-addressed URLs
+          for contexts, bundling context documents with implementations, or
+          enabling aggressive caching of contexts.
+        </p>
+      </section>
     </section>
   </section>
-
   <section class="normative">
     <h1>
       DID Document Syntax
@@ -2613,7 +2614,8 @@ Example:
         ASN) 이러한 공격을 수행하는 데 훨씬 더 어렵고 비용이 많이 들며 이상 탐지가 더 쉬울 수 있다.
       </p>
       <p>
-        불변성이 일부 사이버 보안 이점을 제공 할 수 있다는 개념은 캐싱 때문에 특히 관련이 있다. 전 세계 진실 소스에 연결된 <a>DID 메소드</a>들의 경우 최신 버전의 <a>DID 문서</a>를 적시에
+        불변성이 일부 사이버 보안 이점을 제공 할 수 있다는 개념은 캐싱 때문에 특히 관련이 있다. 전 세계 진실 소스에 연결된 <a>DID 메소드</a>들의 경우 최신 버전의 <a>DID 문서</a>를
+        적시에
         직접 조회 할 수 있다. 그러나 캐시 레이어는 결국 클라이언트와 해당 소스 사이에 있을 수 있다. 만약 그렇다면, 실제로 미묘하게 다른 <a>DID 문서</a>에있는 객체(object)의 속성이 주어진
         상태를 가지고 있다고 믿으면 활용을 증대 할 수 있습니다. 일부 조회가 전체 <a>DID 문서</a>이고 다른 조회가 부분적인 데이터 인 경우 더 큰 맥락이 가정되는 경우에 특히 그렇습니다.
     </section>
