@@ -228,9 +228,9 @@
     </p>
   </section>
 
-  <section class="informative">
+  <section class="informative" id="introduction">
     <h1>
-      Introduction
+      서론
     </h1>
 
     <p>
@@ -314,9 +314,9 @@
       <a>DID 메소드</a> 및 규격 목록은 [[DID-METHOD-REGISTRY]]를 참조하십시오.
     </p>
 
-    <section class="informative">
+    <section class="informative" id="simple-example">
       <h2>
-        A Simple Example
+        간단한 예제
       </h2>
 
       <p>
@@ -339,7 +339,7 @@ did:example:123456789abcdefghi
     </pre>
 
       <p>
-        위의 예제 <a>DID</a>는 <a>DID 문서</a>로 해석됩니다. <a>DID 문서</a>에는 <a>DID</a>를 제어하여 개체를 암호학적으로 인증하는 방법 및 개체와 상호 작용하는 데 사용할
+        위의 예제 <a>DID</a>는 <a>DID 문서</a>로 해석될 수 있다. <a>DID 문서</a>에는 <a>DID</a>를 제어하여 개체를 암호학적으로 인증하는 방법 및 개체와 상호 작용하는 데 사용할
         수있는 서비스와 같이 <a>DID</a>와 관련된 정보가 포함되어 있다.
       </p>
 
@@ -364,9 +364,9 @@ did:example:123456789abcdefghi
     </pre>
     </section>
 
-    <section class="informative">
+    <section class="informative" id="design-goals">
       <h2>
-        Design Goals
+        디자인 목표
       </h2>
 
       <p>
@@ -480,9 +480,9 @@ did:example:123456789abcdefghi
       </table>
     </section>
 
-    <section>
+    <section id="interoperability">
       <h3>
-        Interoperability
+        상호운용성
       </h3>
 
       <p>
@@ -762,7 +762,7 @@ param-char         = ALPHA / DIGIT / "." / "-" / "_" / ":" /
               <code>hl</code>
             </td>
             <td>
-              [HASHLINK]에 명시된, 무결성 보호를 추가하기 위한 <a>DID 문서</a>의 자원 해시
+              [[HASHLINK]]에 명시된, 무결성 보호를 추가하기 위한 <a>DID 문서</a>의 자원 해시
             </td>
           </tr>
           <tr>
