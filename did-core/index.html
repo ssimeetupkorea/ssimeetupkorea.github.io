@@ -1868,25 +1868,25 @@ enabling aggressive caching of contexts.
     </section>
   </section>
 
-  <section class="normative">
+  <section class="normative" id="did-document-syntax">
     <h1>
-DID Document Syntax
+DID 문서의 문법
     </h1>
 
       <p>
-A <a>DID document</a> MUST be a single JSON object conforming to [[!RFC8259]].
-Many of the concepts in this document were introduced by example using the
-JSON-LD syntax, a format for mapping JSON data into the RDF semantic graph
-model, as defined by [[!JSON-LD]]. This section formalizes how the data model
-(described in Sections <a href="#data-model"></a> and
-<a href="#did-documents"></a>) is realized in JSON-LD.
+<a>DID 문서</a>는 반드시 [[!RFC8259]] 규격을 따르는 하나의 JSON 객체여야만 한다. 
+이 문서에서 설명하고 있는 많은 개념들은 JSON-LD 문법을 사용하는 예제를 활용하여 소개하고 있다. 
+JSON-LD는 JSON 데이터를 RDF 의미 모형과 매핑하는 형식이며, [[!JSON-LD]] 규격에 정의되어 있다. 
+이번 장에서는 데이터 모델(<a href="#data-model"></a>과 <a href="#did-documents"></a> 참조)이 
+어떻게 JSON-LD로 나타나는지에 대해 명세한다.
       </p>
       <p>
-Although syntactic mappings are provided for JSON and JSON-LD only, applications
-and services can use any other data representation syntax, such as JXD (JSON XDI
-Data, a serialization format for the
-<a href="http://docs.oasis-open.org/xdi/xdi-core/v1.0/csd01/xdi-core-v1.0-csd01.xml">XDI graph model</a>),
-XML, YAML, or CBOR, that is capable of expressing the data model.
+비록 문법상의 매핑(syntactic mapping)이 JSON과 JSON-LD로만 제시된다 하더라도, 
+응용프로그램과 서비스는 이와 다른 데이터 모델 표현 도구인 
+JXD (JSON XDI Data, 
+<a href="http://docs.oasis-open.org/xdi/xdi-core/v1.0/csd01/xdi-core-v1.0-csd01.xml">XDI 그래프 모델</a>을 위한 
+직렬화 형식)나 XML, YAML, CBOR과 같이 
+다양한 종류의 데이터 표현 문법을 사용할 수 있다.
       </p>
 
     <section>
@@ -1895,32 +1895,31 @@ JSON
       </h2>
 
         <p>
-The data model, as described in Section <a href="#data-model"></a>, can be
-encoded in Javascript Object Notation (JSON) [[RFC8259]] by mapping property
-values to JSON types as follows:
+데이터 모델(<a href="#data-model"></a> 참조)은 JSON(Javascript Object Notation, [[RFC8259]])으로 
+인코딩될 수 있으며, 다음과 같이 속성값을 JSON 타입에 매핑한다:
         </p>
 
         <ul>
           <li>
-Numeric values representable as IEEE754 SHOULD be represented as a Number type.
+IEEE754 표준과 같은 방식으로 기술한 숫자 값은 숫자 타입으로 표현해야 한다.
           </li>
           <li>
-Boolean values SHOULD be represented as a Boolean type.
+참과 거짓(boolean)으로 기술한 값은 불리언 타입으로 표현해야 한다.
           </li>
           <li>
-Sequence value SHOULD be represented as an Array type.
+열거된 값은 배열 타입으로 표현해야 한다.
           </li>
           <li>
-Unordered sets of values SHOULD be represented as an Array type.
+순서없는 값의 집합은 배열 타입으로 표현해야 한다.
           </li>
           <li>
-Sets of properties SHOULD be represented as an Object type.
+속성들의 집합은 객체(Object) 타입으로 표현해야 한다.
           </li>
           <li>
-Empty values SHOULD be represented as a null value.
+비어있는 값은 널(null)로 표현해야 한다.
           </li>
           <li>
-Other values MUST be represented as a String type.
+이외의 나머지는 무조건 문자열 타입으로 표현해야 한다.
           </li>
         </ul>
     </section>
@@ -1931,52 +1930,48 @@ JSON-LD
       </h2>
 
         <p>
-[[!JSON-LD]] is a JSON-based format used to serialize
-<a href="http://www.w3.org/TR/ld-glossary/#linked-data">Linked Data</a>. The
-syntax is designed to easily integrate into deployed systems already using
-JSON, and provides a smooth upgrade path from JSON to JSON-LD. It is primarily
-intended to be a way to use Linked Data in Web-based programming environments,
-to build interoperable Web services, and to store Linked Data in JSON-based
-storage engines.
+[[!JSON-LD]]는 JSON 기반의 형식이며, 
+<a href="http://www.w3.org/TR/ld-glossary/#linked-data">연결 데이터(Linked Data)</a>를 직렬화하는데 사용한다. 
+JSON-LD의 문법은 이미 JSON을 사용하고 있는 시스템에 쉽게 통합할 수 있도록 설계되었고, 
+JSON에서 JSON-LD로의 업그레이드를 매끄럽게 할 수 있는 방법을 제공한다. 
+웹 기반 프로그래밍 환경에서 연결 데이터를 사용할 수 있도록 하고, 
+상호 운용 가능한 웹서비스를 만들 수 있도록 하며, 
+연결 데이터를 JSON 기반 저장소 엔진에 저장하는데 주안점을 두고 있다.
         </p>
 
         <p>
-JSON-LD is useful when extending the data model described in this specification.
-Instances of the data model are encoded in JSON-LD in the same way they are
-encoded in JSON (see Section <a href="#json"></a>), with the addition of the
-<code>@context</code> property. The
-<a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD Context</a>
-is described in detail in the [[!JSON-LD]] specification and its use is
-elaborated on in Section <a href="#extensibility"></a>.
+JSON-LD는 이 명세서에서 설명하고 있는 데이터 모델을 확장할 때 유용하다. 
+데이터 모델의 인스턴스는 JSON (<a href="#json"></a> 참조) 형식으로 인코딩되는 것과 같은 방식으로 
+JSON-LD로 인코딩되며 <code>@context</code> 속성만 추가하면 된다. 
+<a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 컨텍스트</a>에 대한 
+상세한 내용은 [[!JSON-LD]] 명세서에서 설명하고 있고, 
+그 사용법은 <a href="#extensibility"></a> 섹션에서 자세히 다루고 있다.
         </p>
 
         <p>
-In general, the data model and syntaxes described in this document are designed
-such that developers can copy and paste examples into their software systems.
-The design goal of this approach is to provide a low barrier to entry while
-still ensuring global interoperability between a heterogeneous set of software
-systems. This section describes some of these approaches, which will likely go
-unnoticed by most developers, but whose details will be of interest to
-implementers. Noteworthy features provided by JSON-LD are:
+일반적으로, 이 문서에서 설명하는 데이터 모델과 문법은 
+개발자가 예제를 복사하여 자신들의 시스템에 붙여넣어 사용할 수 있도록 설계되었다. 
+이러한 접근법을 선택하게 된 설계 목표는 서로 다른 소프트웨어 간에 
+글로벌한 상호 운용성을 보장하기 위한 진입 장벽을 낮추는 것이다. 
+이번 장에서는 이런 접근법 중 일부에 대해 설명할 것이다. 
+이러한 접근법은 대부분의 개발자의 눈에는 잘 띄지 않지만 
+구현자들은 관심을 가질 수 있는 상세한 내용이다. JSON-LD가 제공하는 주목할만한 기능은 다음과 같다:
         </p>
 
         <ul>
           <li>
-The <code>@id</code> and <code>@type</code> keywords are aliased to
-<code>id</code> and <code>type</code> respectively, enabling developers to use
-this specification as idiomatic JSON.
+<code>@id</code>와 <code>@type</code> 키워드는 각각 <code>id</code>와 <code>type</code>에 연결되며, 
+개발자가 이 명세서를 관용적인 JSON으로 처리할 수 있도록 한다.
           </li>
           <li>
-Data types, such as integers, dates, units of measure, and URLs, are
-automatically typed to provide stronger type guarantees for use cases that
-require them.
+정수형이나 날짜, 측정 단위, URL과 같은 데이터 타입은 자동적으로 타입이 정해진다. 
+그 이유는 그것을 요구하는 유즈 케이스에서 더 강력한 타입 보장을 지원하기 위함이다.
           </li>
           <li>
-The <code>@protected</code> properties feature of JSON-LD 1.1 is used to ensure
-that terms defined by this specification cannot be overridden. This means that
-as long as the same <code>@context</code> declaration is made at the top of a
-<a>DID document</a>, interoperability is guaranteed between implementations
-that use a JSON-LD processor and implementations that do not.
+JSON-LD 1.1의 <code>@protected</code> 속성은 
+이 명세서에 정의된 용어가 재정의되지 않도록 하는데 사용된다. 
+즉, 같은 <code>@context</code> 선언이 <a>DID 문서</a>의 꼭대기에 존재하는 한, 
+JSON-LD 프로세서를 사용하는 프로그램과 사용하지 않는 프로그램간에 상호 운용성이 보장된다.
           </li>
         </ul>
     </section>
