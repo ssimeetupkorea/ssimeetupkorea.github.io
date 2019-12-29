@@ -1040,7 +1040,7 @@ MUST NOT override the terms defined in the generic <a>DID</a> context.
       </p>
     </section>
 
-    <section>
+    <section id="did-subject">
       <h2>
 DID 주체
       </h2>
@@ -1144,72 +1144,65 @@ Example:
 </pre>
     </section -->
 
-    <section>
+    <section id="public-keys">
       <h2>
 공개키
       </h2>
 
       <p>
-Public keys are used for digital signatures, encryption and other
-cryptographic operations, which in turn are the basis for purposes
-such as authentication (see Section <a href="#authentication"></a>)
-or establishing secure communication with <a>service endpoints</a>
-(see Section <a href="#service-endpoints"></a>). In addition, public
-keys may play a role in authorization mechanisms of <a>DID</a> CRUD
-operations (see Section <a href="#did-operations"></a>), which can be
-defined by <a>DID method</a> specifications.
+공개키는 인증(<a href="#authentication"></a> 참조)이나 <a>서비스 엔드포인트</a>
+(<a href="#service-endpoints"></a> 참조)와의 안전한 통신 채널을 수립하는데 기초가 되는 
+전자서명, 암호화 그리고 암호 연산에 사용된다. 또한, 공개키는 <a>DID 메소드</a> 규격에 정의되는 
+<a>DID</a>의 CRUD 작업(<a href="#did-operations"></a>참조)에 있어서 
+권한 부여 메커니즘으로 활용되기도 한다.
       </p>
 
       <p>
-A <a>DID document</a> MAY include a <code>publicKey</code> property. If so:
+<a>DID 문서</a>는 <code>publicKey</code> 속성을 포함 할 수도 있다. 만약 포함한다면:
       </p>
 
       <dl>
           <dt><dfn>publicKey</dfn></dt>
           <dd>
-The value of the <code>publicKey</code> property MUST be an array of
-public key objects. Each public key object MUST have the
-<code>type</code>, <code>controller</code>, and specific public key
-properties, and SHOULD have an <code>id</code> property. The object
-MAY include additional properties.
+<code>publicKey</code> 속성의 값은 반드시 공개키 객체들의 배열이어야 한다. 
+각 공개키 객체는 <code>type</code>, <code>controller</code> 속성 및 각 공개키에 특화된
+속성을 반드시 포함하고 있어야 하며, <code>id</code> 속성을 포함해야 한다. 공개키 객체는 추가적인
+속성도 포함할 수 있다.
           </dd>
       </dl>
 
       <p>
-The value of the <code>id</code> property (if present) MUST be a URI. The array
-of public keys MUST NOT contain multiple entries with the same
-<code>id</code>. A <a>DID document</a> processor MUST produce an error in that
-case.
+(만약 존재한다면) <code>id</code> 속성의 값은 반드시 URI이어야 한다. 공개키의 배열에는 
+중복되는 <code>id</code>가 무조건 없어야 한다. 그런 경우, <a>DID 문서</a> 프로세서에서
+반드시 에러를 발생시켜야만 한다.
       </p>
 
       <p>
-The value of the <code>type</code> property MUST be exactly one public key value
-(see available key types in Appendix <a href="#registries"></a>).
+<code>type</code> 속성의 값은 반드시 하나의 공개키 값이어야 한다
+(사용 가능한 키 타입은 부록의 <a href="#registries"></a> 참조).
       </p>
 
       <p>
-The value of the <code>controller</code> property, which identifies the
-controller of the corresponding private key, MUST be a valid DID.
+개인키와 관련된 컨트롤러를 식별하는 <code>controller</code> 속성의 값은 반드시 유효한 DID여야 한다.
       </p>
 
       <p>
-All public key properties MUST be from the Linked Data Cryptographic Suite Registry.
-A registry of key types and formats is available in Appendix <a href="#registries"></a>
+모든 공개키의 속성들은 반드시 연결 데이터 암호화 수트 레지스트리(Linked Data Cryptographic Suite Registry)에 
+정의되어 있는 값이어야만 한다.
+키 타입과 형식의 등록 정보는 부록 <a href="#registries"></a>에서 확인할 수 있다.
       </p>
 
       <p>
-If a public key does not exist in the <a>DID document</a>, it MUST be
-assumed the key has been revoked or is invalid. The <a>DID document</a> MAY
-contain revoked keys. A <a>DID document</a> that contains a revoked key MUST
-also contain or refer to the revocation information for the key (e.g.,
-a revocation list). Each <a>DID method</a> specification is expected to
-detail how revocation is performed and tracked.
+만약 공개키가 <a>DID 문서</a>에 존재하지 않는다면, 반드시 그 키가 폐기되었거나 유효하지 않다고
+간주해야 한다. 그 <a>DID 문서</a>에는 폐기된 키들을 포함하고 있을 수도 있다. 
+폐기된 키를 포함하고 있는 <a>DID 문서</a>는 반드시 그 키에 대한 폐기 정보들 포함하거나 참조하고 있어야 한다
+(예. 폐기된 키 리스트). 각각의 <a>DID 메소드</a> 규격에는 키가 어떻게 폐기되고 
+그 정보가 어떻게 추적되는지 설명되어야 한다.
       </p>
 
       <p>
-All public key formats MUST be expressed in either JSON Web Key (JWK)
-format using the <code>publicKeyJwk</code> property or one of the
-formats listed in the table below. Public key expression MUST NOT use any other key format.
+모든 공개키의 형식은 반드시 <code>publicKeyJwk</code> 속성을 사용한 JWK (JSON Web Key) 포맷이거나,
+아래 표예 설명한 포맷 중에 하나여야 한다. 공개키의 표현형은 어떤 경우에도 다른 키의 포맷을 사용할 수 없다.
       </p>
 
       <p class="issue">
@@ -1244,8 +1237,8 @@ Support
 RSA
             </td>
             <td>
-RSA public key values MUST either be encoded as a JWK or be encoded in
-Privacy Enhanced Mail (PEM) format using the <code>publicKeyPem</code> property.
+RSA 공개키 값은 반드시 JWK로 인코딩하거나 <code>publicKeyPem</code> 속성을 사용하여 
+PEM(Privacy Enhanced Mail) 포맷으로 인코딩해야 한다.
             </td>
           </tr>
           <tr>
@@ -1253,9 +1246,8 @@ Privacy Enhanced Mail (PEM) format using the <code>publicKeyPem</code> property.
 ed25519
             </td>
             <td>
-Ed25519 public key values MUST either be encoded as a JWK or be encoded as
-the raw 32-byte public key value in Base58 Bitcoin format using the
-<code>publicKeyBase58</code> property.
+Ed25519 공개키 값은 반드시 JWK로 인코딩하거나 <code>publicKeyBase58</code> 속성을 사용하여
+원시형태(raw)의 32 바이트 공개키 값을 Base58 비트코인 포맷으로 인코딩해야 한다.
             </td>
           </tr>
           <tr>
@@ -1263,9 +1255,8 @@ the raw 32-byte public key value in Base58 Bitcoin format using the
 secp256k1-koblitz
             </td>
             <td>
-Secp256k1 Koblitz public key values MUST either be encoded as a JWK or be
-encoded as the raw 33-byte public key value in Base58 Bitcoin format using the
-<code>publicKeyBase58</code> property.
+Secp256k1 Koblitz 공개키 값은 반드시 JWK로 인코딩하거나 <code>publicKeyBase58</code> 속성을 사용하여
+원시형태의 33바이트 공개키 값을 Base58 비트코인 포맷으로 인코딩해야 한다.
             </td>
           </tr>
           <tr>
@@ -1273,9 +1264,8 @@ encoded as the raw 33-byte public key value in Base58 Bitcoin format using the
 secp256r1
             </td>
             <td>
-Secp256r1 public key values MUST either be encoded as a JWK or be encoded as
-the raw 32-byte public key value encoded in Base58 Bitcoin format using the
-<code>publicKeyBase58</code> property.
+Secp256r1 공개키 값은 반드시 JWK로 인코딩하거나 <code>publicKeyBase58</code> 속성을 사용하여
+원시형태의 32바이트 공개키 값을 Base58 비트코인 포멧으로 인코딩해야 한다.
             </td>
           </tr>
           <tr>
@@ -1283,16 +1273,16 @@ the raw 32-byte public key value encoded in Base58 Bitcoin format using the
 Curve25519
             </td>
             <td>
-Curve25519 (also known as X25519) public key values MUST either be encoded as a JWK or be encoded as
-the raw 32-byte public key value in Base58 Bitcoin format using the
-<code>publicKeyBase58</code> property.
+(X25519로도 알려진) Curve25519 공개키 값은 반드시 JWK로 인코딩하거나 
+<code>publicKeyBase58</code> 속성을 사용하여 원시형태의 32바이트 공개키 값을 Base58 비트코인 포맷으로 
+인코딩해야 한다.
             </td>
           </tr>
         </tbody>
       </table>
 
       <p>
-Example:
+예시:
       </p>
 
       <pre class="example nohighlight" title="Various public keys">
@@ -1320,9 +1310,8 @@ Example:
 }
 </pre>
       <p>
-A key MAY be <em>embedded</em> or <em>referenced</em> in a <a>DID
-document</a>. For example, the <code>authentication</code> property
-may refer to keys in both ways:
+키는 <a>DID 문서</a>에 <em>포함</em>되어 있거나 <em>참조</em>되어 있을 수 있다. 
+예를 들어, 아래의 <code>authentication</code> 속성은 두 가지 방식으로 키를 참조한다:
       </p>
 
       <pre class="example nohighlight" title="Various public keys">
@@ -1330,9 +1319,9 @@ may refer to keys in both ways:
 <span class="comment">...</span>
 
   "authentication": [
-    <span class="comment">// this key is referenced, it may be used for more than one proof purpose</span>
+    <span class="comment">// 이 키는 하나 이상의 목적으로 사용될 수 있도록 참조 방식을 사용한다</span>
     "did:example:123456789abcdefghi#keys-1",
-    <span class="comment">// this key is embedded and may *only* be used for authentication</span>
+    <span class="comment">// 이 키는 문서에 포함되어 있으며, *오직* 인증 목적으로만 사용할 수 있다</span>
     {
       "id": "did:example:123456789abcdefghi#keys-2",
       "type": "Ed25519VerificationKey2018",
@@ -1345,39 +1334,35 @@ may refer to keys in both ways:
 }
 </pre>
       <p>
-The algorithm to use when processing a <code>publicKey</code>
-property in a <a>DID document</a> is:
+<a>DID 문서</a>에서 <code>publicKey</code> 속성을 처리할 때 사용하는 알고리즘은 다음과 같다:
       </p>
 
       <ol class="algorithm">
         <li>
-Let <em>value</em> be the data associated with the
-        <code>publicKey</code> property and initialize <em>result</em> to
-        <code>null</code>.
+<em>value</em>는 <code>publicKey</code> 속성과 관련된 데이터로 세팅되고, 
+<em>result</em>는 <code>null</code>로 초기화된다.
         </li>
 
         <li>
-If <em>value</em> is an object, the key material is embedded. Set
-        <em>result</em> to <em>value</em>.
+만약 <em>value</em>가 객체이면, 키 재료는 문서에 포함되어 있는 것이다. 
+<em>result</em>를 <em>value</em>로 세팅한다.
         </li>
 
         <li>
-If <em>value</em> is a string, the key is included by reference.
-Assume <em>value</em> is a URL.
+만약 <em>value</em>가 문자열이라면, 키는 참조 형식을 사용하는 것이다.
+<em>value</em>는 URL이라고 가정한다.
           <ol>
             <li>
-Dereference the URL and retrieve the <code>publicKey</code>
-properties associated with the URL (e.g., process the
-<code>publicKey</code> property at the top-level of the
-dereferenced document).
+URL이 참조하고 있는 곳을 찾아서, 그 URL과 연관된 <code>publicKey</code> 속성을 가져온다
+(예를 들어 참조되고 있는 문서의 최상위부터 <code>publicKey</code> 속성을 처리한다).
             </li>
 
             <li>
-Iterate through each public key object.
+각 공개키 객체에 대해 다음을 반복한다.
               <ol>
                 <li>
-If the <code>id</code> property of the object matches
-<em>value</em>, set <em>result</em> to the object.
+만약 객체의 <code>id</code> 속성이 <em>value</em>와 같다면, 
+<em>result</em>를 그 객체로 세팅한다.
                 </li>
               </ol>
             </li>
@@ -1385,28 +1370,24 @@ If the <code>id</code> property of the object matches
         </li>
 
         <li>
-If <em>result</em> does not contain at least the <code>id</code>,
-<code>type</code>, and <code>controller</code> properties as well as any
-mandatory public cryptographic material, as determined by the
-<em>result</em>'s <code>type</code> property, throw an error.
+만약 <em>result</em>가 <code>id</code>, <code>type</code>, <code>controller</code>와 같은 
+속성을 포함하고 있지 않거나 <em>result</em>의 <code>type</code> 속성에 따른 
+필수 공개 암호 재료를 포함하고 있지 않다면 에러를 발생시킨다.
         </li>
       </ol>
 
       <p class="note">
-While the <code>controller</code> field may seem redundant in some of the
-examples above, keys may be expressed in a <a>DID document</a> where the
-controller is described in another <a>DID document</a>. Linked Data Proof
-libraries typically expect the <code>controller</code> field to always
-exist and may throw an exception if it is missing. Furthermore, per
-the requirement that <a>DID documents</a> be interpretable as either a graph
-or a tree, a default <code>controller</code> field cannot be inferred by
-using a key's position in a tree.
+위의 예시에서 <code>controller</code> 항목이 불필요해 보이지만, 키가 정의되는 <a>DID 문서</a>와 
+컨트롤러가 설명된 <a>DID 문서</a>가 다를 수 있기 때문에 필요하다. 연결 데이터 증명(Linked Data Proof)
+라이브러리는 보통 <code>controller</code> 항목이 항상 존재한다고 가정하고 있으며, 
+만약 <code>controller</code> 필드가 없다면 예외를 발생시킬 수 있다. 게다가 <a>DID 문서</a>는 
+그래프나 트리 형태로 해석될 수 있다는 요구사항과 관련하여, 
+트리에서 키의 위치(position)를 이용해서 기본 <code>controller</code> 항목을 추론할 수 없다.
       </p>
 
       <p class="note">
-Caching and expiration of the keys in a <a>DID document</a> is entirely the
-responsibility of <a>DID resolvers</a> and other clients. See Section
-<a href="#did-resolvers"></a>.
+<a>DID 문서</a>에 설명된 키를 캐싱하고 만료시키는 것은 전적으로 <a>DID 리졸버</a>와 
+다른 클라이언트 프로그램의 책임이다. <a href="#did-resolvers"></a> 참조.
       </p>
     </section>
 
