@@ -2076,22 +2076,23 @@ Unique DID Method Names
 
   </section>
 
-  <section class='normative'>
+  <section class='normative' id="did-resolvers">
     <h1>
-DID Resolvers
+DID 리졸버
     </h1>
 
     <p>
-A <a>DID resolver</a> is a software or hardware component with an API for
-resolving <a>DIDs</a> of at least one <a>DID method</a>. It executes the read
-operation for the <a>DID method</a> corresponding to the <a>DID</a> being
-resolved to obtain the authoritative <a>DID document</a>. For more information,
-see Section <a href="#read-verify"></a>.
+<a>DID 리졸버</a>는 <a>DID</a>를 해석하는데 필요한 API를 제공하는 
+소프트웨어 또는 하드웨어를 말하며, 
+DID 해석을 위해 DID는 하나 이상의 <a>DID 메소드</a>를 가져야한다. 
+DID 리졸버는 믿을 만한(authoritative) <a>DID 문서</a>를 조회하기 위하여, 
+해석하려는 <a>DID</a>와 연관된 <a>DID 메소드</a>의 읽기 명령을 수행한다.
+더 자세한 내용은 <a href="#read-verify"></a> 참조.
     </p>
 
     <p>
-The interfaces and algorithms for resolving <a>DIDs</a> and dereferencing
-<a>DID URLs</a> are specified in [[DID-RESOLUTION]].
+<a>DID</a>를 해석하고 <a>DID URL</a>을 역참조하기 위한 
+인터페이스와 알고리즘은 [[DID-RESOLUTION]]에 명시되어 있다.
     </p>
 
   </section>
