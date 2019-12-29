@@ -529,126 +529,109 @@ did:example:123456789abcdefghi
 
   <section id="data-model" class="informative">
     <h1>
-      Data Model
+      데이터 모델
     </h1>
 
     <p>
-      This section outlines the <a>decentralized identifier</a> data model concepts,
-      specifically, how keys, services, and the <a>DID subject</a> are related to the
-      <a>DID document</a>.
+      이 섹션에서는 <a>decentralized identifier</a> 데이터 모델 개념,
+      특히, 키와 서비스 그리고 <a>DID 주체</a>가 <a>DID 문서</a>와 어떻게 관련되어 있는지에 대해 개략적으로 설명한다.
     </p>
+      
 
     <p>
-      For more information about how the data model can be extended, see Section
-      <a href="#extensibility"></a>.
+      데이터 모델을 확장하는 방법에 대한 자세한 내용은 
+<a href="#extensibility"></a>을 참조한다.
     </p>
 
-    <section>
+    <section id="identifier">
       <h2>
-        Identifier
+        식별자
       </h2>
 
       <p>
-        Identifiers are used in the data model to identify specific instances of people,
-        organizations, devices, keys, services, and things in general. Identifiers are
-        typically URLs, or more generally, <a>URIs</a>. Non-<a>URI</a>-based identifiers
-        are not advised because, while the data model supports them, they are not easy
-        to use with other Internet-based identifiers.
+        데이터 모델에서 식별자는 일반적으로 사람, 조직, 장치, 키, 서비스 및 사물의 특정 인스턴스를 식별하기 위해 사용된다. 
+        식별자는 대부분 URLs이며, 좀 더 일반적으로는 <a>URIs</a>이다. 
+        비 <a>URI</a> 기반 식별자는 데이터 모델이 이를 지원하기는 하지만, 
+        다른 인터넷 기반 식별자와 함께 사용하기 쉽지 않기 때문에 권장되지 않는다.
       </p>
     </section>
 
     <section id="did-document">
       <h2>
-        DID Document
+        DID 문서
       </h2>
 
       <p>
-        A <a>DID document</a> is the resource that is associated with a
-        <a>decentralized identifier</a> (DID). <a>DID documents</a> typically express
-        verification methods (such as public keys) and services that can be used to
-        interact with a <a>DID controller</a>.
-      </p>
+        <a>DID 문서</a>는 <a>decentralized identifier</a>(DID)와 관련된 리소스다. 
+        <a>DID 문서</a>는 일반적으로 검증 메소드(public key 등) 및 <a>DID 컨트롤러</a>와 상호 작용 하는데 사용할 수 있는 서비스를 포함한다.
+        </p>
 
-      <p>
-        A <a>DID document</a> is serialized according to a particular syntax, as
-        outlined in Section <a href="#did-document-syntax"></a>). The <a>DID</a> itself
-        is contained in the <code>id</code> property.
-      </p>
+        <p>
+          <a>DID 문서</a>는 특정 구문에 따라 일련화된다(<a href="#did-document-syntax"></a> 참조). <a>DID</a> 자체는 <code>id</code> 속성에 포함되어 있다. 
+      
+          </p>
 
-      <p>
-        The properties that can be present in a <a>DID document</a> are outlined in
-        Section <a href="#did-documents"></a>.
-      </p>
+          <p>
+            <a>DID 문서</a>에 존재할 수 있는 속성은 <a href="#did-documents"></a>에 자세히 설명되어 있다.
+          </p>
 
-      <p>
-        The properties present in a <a>DID document</a> can be updated according to
-        the applicable operations outlined in Section <a href="#did-methods"></a>.
-      </p>
+          <p>
+            <a>DID 문서</a>에 있는 속성은 해당 <a href="#did-methods"></a> 에 따라 업데이트 할 수 있다.
+          </p>
     </section>
 
-    <section>
+    <section id="cryptographic-keys-and-other-verification-methods">
       <h2>
-        Cryptographic Keys and Other Verification Methods
+        암호화 키 및 기타 검증 메소드
       </h2>
 
       <p>
-        A <a>DID document</a> can express cryptographic keys and other verification
-        methods, which can be used to authenticate or authorize interactions with the
-        <a>DID subject</a> or associated parties. The information expressed often
-        includes globally unambiguous identifiers and public key material, which can be
-        used to verify digital signatures. Other information can be expressed, such as
-        status information for the key (for example, whether it is suspended or
-        revoked), or other attributes that enable one to determine whether it is a
-        hardware-backed cryptographic key.
+        <a>DID 문서</a>는 <a>DID 주체</a> 또는 관련된 것들과의 상호작용을 인증 하거나 승인하는 데 사용할 수 있는 
+        암호화 키 및 기타 검증 메소드를 나타낼 수 있다. 
+        표현된 정보에는 디지털 서명을 확인하는 데 전역적으로 사용할 수 있는 
+        명확한 식별자와 공개키 자료가 포함된다. 
+        키의 상태 정보(예: 정지 또는 취소된 경우)나 하드웨어 기반 암호화 키인지 여부를 결정할 수 있는 속성 등 
+        기타 정보를 표시할 수 있다.
       </p>
 
-      <p>
-        Regarding cryptographic key material, public keys can be included in a
-        <a>DID document</a> using, for example, the <code>publicKey</code> or
-        <code>authentication</code> properties, depending on what they are to be used
-        for. Each public key has an identifier (<code>id</code>) of its own, a
-        <code>type</code>, and a <code>controller</code>, as well as other properties
-        that depend on the type of key it is. For more information, see Section
-        <a href="#public-keys"></a>.
+      <p> 
+        암호화 키 자료와 관련하여, 공개키는 사용할 대상에 따라 
+        <code>publicKey</code> 또는 <code>authentication</code> 속성을 사용하는 <a>DID 문서</a>에 포함될 수 있다. 
+  
+        각 공개키는 고유한 식별자(<code>id</code>), <code>type</code>, 그리고 <code>controller</code> 뿐만아니라 
+        키 유형에 따라 다른 속성을 갖는다. 자세한 내용은 <a href="#public-keys"></a>를 참조한다.
       </p>
     </section>
 
     <p>
-      This specification strives to limit the number of formats for expressing public
-      key material in a DID Document to the fewest possible, to increase the
-      likelihood of interoperability. The fewer formats that implementers have to
-      implement, the more likely it will be that they will support all of them. This
-      approach attempts to strike a delicate balance between ease of implementation
-      and supporting formats that have historically had broad deployment. The specific
-      types of key formats that are supported in this specification are listed in <a href="#public-keys"></a>.
+      이 규격은 DID 문서에서 공개키 자료를 표현하기 위한 형식의 수를 가능한 적게 제한하여 상호 운용성을 높이려고 노력한다. 
+      구현자가 구현해야하는 형식이 적을수록 모든 형식을 지원할 가능성이 높다. 
+      이 접근 방식은 구현의 용이성과 역사적으로 광범위하게 배포된 지원 형식간에 미묘한 균형을 유지한다. 
+      이 규격에서 지원되는 특정 유형의 키 형식은 <a href="#public-keys"></a>에 나와 있다.
     </p>
   </section>
 
-  <section>
+  <section id="services">
     <h2>
-      Services
+      서비스
     </h2>
 
     <p>
-      <a>Service endpoints</a> are used in <a>DID documents</a> to express ways of
-      communicating with the <a>DID subject</a> or associated entities. Services
-      listed in the <a>DID document</a> can contain information about privacy
-      preserving messaging services, or more public information, such as social media
-      accounts, personal websites, and email addresses. The metadata associated with
-      services are often service-specific. For example, the metadata associated with
-      an encrypted messaging service can express how to initiate the encrypted link
-      before messaging begins.
+      <a>서비스 엔드포인트</a>는 <a>DID 주체</a> 또는 관련 개체와 통신할 수 있는 방법을 나타내기 위해 <a>DID 문서</a>에서 사용된다. 
+      <a>DID 문서</a>에 나열된 서비스에는 개인 정보 보호 메시징 서비스에 대한 정보 
+      또는 소셜 미디어 계정, 개인 웹사이트, 이메일 주소와 같은 공개 정보가 포함될 수 있다. 
+      서비스와 관련된 메타 데이터는 보통 서비스마다 다르다. 예를 들어, 암호화된 메시징 서비스와 관련된 메타 데이터는 
+      메시지는 보내기 전에 암호화된 링크를 시작하는 방법을 나타낼 수 있다. 
     </p>
 
     <p>
-      Pointers to services are expressed using the <code>service</code> property.
-      Each service has its own <code>id</code> and <code>type</code>, as well as a
-      <code>serviceEndpoint</code> with a <a>URI</a> or other properties describing
-      the service.
+      서비스에 대한 포인터는 <code>service</code> 속성을 사용하여 표현한다. 
+      각 서비스에는 고유한 <code>id</code> 와 <code>type</code> 뿐만 아니라, <a>URI</a> 또는 
+      서비스를 설명하는 추가적 특성이 있는 <code>serviceEndpoint</code> 가 있다. 
     </p>
 
     <p>
-      For more information, see Section <a href="#service-endpoints"></a>.
+      자세한 내용은 <a href="#service-endpoints"></a>를 참조한다.
     </p>
   </section>
 
@@ -1038,47 +1021,42 @@ did:example:123456#oidc
     </section>
   </section>
 
-  <section class="normative">
+  <section class="normative" id="did-documents">
     <h1>
-      DID Documents
+      DID 문서
     </h1>
 
     <p>
-      A <a>DID</a> points to a <a>DID document</a>. <a>DID documents</a> are the
-      serialization of the <a href="#data-model"></a>.
-      The following sections define the properties in a <a>DID document</a>,
-      including whether these properties are required or optional.
+      <a>DID</a>는 <a>DID 문서</a>를 가리킨다. 
+      <a>DID 문서</a>들은 <a href="#data-model"></a>을 직렬화 한 것이다. 
+      이번 섹션에서는 <a>DID 문서</a>의 속성과 이 속성들이 필수인지 옵션인지를 정의한다.
     </p>
 
-    <section>
+    <section id="contexts">
       <h2>Contexts</h2>
 
       <p>
-        When two software systems need to exchange data, they need to use terminology
-        and a protocol that both systems understand. The <code>@context</code>
-        property ensures that two systems operating on the same DID document are using
-        mutually agreed terminology.
+        두 개의 소프트웨어 시스템이 데이터를 교환해야 하는 경우 
+        두 시스템이 이해할 수 있는 용어와 프로토콜을 사용해야 한다. 
+        <code>@context</code> 속성은 동일한 DID 문서에서 작동하는 두 시스템이 서로 동의하는 용어를 사용하도록 한다.
       </p>
 
       <p>
-        <a>DID documents</a> MUST include the <code>@context</code> property.
+        <a>DID 문서</a>는 반드시 <code>@context</code> 속성을 포함해야 한다.
       </p>
 
       <p class="note" title="The JSON-LD Context">
-        More information about the
-        <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD Context</a>
-        in general can be found in the [[JSON-LD]] specification.
+        <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD Context</a>에 대한 
+        자세한 정보는 [[!JSON-LD]] 사양에서 확인할 수 있다.
       </p>
 
       <dl>
         <dt><dfn>@context</dfn></dt>
         <dd>
-          The value of the <code>@context</code> property MUST be one or more
-          <a>URIs</a>, where the value of the first <a>URI</a> is
-          <code>https://www.w3.org/ns/did/v1</code>. If more than one
-          <a>URI</a> is provided, the <a>URIs</a> MUST be interpreted as an ordered set.
-          It is RECOMMENDED that dereferencing the <a>URIs</a> results in a document
-          containing machine-readable information about the context.
+          <code>@context</code> 속성의 값은 반드시 하나 이상의 <a>URIs</a> 여야 하며, 
+          여기서 첫 번째 <a>URI</a>의 값은 <code>https://www.w3.org/ns/did/v1</code> 이다. 
+          둘 이상의 <a>URI</a>가 제공될 경우, <a>URIs</a>는 반드시  순서있는 배열로 해석되어야 한다. 
+          <a>URIs</a>를 역 참조하여 컨텍스트에 대한 기계 판독 가능한 정보가 포함된 문서를 생성 하는 것이 좋다. 
         </dd>
       </dl>
 
@@ -1091,38 +1069,36 @@ did:example:123456#oidc
   "@context": "https://www.w3.org/ns/did/v1"
 }
 </pre>
-      <p>
-        <a>DID method</a> specifications MAY define their own JSON-LD contexts.
-        However it is NOT RECOMMENDED to define a new context unless
-        necessary to properly implement the method. Method-specific contexts
-        MUST NOT override the terms defined in the generic <a>DID</a> context.
-      </p>
+<p>
+  <a>DID 문서</a> 규격은 자체 JSON-LD 컨텍스트를 정의 할 수 있다. 
+  하지만 메소드를 올바르게 구현하는 데 필요한 경우가 아니면 새 컨텍스트를 정의하는 것은 권장하지 않는다. 
+  메소드별 컨텍스트는 일반 <a>DID</a> 컨텍스트에 정의된 용어를 재정의하면 안된다.
+</p>
     </section>
 
-    <section>
+    <section id="did-subject">
       <h2>
-        DID Subject
+DID 주체
       </h2>
 
       <p>
-        The <a>DID subject</a> is denoted with the <code>id</code> property.
-        This is the entity that the <a>DID document</a> is about, i.e.,
-        it is the entity identified by the <a>DID</a> and described by the <a>DID document</a>.
+<a>DID 주체</a>는 <code>id</code> 속성으로 표시된다.
+DID 주체는 <a>DID</a>가 식별하고 <a>DID 문서</a>가 설명하고자 하는 항목을 말한다.
       </p>
 
       <p>
-        <a>DID documents</a> MUST include the <code>id</code> property.
+<a>DID 문서들</a>은 반드시 <code>id</code> 속성을 포함해야 한다.
       </p>
 
       <dl>
-        <dt><dfn>id</dfn></dt>
-        <dd>
-          The value of <code>id</code> MUST be a single valid <a>DID</a>.
-        </dd>
+          <dt><dfn>id</dfn></dt>
+          <dd>
+<code>id</code>의 값은 반드시 하나의 유효한 <a>DID</a>이어야 한다.
+          </dd>
       </dl>
 
       <p>
-        Example:
+예시:
       </p>
 
       <pre class="example nohighlight">
@@ -1131,12 +1107,10 @@ did:example:123456#oidc
 }
       </pre>
       <p class="note">
-        <a>DID method</a> specifications can create intermediate representations of
-        a <a>DID document</a> that do not contain the <code>id</code> key, such as
-        when a <a>DID resolver</a> is performing resolution. However, the fully
-        resolved <a>DID document</a> always contains a valid <code>id</code> property.
-        The value of <code>id</code> in the resolved <a>DID document</a> is expected
-        to match the <a>DID</a> that was resolved.
+어떤 <a>DID 메소드</a> 규격은 <a>DID 리졸버</a>가 DID 해석을 수행하는 것과 같은 경우에
+<code>id</code>라는 키를 가지고 있지 않은 중간 형태의 <a>DID 문서</a>를 생성할 수도 있다. 
+그러나, (중간 형태가 아닌) 완전하게 해석된 <a>DID 문서</a>는 항상 유효한 <code>id</code> 속성을 가지고 있다.
+해석된 <a>DID 문서</a>에 있는 <code>id</code>의 값은 해석한 <a>DID</a>와 같아야 한다.
       </p>
     </section>
     <!-- section>
@@ -1206,72 +1180,65 @@ Example:
 </pre>
     </section -->
 
-    <section>
+    <section id="public-keys">
       <h2>
-        Public Keys
+공개키
       </h2>
 
       <p>
-        Public keys are used for digital signatures, encryption and other
-        cryptographic operations, which in turn are the basis for purposes
-        such as authentication (see Section <a href="#authentication"></a>)
-        or establishing secure communication with <a>service endpoints</a>
-        (see Section <a href="#service-endpoints"></a>). In addition, public
-        keys may play a role in authorization mechanisms of <a>DID</a> CRUD
-        operations (see Section <a href="#did-operations"></a>), which can be
-        defined by <a>DID method</a> specifications.
+공개키는 인증(<a href="#authentication"></a> 참조)이나 <a>서비스 엔드포인트</a>
+(<a href="#service-endpoints"></a> 참조)와의 안전한 통신 채널을 수립하는데 기초가 되는 
+전자서명, 암호화 그리고 암호 연산에 사용된다. 또한, 공개키는 <a>DID 메소드</a> 규격에 정의되는 
+<a>DID</a>의 CRUD 작업(<a href="#did-operations"></a>참조)에 있어서 
+권한 부여 메커니즘으로 활용되기도 한다.
       </p>
 
       <p>
-        A <a>DID document</a> MAY include a <code>publicKey</code> property. If so:
+<a>DID 문서</a>는 <code>publicKey</code> 속성을 포함 할 수도 있다. 만약 포함한다면:
       </p>
 
       <dl>
-        <dt><dfn>publicKey</dfn></dt>
-        <dd>
-          The value of the <code>publicKey</code> property MUST be an array of
-          public key objects. Each public key object MUST have the
-          <code>type</code>, <code>controller</code>, and specific public key
-          properties, and SHOULD have an <code>id</code> property. The object
-          MAY include additional properties.
-        </dd>
+          <dt><dfn>publicKey</dfn></dt>
+          <dd>
+<code>publicKey</code> 속성의 값은 반드시 공개키 객체들의 배열이어야 한다. 
+각 공개키 객체는 <code>type</code>, <code>controller</code> 속성 및 각 공개키에 특화된
+속성을 반드시 포함하고 있어야 하며, <code>id</code> 속성을 포함해야 한다. 공개키 객체는 추가적인
+속성도 포함할 수 있다.
+          </dd>
       </dl>
 
       <p>
-        The value of the <code>id</code> property (if present) MUST be a URI. The array
-        of public keys MUST NOT contain multiple entries with the same
-        <code>id</code>. A <a>DID document</a> processor MUST produce an error in that
-        case.
+(만약 존재한다면) <code>id</code> 속성의 값은 반드시 URI이어야 한다. 공개키의 배열에는 
+중복되는 <code>id</code>가 무조건 없어야 한다. 그런 경우, <a>DID 문서</a> 프로세서에서
+반드시 에러를 발생시켜야만 한다.
       </p>
 
       <p>
-        The value of the <code>type</code> property MUST be exactly one public key value
-        (see available key types in Appendix <a href="#registries"></a>).
+<code>type</code> 속성의 값은 반드시 하나의 공개키 값이어야 한다
+(사용 가능한 키 타입은 부록의 <a href="#registries"></a> 참조).
       </p>
 
       <p>
-        The value of the <code>controller</code> property, which identifies the
-        controller of the corresponding private key, MUST be a valid DID.
+개인키와 관련된 컨트롤러를 식별하는 <code>controller</code> 속성의 값은 반드시 유효한 DID여야 한다.
       </p>
 
       <p>
-        All public key properties MUST be from the Linked Data Cryptographic Suite Registry.
-        A registry of key types and formats is available in Appendix <a href="#registries"></a>
+모든 공개키의 속성들은 반드시 연결 데이터 암호화 수트 레지스트리(Linked Data Cryptographic Suite Registry)에 
+정의되어 있는 값이어야만 한다.
+키 타입과 형식의 등록 정보는 부록 <a href="#registries"></a>에서 확인할 수 있다.
       </p>
 
       <p>
-        If a public key does not exist in the <a>DID document</a>, it MUST be
-        assumed the key has been revoked or is invalid. The <a>DID document</a> MAY
-        contain revoked keys. A <a>DID document</a> that contains a revoked key MUST
-        also contain or refer to the revocation information for the key (e.g.,
-        a revocation list). Each <a>DID method</a> specification is expected to
-        detail how revocation is performed and tracked.
+만약 공개키가 <a>DID 문서</a>에 존재하지 않는다면, 반드시 그 키가 폐기되었거나 유효하지 않다고
+간주해야 한다. 그 <a>DID 문서</a>에는 폐기된 키들을 포함하고 있을 수도 있다. 
+폐기된 키를 포함하고 있는 <a>DID 문서</a>는 반드시 그 키에 대한 폐기 정보들 포함하거나 참조하고 있어야 한다
+(예. 폐기된 키 리스트). 각각의 <a>DID 메소드</a> 규격에는 키가 어떻게 폐기되고 
+그 정보가 어떻게 추적되는지 설명되어야 한다.
       </p>
 
       <p>
-        All public key formats MUST be expressed in either JSON Web Key (JWK)
-        format using the <code>publicKeyJwk</code> property or one of the
-        formats listed in the table below. Public key expression MUST NOT use any other key format.
+모든 공개키의 형식은 반드시 <code>publicKeyJwk</code> 속성을 사용한 JWK (JSON Web Key) 포맷이거나,
+아래 표예 설명한 포맷 중에 하나여야 한다. 공개키의 표현형은 어떤 경우에도 다른 키의 포맷을 사용할 수 없다.
       </p>
 
       <p class="issue">
@@ -1306,8 +1273,8 @@ Example:
               RSA
             </td>
             <td>
-              RSA public key values MUST either be encoded as a JWK or be encoded in
-              Privacy Enhanced Mail (PEM) format using the <code>publicKeyPem</code> property.
+RSA 공개키 값은 반드시 JWK로 인코딩하거나 <code>publicKeyPem</code> 속성을 사용하여 
+PEM(Privacy Enhanced Mail) 포맷으로 인코딩해야 한다.
             </td>
           </tr>
           <tr>
@@ -1315,9 +1282,8 @@ Example:
               ed25519
             </td>
             <td>
-              Ed25519 public key values MUST either be encoded as a JWK or be encoded as
-              the raw 32-byte public key value in Base58 Bitcoin format using the
-              <code>publicKeyBase58</code> property.
+Ed25519 공개키 값은 반드시 JWK로 인코딩하거나 <code>publicKeyBase58</code> 속성을 사용하여
+원시형태(raw)의 32 바이트 공개키 값을 Base58 비트코인 포맷으로 인코딩해야 한다.
             </td>
           </tr>
           <tr>
@@ -1325,9 +1291,8 @@ Example:
               secp256k1-koblitz
             </td>
             <td>
-              Secp256k1 Koblitz public key values MUST either be encoded as a JWK or be
-              encoded as the raw 33-byte public key value in Base58 Bitcoin format using the
-              <code>publicKeyBase58</code> property.
+Secp256k1 Koblitz 공개키 값은 반드시 JWK로 인코딩하거나 <code>publicKeyBase58</code> 속성을 사용하여
+원시형태의 33바이트 공개키 값을 Base58 비트코인 포맷으로 인코딩해야 한다.
             </td>
           </tr>
           <tr>
@@ -1335,9 +1300,8 @@ Example:
               secp256r1
             </td>
             <td>
-              Secp256r1 public key values MUST either be encoded as a JWK or be encoded as
-              the raw 32-byte public key value encoded in Base58 Bitcoin format using the
-              <code>publicKeyBase58</code> property.
+Secp256r1 공개키 값은 반드시 JWK로 인코딩하거나 <code>publicKeyBase58</code> 속성을 사용하여
+원시형태의 32바이트 공개키 값을 Base58 비트코인 포멧으로 인코딩해야 한다.
             </td>
           </tr>
           <tr>
@@ -1345,16 +1309,16 @@ Example:
               Curve25519
             </td>
             <td>
-              Curve25519 (also known as X25519) public key values MUST either be encoded as a JWK or be encoded as
-              the raw 32-byte public key value in Base58 Bitcoin format using the
-              <code>publicKeyBase58</code> property.
+(X25519로도 알려진) Curve25519 공개키 값은 반드시 JWK로 인코딩하거나 
+<code>publicKeyBase58</code> 속성을 사용하여 원시형태의 32바이트 공개키 값을 Base58 비트코인 포맷으로 
+인코딩해야 한다.
             </td>
           </tr>
         </tbody>
       </table>
 
       <p>
-        Example:
+예시:
       </p>
 
       <pre class="example nohighlight" title="Various public keys">
@@ -1382,9 +1346,8 @@ Example:
 }
 </pre>
       <p>
-        A key MAY be <em>embedded</em> or <em>referenced</em> in a <a>DID
-          document</a>. For example, the <code>authentication</code> property
-        may refer to keys in both ways:
+키는 <a>DID 문서</a>에 <em>포함</em>되어 있거나 <em>참조</em>되어 있을 수 있다. 
+예를 들어, 아래의 <code>authentication</code> 속성은 두 가지 방식으로 키를 참조한다:
       </p>
 
       <pre class="example nohighlight" title="Various public keys">
@@ -1392,9 +1355,9 @@ Example:
 <span class="comment">...</span>
 
   "authentication": [
-    <span class="comment">// this key is referenced, it may be used for more than one proof purpose</span>
+    <span class="comment">// 이 키는 하나 이상의 목적으로 사용될 수 있도록 참조 방식을 사용한다</span>
     "did:example:123456789abcdefghi#keys-1",
-    <span class="comment">// this key is embedded and may *only* be used for authentication</span>
+    <span class="comment">// 이 키는 문서에 포함되어 있으며, *오직* 인증 목적으로만 사용할 수 있다</span>
     {
       "id": "did:example:123456789abcdefghi#keys-2",
       "type": "Ed25519VerificationKey2018",
@@ -1407,39 +1370,35 @@ Example:
 }
 </pre>
       <p>
-        The algorithm to use when processing a <code>publicKey</code>
-        property in a <a>DID document</a> is:
+<a>DID 문서</a>에서 <code>publicKey</code> 속성을 처리할 때 사용하는 알고리즘은 다음과 같다:
       </p>
 
       <ol class="algorithm">
         <li>
-          Let <em>value</em> be the data associated with the
-          <code>publicKey</code> property and initialize <em>result</em> to
-          <code>null</code>.
+<em>value</em>는 <code>publicKey</code> 속성과 관련된 데이터로 세팅되고, 
+<em>result</em>는 <code>null</code>로 초기화된다.
         </li>
 
         <li>
-          If <em>value</em> is an object, the key material is embedded. Set
-          <em>result</em> to <em>value</em>.
+만약 <em>value</em>가 객체이면, 키 재료는 문서에 포함되어 있는 것이다. 
+<em>result</em>를 <em>value</em>로 세팅한다.
         </li>
 
         <li>
-          If <em>value</em> is a string, the key is included by reference.
-          Assume <em>value</em> is a URL.
+만약 <em>value</em>가 문자열이라면, 키는 참조 형식을 사용하는 것이다.
+<em>value</em>는 URL이라고 가정한다.
           <ol>
             <li>
-              Dereference the URL and retrieve the <code>publicKey</code>
-              properties associated with the URL (e.g., process the
-              <code>publicKey</code> property at the top-level of the
-              dereferenced document).
+URL이 참조하고 있는 곳을 찾아서, 그 URL과 연관된 <code>publicKey</code> 속성을 가져온다
+(예를 들어 참조되고 있는 문서의 최상위부터 <code>publicKey</code> 속성을 처리한다).
             </li>
 
             <li>
-              Iterate through each public key object.
+각 공개키 객체에 대해 다음을 반복한다.
               <ol>
                 <li>
-                  If the <code>id</code> property of the object matches
-                  <em>value</em>, set <em>result</em> to the object.
+만약 객체의 <code>id</code> 속성이 <em>value</em>와 같다면, 
+<em>result</em>를 그 객체로 세팅한다.
                 </li>
               </ol>
             </li>
@@ -1447,28 +1406,24 @@ Example:
         </li>
 
         <li>
-          If <em>result</em> does not contain at least the <code>id</code>,
-          <code>type</code>, and <code>controller</code> properties as well as any
-          mandatory public cryptographic material, as determined by the
-          <em>result</em>'s <code>type</code> property, throw an error.
+만약 <em>result</em>가 <code>id</code>, <code>type</code>, <code>controller</code>와 같은 
+속성을 포함하고 있지 않거나 <em>result</em>의 <code>type</code> 속성에 따른 
+필수 공개 암호 재료를 포함하고 있지 않다면 에러를 발생시킨다.
         </li>
       </ol>
 
       <p class="note">
-        While the <code>controller</code> field may seem redundant in some of the
-        examples above, keys may be expressed in a <a>DID document</a> where the
-        controller is described in another <a>DID document</a>. Linked Data Proof
-        libraries typically expect the <code>controller</code> field to always
-        exist and may throw an exception if it is missing. Furthermore, per
-        the requirement that <a>DID documents</a> be interpretable as either a graph
-        or a tree, a default <code>controller</code> field cannot be inferred by
-        using a key's position in a tree.
+위의 예시에서 <code>controller</code> 항목이 불필요해 보이지만, 키가 정의되는 <a>DID 문서</a>와 
+컨트롤러가 설명된 <a>DID 문서</a>가 다를 수 있기 때문에 필요하다. 연결 데이터 증명(Linked Data Proof)
+라이브러리는 보통 <code>controller</code> 항목이 항상 존재한다고 가정하고 있으며, 
+만약 <code>controller</code> 필드가 없다면 예외를 발생시킬 수 있다. 게다가 <a>DID 문서</a>는 
+그래프나 트리 형태로 해석될 수 있다는 요구사항과 관련하여, 
+트리에서 키의 위치(position)를 이용해서 기본 <code>controller</code> 항목을 추론할 수 없다.
       </p>
 
       <p class="note">
-        Caching and expiration of the keys in a <a>DID document</a> is entirely the
-        responsibility of <a>DID resolvers</a> and other clients. See Section
-        <a href="#did-resolvers"></a>.
+<a>DID 문서</a>에 설명된 키를 캐싱하고 만료시키는 것은 전적으로 <a>DID 리졸버</a>와 
+다른 클라이언트 프로그램의 책임이다. <a href="#did-resolvers"></a> 참조.
       </p>
     </section>
 
@@ -1680,7 +1635,7 @@ Example:
         <a>서비스 엔드포인트</a>에 대한 추가 보안 고려 사항은
         <a href="#did-method-schemes"></a> 및 <a href="#authentication"></a>을 참조
       </p>
-      </sectionㅑㅇ>
+      </section>
 
       <section id="created">
         <h2>
@@ -1942,61 +1897,61 @@ Example:
       </section>
     </section>
   </section>
-  <section class="normative">
+
+  <section class="normative" id="did-document-syntax">
     <h1>
-      DID Document Syntax
+DID 문서의 문법
     </h1>
 
-    <p>
-      A <a>DID document</a> MUST be a single JSON object conforming to [[!RFC8259]].
-      Many of the concepts in this document were introduced by example using the
-      JSON-LD syntax, a format for mapping JSON data into the RDF semantic graph
-      model, as defined by [[!JSON-LD]]. This section formalizes how the data model
-      (described in Sections <a href="#data-model"></a> and
-      <a href="#did-documents"></a>) is realized in JSON-LD.
-    </p>
-    <p>
-      Although syntactic mappings are provided for JSON and JSON-LD only, applications
-      and services can use any other data representation syntax, such as JXD (JSON XDI
-      Data, a serialization format for the
-      <a href="http://docs.oasis-open.org/xdi/xdi-core/v1.0/csd01/xdi-core-v1.0-csd01.xml">XDI graph model</a>),
-      XML, YAML, or CBOR, that is capable of expressing the data model.
-    </p>
+      <p>
+<a>DID 문서</a>는 반드시 [[!RFC8259]] 규격을 따르는 하나의 JSON 객체여야만 한다. 
+이 문서에서 설명하고 있는 많은 개념들은 JSON-LD 문법을 사용하는 예제를 활용하여 소개하고 있다. 
+JSON-LD는 JSON 데이터를 RDF 의미 모형과 매핑하는 형식이며, [[!JSON-LD]] 규격에 정의되어 있다. 
+이번 장에서는 데이터 모델(<a href="#data-model"></a>과 <a href="#did-documents"></a> 참조)이 
+어떻게 JSON-LD로 나타나는지에 대해 명세한다.
+      </p>
+      <p>
+비록 문법상의 매핑(syntactic mapping)이 JSON과 JSON-LD로만 제시된다 하더라도, 
+응용프로그램과 서비스는 이와 다른 데이터 모델 표현 도구인 
+JXD (JSON XDI Data, 
+<a href="http://docs.oasis-open.org/xdi/xdi-core/v1.0/csd01/xdi-core-v1.0-csd01.xml">XDI 그래프 모델</a>을 위한 
+직렬화 형식)나 XML, YAML, CBOR과 같이 
+다양한 종류의 데이터 표현 문법을 사용할 수 있다.
+      </p>
 
     <section>
       <h2>
         JSON
       </h2>
 
-      <p>
-        The data model, as described in Section <a href="#data-model"></a>, can be
-        encoded in Javascript Object Notation (JSON) [[RFC8259]] by mapping property
-        values to JSON types as follows:
-      </p>
+        <p>
+데이터 모델(<a href="#data-model"></a> 참조)은 JSON(Javascript Object Notation, [[RFC8259]])으로 
+인코딩될 수 있으며, 다음과 같이 속성값을 JSON 타입에 매핑한다:
+        </p>
 
-      <ul>
-        <li>
-          Numeric values representable as IEEE754 SHOULD be represented as a Number type.
-        </li>
-        <li>
-          Boolean values SHOULD be represented as a Boolean type.
-        </li>
-        <li>
-          Sequence value SHOULD be represented as an Array type.
-        </li>
-        <li>
-          Unordered sets of values SHOULD be represented as an Array type.
-        </li>
-        <li>
-          Sets of properties SHOULD be represented as an Object type.
-        </li>
-        <li>
-          Empty values SHOULD be represented as a null value.
-        </li>
-        <li>
-          Other values MUST be represented as a String type.
-        </li>
-      </ul>
+        <ul>
+          <li>
+IEEE754 표준과 같은 방식으로 기술한 숫자 값은 숫자 타입으로 표현해야 한다.
+          </li>
+          <li>
+참과 거짓(boolean)으로 기술한 값은 불리언 타입으로 표현해야 한다.
+          </li>
+          <li>
+열거된 값은 배열 타입으로 표현해야 한다.
+          </li>
+          <li>
+순서없는 값의 집합은 배열 타입으로 표현해야 한다.
+          </li>
+          <li>
+속성들의 집합은 객체(Object) 타입으로 표현해야 한다.
+          </li>
+          <li>
+비어있는 값은 널(null)로 표현해야 한다.
+          </li>
+          <li>
+이외의 나머지는 무조건 문자열 타입으로 표현해야 한다.
+          </li>
+        </ul>
     </section>
 
     <section>
@@ -2004,55 +1959,51 @@ Example:
         JSON-LD
       </h2>
 
-      <p>
-        [[!JSON-LD]] is a JSON-based format used to serialize
-        <a href="http://www.w3.org/TR/ld-glossary/#linked-data">Linked Data</a>. The
-        syntax is designed to easily integrate into deployed systems already using
-        JSON, and provides a smooth upgrade path from JSON to JSON-LD. It is primarily
-        intended to be a way to use Linked Data in Web-based programming environments,
-        to build interoperable Web services, and to store Linked Data in JSON-based
-        storage engines.
-      </p>
+        <p>
+[[!JSON-LD]]는 JSON 기반의 형식이며, 
+<a href="http://www.w3.org/TR/ld-glossary/#linked-data">연결 데이터(Linked Data)</a>를 직렬화하는데 사용한다. 
+JSON-LD의 문법은 이미 JSON을 사용하고 있는 시스템에 쉽게 통합할 수 있도록 설계되었고, 
+JSON에서 JSON-LD로의 업그레이드를 매끄럽게 할 수 있는 방법을 제공한다. 
+웹 기반 프로그래밍 환경에서 연결 데이터를 사용할 수 있도록 하고, 
+상호 운용 가능한 웹서비스를 만들 수 있도록 하며, 
+연결 데이터를 JSON 기반 저장소 엔진에 저장하는데 주안점을 두고 있다.
+        </p>
 
-      <p>
-        JSON-LD is useful when extending the data model described in this specification.
-        Instances of the data model are encoded in JSON-LD in the same way they are
-        encoded in JSON (see Section <a href="#json"></a>), with the addition of the
-        <code>@context</code> property. The
-        <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD Context</a>
-        is described in detail in the [[!JSON-LD]] specification and its use is
-        elaborated on in Section <a href="#extensibility"></a>.
-      </p>
+        <p>
+JSON-LD는 이 명세서에서 설명하고 있는 데이터 모델을 확장할 때 유용하다. 
+데이터 모델의 인스턴스는 JSON (<a href="#json"></a> 참조) 형식으로 인코딩되는 것과 같은 방식으로 
+JSON-LD로 인코딩되며 <code>@context</code> 속성만 추가하면 된다. 
+<a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 컨텍스트</a>에 대한 
+상세한 내용은 [[!JSON-LD]] 명세서에서 설명하고 있고, 
+그 사용법은 <a href="#extensibility"></a> 섹션에서 자세히 다루고 있다.
+        </p>
 
-      <p>
-        In general, the data model and syntaxes described in this document are designed
-        such that developers can copy and paste examples into their software systems.
-        The design goal of this approach is to provide a low barrier to entry while
-        still ensuring global interoperability between a heterogeneous set of software
-        systems. This section describes some of these approaches, which will likely go
-        unnoticed by most developers, but whose details will be of interest to
-        implementers. Noteworthy features provided by JSON-LD are:
-      </p>
+        <p>
+일반적으로, 이 문서에서 설명하는 데이터 모델과 문법은 
+개발자가 예제를 복사하여 자신들의 시스템에 붙여넣어 사용할 수 있도록 설계되었다. 
+이러한 접근법을 선택하게 된 설계 목표는 서로 다른 소프트웨어 간에 
+글로벌한 상호 운용성을 보장하기 위한 진입 장벽을 낮추는 것이다. 
+이번 장에서는 이런 접근법 중 일부에 대해 설명할 것이다. 
+이러한 접근법은 대부분의 개발자의 눈에는 잘 띄지 않지만 
+구현자들은 관심을 가질 수 있는 상세한 내용이다. JSON-LD가 제공하는 주목할만한 기능은 다음과 같다:
+        </p>
 
-      <ul>
-        <li>
-          The <code>@id</code> and <code>@type</code> keywords are aliased to
-          <code>id</code> and <code>type</code> respectively, enabling developers to use
-          this specification as idiomatic JSON.
-        </li>
-        <li>
-          Data types, such as integers, dates, units of measure, and URLs, are
-          automatically typed to provide stronger type guarantees for use cases that
-          require them.
-        </li>
-        <li>
-          The <code>@protected</code> properties feature of JSON-LD 1.1 is used to ensure
-          that terms defined by this specification cannot be overridden. This means that
-          as long as the same <code>@context</code> declaration is made at the top of a
-          <a>DID document</a>, interoperability is guaranteed between implementations
-          that use a JSON-LD processor and implementations that do not.
-        </li>
-      </ul>
+        <ul>
+          <li>
+<code>@id</code>와 <code>@type</code> 키워드는 각각 <code>id</code>와 <code>type</code>에 연결되며, 
+개발자가 이 명세서를 관용적인 JSON으로 처리할 수 있도록 한다.
+          </li>
+          <li>
+정수형이나 날짜, 측정 단위, URL과 같은 데이터 타입은 자동적으로 타입이 정해진다. 
+그 이유는 그것을 요구하는 유즈 케이스에서 더 강력한 타입 보장을 지원하기 위함이다.
+          </li>
+          <li>
+JSON-LD 1.1의 <code>@protected</code> 속성은 
+이 명세서에 정의된 용어가 재정의되지 않도록 하는데 사용된다. 
+즉, 같은 <code>@context</code> 선언이 <a>DID 문서</a>의 꼭대기에 존재하는 한, 
+JSON-LD 프로세서를 사용하는 프로그램과 사용하지 않는 프로그램간에 상호 운용성이 보장된다.
+          </li>
+        </ul>
     </section>
   </section>
 
@@ -2173,27 +2124,28 @@ Example:
 
   </section>
 
-  <section class='normative'>
+  <section class='normative' id="did-resolvers">
     <h1>
-      DID Resolvers
+DID 리졸버
     </h1>
 
     <p>
-      A <a>DID resolver</a> is a software or hardware component with an API for
-      resolving <a>DIDs</a> of at least one <a>DID method</a>. It executes the read
-      operation for the <a>DID method</a> corresponding to the <a>DID</a> being
-      resolved to obtain the authoritative <a>DID document</a>. For more information,
-      see Section <a href="#read-verify"></a>.
+<a>DID 리졸버</a>는 <a>DID</a>를 해석하는데 필요한 API를 제공하는 
+소프트웨어 또는 하드웨어를 말하며, 
+DID 해석을 위해 DID는 하나 이상의 <a>DID 메소드</a>를 가져야한다. 
+DID 리졸버는 믿을 만한(authoritative) <a>DID 문서</a>를 조회하기 위하여, 
+해석하려는 <a>DID</a>와 연관된 <a>DID 메소드</a>의 읽기 명령을 수행한다.
+더 자세한 내용은 <a href="#read-verify"></a> 참조.
     </p>
 
     <p>
-      The interfaces and algorithms for resolving <a>DIDs</a> and dereferencing
-      <a>DID URLs</a> are specified in [[DID-RESOLUTION]].
+<a>DID</a>를 해석하고 <a>DID URL</a>을 역참조하기 위한 
+인터페이스와 알고리즘은 [[DID-RESOLUTION]]에 명시되어 있다.
     </p>
 
   </section>
 
-  <section class="informative">
+  <section class="informative" id="security-considerations">
     <h1>
       보안 고려사항 (Security Considerations)
     </h1>
@@ -2214,7 +2166,7 @@ Example:
       이로 인하여 <a>DID</a> 아키텍처와 분산 ID를 가능하게 한다.
     </p>
 
-    <section>
+    <section id="requirements-of-did-method-specifications">
       <h2>
         DID 메소드 사양의 요구 사항
       </h2>
@@ -2305,7 +2257,7 @@ Example:
       </ul>
     </section>
 
-    <section>
+    <section id="choosing-did-resolvers">
       <h2>
         DID 리졸버 선택
       </h2>
@@ -2623,130 +2575,115 @@ Example:
 
   </section>
 
-  <section class="informative">
+  <section class="informative" id="privacy-considerations">
     <h1>
-      Privacy Considerations
+      프라이버시 고려사항
     </h1>
 
     <p>
-      It is critically important to apply the principles of Privacy by Design
-      to all aspects of decentralized identifier architecture, because DIDs
-      and DID Documents are &mdash; by design &mdash; administered directly by
-      the <a>DID controller(s)</a>.
-      There is no registrar, hosting company, or other intermediate service
-      provider to recommend or apply additional privacy safeguards. The
-      authors of this specification have applied all seven Privacy by Design
-      principles throughout its development. For example, privacy in this
-      specification is preventative not remedial, and privacy is an embedded
-      default. Furthermore, <a>decentralized identifier</a> architecture by itself
-      embodies principle #7, "Respect for user privacy &mdash; keep it user-centric."
-      This section lists additional privacy considerations that implementers,
-      delegates, and <a>DID subjects</a> should bear in mind.
+      DIDs 및 DID 문서는 설계 상 <a> DID 컨트롤러</a>에 의해 직접 관리되므로, 
+      프라이버시 디자인 (Privacy by Design) 원칙을 분산 식별자 아키텍처의 모든 측면에 적용하는 것이 매우 중요하다.
+      추가적으로 프라이버시 보호를 권장하거나 적용할 등록 기관, 호스팅 회사 또는 기타 중간 서비스 제공 업체는 없다.
+      이 규격의 저자는 개발 전반에 걸쳐 7가지 프라이버시 디자인(Privacy by Design) 원칙을 모두 적용했다.
+      예를 들어, 이 규격에서 프라이버시는 예방적이지 교정적이지 않다. 프라이버시는 기본 설정이다. 
+      또한 <a>decentralized identifier</a> 아키텍처 자체는 원칙 # 7, "Respect for user privacy — keep it user-centric."를 구현한다. 
+      이 섹션에는 구현자(implementers), 대리인(delegates) 및 <a>DID 주체</a>가 염두에 두어야 할 추가 프라이버시 고려 사항이 나열되어 있다.
     </p>
 
-    <section>
+    <section id="requirements-of-did-method-specifications">
       <h2>
-        Requirements of DID Method Specifications
+        DID 메소드 규격의 요구사항
       </h2>
 
       <ol start="1">
         <li>
-          <a>DID method</a> specifications MUST include their own Privacy
-          Considerations sections, if only to point to the general privacy
-          considerations in this section.
+          이 섹션의 일반적인 프라이버시 고려사항만 가리키는 경우, 
+          <a>DID 메소드</a> 규격에는 반드시 자체 프라이버시 고려사항 섹션이 포함되어야한다.
         </li>
 
         <li>
-          The <a>DID method</a> specification's Privacy Considerations section
-          MUST discuss any subsection of
-          section 5 of [[RFC6973]] that could apply in a method-specific
-          manner. The subsections to consider are: surveillance, stored data
-          compromise, unsolicited traffic, misattribution, correlation,
-          identification, secondary use, disclosure, exclusion.
+          <a>DID 메소드</a> 규격의 프라이버시 고려사항 섹션은 
+          메소드에 따라 적용 할 수있는 [RFC6973]의 5 항의 하위 섹션을 반드시 논의해야한다. 
+          고려해야 할 하위 섹션은 ‘감시, 저장된 데이터 손상, 원치 않는 트래픽, 
+          잘못된 속성, 상관 관계, 식별, 2차 사용, 공개, 예외’가 있다.
         </li>
       </ol>
     </section>
 
-    <section>
+    <section id="keep-personally-identifiable-information-(ppi)-private">
       <h2>
-        Keep Personally-Identifiable Information (PII) Private
+        개인 식별 정보 비공개 유지
       </h2>
 
       <p>
-        If a <a>DID method</a> specification is written for a public <a>DID
-          registry</a> where all <a>DIDs</a> and <a>DID documents</a> will be publicly available,
-        it is <em>critical</em> that <a>DID documents</a> contain no PII. All PII
-        should be kept behind <a>service endpoints</a> under the control
-        of the <a>DID subject</a>. With this privacy architecture, PII may be exchanged
+        <a>DID 메소드</a> 규격이 모든 <a>DIDs</a> 및 <a>DID 문서</a>를 공개적으로 사용할 수 있는 
+        공개<a>DID 레지스트리</a>에 대해 작성된 경우, 
+        <a>DID 문서</a>에 PII가 포함되지 않도록 하는 것은  매우 <em>중요하다</em>. 
+        
+        모든 PII는 <a>DID 주체</a>의 통제  하에 <a>서비스 엔드포인트</a> 뒤에서 유지되어야 한다. 
+        
+        With this privacy architecture, PII may be exchanged
         on a private, peer-to-peer basis using communications channels identified and
-        secured by <a>public key descriptions</a> in <a>DID documents</a>. This also
-        enables <a>DID subjects</a> and relying parties to implement the
-        <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a>
+        secured by <a>public key descriptions</a> in <a>DID documents</a>. 
+        
+        이 프라이버시 설계를 통해, 
+        PII는 <a>DID 문서</a>의 <a>공개키 설명</a>으로 식별되고 보안되는 통신 채널을 사용하여, 
+        피어 투 피어 기반으로 교환 될 수 있다. 
+        
+        또한 이것은 불변의 분산 장부에 PII가 기록되지 않기 때문에, 
+        <a>DID 주체</a>와 신뢰 당사자가 <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a> 
         <a href="https://en.wikipedia.org/wiki/Right_to_be_forgotten">right
-          to be forgotten</a>, as no PII will be written to an immutable
-        <a>distributed ledger</a>.
-      </p>
+          to be forgotten</a>를 구현할 수 있다.
+              </p>
     </section>
 
-    <section>
+    <section id="did-correlation-risks-and-pseudonymous-dids">
       <h2>
-        DID Correlation Risks and Pseudonymous DIDs
+        DID 상관 관계 위험과 유사 DIDs
       </h2>
 
       <p>
-        Like any type of globally unique identifier, <a>DIDs</a> may be used for
-        correlation. <a>DID controllers</a> can mitigate this privacy risk by using
-        pairwise unique <a>DIDs</a>, i.e., by sharing a different private <a>DID</a> for
-        every relationship. In effect, each <a>DID</a> acts as a pseudonym. A
-        pseudonymous <a>DID</a> need only be shared with more than one party when
-        the <a>DID subject</a> explicitly authorizes correlation between those parties.
-        If pseudonymous <a>DIDs</a> are the default, then the only need for a public
-        <a>DID</a> &mdash; a <a>DID</a> published openly or shared with a large number of
-        parties &mdash; is when the <a>DID subject</a> explicitly desires public identification.
+        모든 유형의 전역적 고유 식별자와 마찬가지로, <a>DIDs</a> 상관 관계에 사용할 수 있다.
+        <a>DID 컨트롤러</a>는 쌍으로 된 고유한 <a>DIDs</a> 사용하거나, 
+        모든 관계에 대해 다른 개인용 <a>DID</a>를 공유함으로써 프라이버시 위험을 완화할 수 있다. 
+        실제로 각 <a>DID</a>는 익명으로 사용된다.
+        익명 <a>DID</a>는 <a>DID 주체</a>가 당사자 간의 상관 관계를 명시적으로 승인한 경우 둘 이상의 당사자끼리만 공유하면 된다. 
+        익명 <a>DIDs</a>가 기본 값일 때, 공개 <a>DIDs</a> (공개적으로 발행되었거나 다수의 당사자와 공유된 <a>DIDs</a>)가 
+        필요한 경우는 <a>DID 주체</a>가 명시적으로 공개 식별을 원할 때 뿐이다.
       </p>
     </section>
 
-    <section>
+    <section id="did-document-correlation-risks">
       <h2>
-        DID Document Correlation Risks
+        DID 문서 상관 관계 위험
       </h2>
 
       <p>
-        The anti-correlation protections of pseudonymous <a>DIDs</a> are easily
-        defeated if the data in the corresponding <a>DID documents</a> can be
-        correlated. For example, using same <a>public key descriptions</a> or
-        bespoke <a>service endpoints</a> in multiple <a>DID documents</a> can provide
-        as much correlation information as using the same <a>DID</a>. Therefore the <a>DID
-          document</a> for a pseudonymous <a>DID</a> also needs to use pairwise-unique
-        public keys.
-
-        It might seem natural to also use pairwise-unique <a>service endpoints</a>
-        in the <a>DID document</a> for a pseudonymous <a>DID</a>. However, unique
-        endpoints allow all traffic between to <a>DIDs</a> to be isolated perfectly into
-        unique buckets, where timing correlation and similar analysis is easy.
-        Therefore, a better strategy for endpoint privacy may be to share an
-        endpoint among thousands or millions of <a>DIDs</a> controlled by many different
-        subjects.
+        해당 <a>DID 문서</a>의 데이터를 연관시킬 수 있으면 익명 <a>DIDs</a>의 안티-상관관계 보호는 쉽게 무너진다. 
+        예를 들어, 여러 <a>DID 문서</a>에서 동일한 <a>공개키 설명</a> 또는 
+        맞춤형 <a>서비스 엔드포인트</a>를 사용하면 동일한 <a>DID</a>를 사용하는 것과 같은 수준의 상관 정보를 제공 할 수 있다.
+        따라서 익명 <a>DID</a>에 대한 <a>DID 문서</a>도 쌍별로 고유한 공개 키를 사용해야 한다. 
+        익명 <a>DID</a>에 대해 <a>DID 문서</a>에서 쌍별로 고유한 <a>서비스 엔드포인트</a>를 사용하는 것도 자연스러운 것처럼 보일 수 있다. 
+        그러나 고유한 엔드 포인트를 통해 <a>DIDs</a> 간 모든 트래픽을 
+        타이밍 상관 관계와 유사한 분석이 용이한 고유한 버킷으로 완벽하게 분리할 수 있다.
+        따라서 엔드 포인트 프라이버시를 위한 더 나은 전략은 많은 다른 주체에 의해 제어되는 
+        수천 또는 수백만 개의 <a>DIDs</a> 간에 엔드 포인트를 공유하는 것이다.
       </p>
     </section>
 
-    <section>
+    <section id="herd-privacy">
       <h2>
-        Herd Privacy
+        군중 프라이버시
       </h2>
 
       <p>
-        When a <a>DID subject</a> is indistinguishable from others in the herd, privacy
-        is available. When the act of engaging privately with another party
-        is by itself a recognizable flag, privacy is greatly diminished. <a>DIDs</a>
-        and <a>DID methods</a> need to work to improve herd privacy, particularly for
-        those who legitimately need it most. Choose technologies and human
-        interfaces that default to preserving anonymity and pseudonymity. In
-        order to reduce <a href="https://en.wikipedia.org/wiki/Device_fingerprint">digital
-          fingerprints</a>, share common settings across client
-        implementations, keep negotiated options to a minimum on wire
-        protocols, use encrypted transport layers, and pad messages to
-        standard lengths.
+        <a>DID 주체</a>가 군중의 다른 사람들과 구별되지 않는 경우, 프라이버시 보호가 가능하다. 
+        다른 당사자와 개인적으로 참여하는 행위가 그 자체로 인식 가능한 플래그(flag)인 경우, 프라이버시가 크게 훼손된다.
+        <a>DIDs</a>와 <a>DID 메소드</a>는 군중 프라이버시의 보호, 
+        특히 합법적으로 가장 필요한 사람들의 프라이버시를 개선하기 위해 작동해야한다. 
+        익명성과 가명성을 유지하는 데 도움이 되는 기술과 휴먼 인터페이스를 선택해야 한다. 
+        <a href="https://en.wikipedia.org/wiki/Device_fingerprint">디지털 지문</a>을 줄이려면, 
+        클라이언트 구현에서 공통 설정을 공유하고, 협의된 옵션을 유선 프로토콜에서 최소로 유지하고, 암호화 된 전송 계층을 사용하고, 메시지를 표준 길이로 채워야 한다.
       </p>
     </section>
   </section>
