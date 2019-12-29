@@ -1,54 +1,39 @@
 <p>
-This document attempts to communicate the concepts outlined in the
-<a>decentralized identifier</a> space by using specialized terms to discuss
-specific concepts. This terminology is included below and linked to throughout
-the document to aid the reader:
+이 문서는 <a>탈중앙 식별자</a> 분야에서 사용되는 특정 개념을 논의하기 위한 특수 용어들을 전달하고자 한다. 
+아래에 있는 용어들은 독자를 돕기 위해 문서 전체에 링크되어 있다:
 </p>
 
 <dl class="termlist">
 
-  <dt><dfn data-lt="blockchains|blockchain technology">blockchain</dfn></dt>
+  <dt><dfn data-lt="blockchain|blockchains|blockchain technology|블록체인기술">블록체인</dfn> (blockchain)</dt>
 
   <dd>
-A specific type of <a>distributed ledger technology</a> (DLT) that stores ledger
-entries in blocks of transactions, which are grouped together and hashed into a
-cryptographic chain. Because this type of <a>DLT</a> was introduced by
-<a href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a>, the term
-<em>blockchain</em> is sometimes used to refer specifically to the Bitcoin
-ledger.
+특정한 방식의 <a>분산원장기술</a> (Distributed Ledger Technology, DLT)로 암호화된 체인에 원장의 항목들을 묶고 해시해서 저장한다. 
+이러한 타입의 <a>분산원장</a>이 <a href="https://en.wikipedia.org/wiki/Bitcoin">비트코인</a>에 의해 처음 소개되었기 때문에 <em>블록체인</em> 이라는 단어는 가끔 구체적으로 비트코인 원장을 의미하기도 한다.
   </dd>
 
-  <dt><dfn data-lt="decentralized identifiers|DID|DIDs">decentralized identifier</dfn> (DID)</dt>
+  <dt><dfn data-lt="decentralized identifiers|DID|DIDs|DID들|탈중앙 ID|탈중앙 식별자들|탈중앙화 식별자">탈중앙 식별자</dfn> (decentralized identifier, DID)</dt>
 
   <dd>
-A globally unique identifier that does not require a centralized registration
-authority because it is registered with <a>distributed ledger technology</a>
-(DLT) or other form of decentralized network. The generic format of a DID is
-defined in this specification. A specific <a>DID scheme</a> is defined in a
-<a>DID method</a> specification.
+<a>분산원장기술</a>(DLT)이나 다른 형태의 분산 네트워크에 등록되었기 때문에 중앙화된 등록기관이 필요하지 않은 전역적으로 고유한 식별자이다. 
+DID의 일반적인 형식은 이 문서에 정의되어 있다. 
+특정한 <a>DID 체계</a>는 <a>DID 메소드</a> 규격에 정의되어 있다.
   </dd>
 
-  <dt><dfn>decentralized identity management</dfn></dt>
+  <dt><dfn data-lt="decentralized identity management|탈중앙 ID 관리">탈중앙 신원 관리</dfn> (decentralized identity management)</dt>
+  <dd>
+탈중앙 식별자를 관리하는 <a href="https://en.wikipedia.org/wiki/Identity_management">신원 관리</a> 방법이다. 
+탈중앙 ID 관리는 기존에 전통적인 신뢰의 주체였던 <a href="https://en.wikipedia.org/wiki/X.500">X.500 direcotry services</a>, <a href="https://en.wikipedia.org/wiki/Domain_Name_System">Domain Name System</a>, 
+그리고 대부분의 국가 ID 시스템보다 생성 권한 확장한다.
+  </dd>
+
+  <dt><dfn>탈중앙 공개키 인프라</dfn> (Decentralized Public Key Infrastructure, DPKI)</dt>
 
   <dd>
-<a href="https://en.wikipedia.org/wiki/Identity_management">Identity
-management</a> based on <a>decentralized identifiers</a>. Decentralized identity
-management extends the identifier creation authority beyond the traditional
-roots of trust required by
-<a href="https://en.wikipedia.org/wiki/X.500">X.500 directory services</a>,
-the <a href="https://en.wikipedia.org/wiki/Domain_Name_System">Domain Name System</a>,
-and most national identification systems.
+<a>탈중앙 식별자</a>와 신원 기록 (예를들어 <a>DID 문서</a>) 등 검증 가능한 <a>공개키 정보</a>들을 포함한 공개키 기반 인프라를 말한다.
   </dd>
 
-  <dt><dfn>decentralized public key infrastructure</dfn> (DPKI)</dt>
-
-  <dd>
-Public key infrastructure based on <a>decentralized identifiers</a> and identity
-records (for example, <a>DID documents</a>) containing verifiable
-<a>public key descriptions</a>.
-  </dd>
-
-  <dt><dfn data-lt="delegates">delegate</dfn></dt>
+  <dt><dfn data-lt="delegate|delegates">delegate</dfn></dt>
 
   <dd>
 An entity who creates a <a>DID</a> and associated <a>DID document</a> for a
@@ -58,7 +43,7 @@ private keys until the <a>dependent</a> can assume control as the
 <a>DID subject</a>.
   </dd>
 
-  <dt><dfn data-lt="dependents">dependent</dfn></dt>
+  <dt><dfn data-lt="dependent|dependents">dependent</dfn></dt>
 
   <dd>
 A person, organization, or thing whose <a>DID</a> is registered and maintained
@@ -67,114 +52,88 @@ private keys. A dependent becomes an <a>identity owner</a> when the dependent
 takes control of the private keys.
   </dd>
 
-  <dt><dfn data-lt="did controllers|did controller(s)">DID controller</dfn></dt>
+  <dt><dfn data-lt="did controller|did controllers|did controller(s)">DID 컨트롤러</dfn> (DID controller)</dt>
 
   <dd>
-The entity, or a group of entities, in control of a <a>DID</a> or
-<a>DID document</a>. Note that the <a>DID controller</a> might include the
-<a>DID subject</a>.
+<a>DID</a> 또는 <a>DID 문서</a>를 제어하는 주체 또는 그룹이다. 참고로 <a>DID 컨트롤러</a>는 <a>DID 대상</a>을 포함할 수 있다.
   </dd>
 
-  <dt><dfn data-lt="DID documents">DID document</dfn></dt>
+  <dt><dfn data-lt="DID document|DID documents|DID 문서들">DID 문서</dfn> (DID document)</dt>
 
   <dd>
-A set of data describing the <a>DID subject</a>, including mechanisms, such as
-public keys and pseudonymous biometrics, that the <a>DID subject</a> can use to
-authenticate itself and prove their association with the <a>DID</a>. A DID
-document might also contain other
-<a href="https://en.wikipedia.org/wiki/Attribute_(computing)">attributes</a> or
-<a href="https://en.wikipedia.org/wiki/Claims-based_identity">claims</a>
-describing the subject. These documents are graph-based data structures that
-are typically expressed using [[JSON-LD]], but can be expressed using other
-compatible graph-based data formats.
+<a>DID 대상</a>을 설명하는 데이터들의 모음이다. 
+<a>DID 대상</a>이 자기 자신을 인증하고 <a>DID</a>와의 연관성을 입증하는데 사용할 수 있는 공개키나 유사 생체 인식과 같은 데이터를 포함한다. 
+DID 문서는 DID 대상에 대한 다른 <a href="https://en.wikipedia.org/wiki/Attribute_(computing)">속성</a> 또는 <a href="https://en.wikipedia.org/wiki/Claims-based_identity">주장</a>을 포함 할 수도 있다. 
+이 문서들은 그래프 기반 데이터 구조이며 주로 [[JSON-LD]] 형식으로 작성되어 있지만, 다른 그래프 기반 데이터 포맷으로도 나타낼 수 있다.
   </dd>
 
-  <dt><dfn data-lt="DID fragments">DID fragment</dfn></dt>
+  <dt><dfn data-lt="DID fragment|DID fragments">DID 프래그먼트</dfn> (DID fragment)</dt>
 
   <dd>
-The portion of a <a>DID URL</a> that follows the first hash sign character
-(<code>#</code>). DID fragment syntax is identical to the URI fragment syntax.
+<a>DID URL</a>중 첫 번째 해시 기호 문자 (<code>#</code>) 다음에 오는 부분이다. DID 조각 구문은 URI 조각 구문과 동일하다.
   </dd>
 
-  <dt><dfn data-lt="DID methods">DID method</dfn></dt>
+  <dt><dfn data-lt="DID method|DID methods|DID 메소드들">DID 메소드</dfn> (DID method)</dt>
 
   <dd>
-A definition of how a specific <a>DID scheme</a> can be implemented on a
-specific <a>distributed ledger</a> or network, including the precise methods by
-which <a>DIDs</a> are resolved and deactivated and <a>DID documents</a> are
-written and updated.
+특정 <a>DID 체계</a>가 특정 <a>분산원장</a>이나 네트워크에서 구현할 수 있는지 정확한 방법을 정의한 것이다. 
+어떻게 <a>DID</a>들이 해결되고 비활성화 되는지, 어떻게 <a>DID 문서</a>들이 작성되고 업데이트 되는지 등을 포함한다.
   </dd>
 
-  <dt><dfn data-lt="DID paths">DID path</dfn></dt>
+  <dt><dfn data-lt="DID path|DID paths">DID 경로</dfn> (DID path)</dt>
 
   <dd>
-The portion of a <a>DID URL</a> that begins with and includes the first forward
-slash character (<code>/</code>). DID path syntax is identical to the URI path
-syntax.
+<a>DID URL</a>중 첫 번째 슬래시 문자 (<code>/</code> 포함) 하는 부분이다. DID 경로 구문은 URI 경로 구문과 동일하다.
   </dd>
 
-  <dt><dfn data-lt="DID queries">DID query</dfn></dt>
+  <dt><dfn data-lt="DID query|DID queries">DID 쿼리</dfn> (DID query)</dt>
 
   <dd>
-The portion of a <a>DID URL</a> that follows the first question mark character
-(<code>?</code>). DID query syntax is identical to the URI query syntax.
+<a>DID URL</a>중 첫 번째 물음표 문자 (<code>?</code>) 다음에 오는 부분이다. DID 쿼리 구문은 URI 쿼리 구문과 동일하다.
   </dd>
 
-  <dt><dfn data-lt="decentralized identifier registry|decentralized identifier registries|DID registries">DID registry</dfn></dt>
+  <dt><dfn data-lt="DID registry|decentralized identifier registry|decentralized identifier registries|DID registries">DID 레지스트리</dfn> (DID registry)</dt>
 
   <dd>
-A role a system performs to mediate the creation, verification, updating, and
-deactivation of <a>decentralized identifiers</a>. A DID registry is a type of
-verifiable data registry. For more information, see [[VC-DATA-MODEL]].
+<a>탈중앙 식별자</a>의 생성, 확인, 업데이트 및 비활성화를 중재하는 역할을 하는 시스템. 
+DID 레지스트리는 검증 가능한 데이터 레지스트리 유형이다. (자세한 내용은 [[VC-DATA-MODEL]] 참조)
   </dd>
 
-  <dt><dfn data-lt="DID resolvers">DID resolver</dfn></dt>
+  <dt><dfn data-lt="DID resolvers|DID resolver|DID 리졸버">DID 변환기</dfn> (DID resolver)</dt>
 
   <dd>
-A system that is capable of retrieving a <a>DID document</a> for a given
-<a>DID</a>. These systems are specified in the DID Resolution specification
-[[DID-RESOLUTION]].
+주어진 <a>DID</a>에 대한 <a>DID 문서</a>를 검색 할 수있는 시스템. 이러한 시스템들의 규격은 DID Resolution 문서에 있다. ([[DID-RESOLUTION]] 참조)
   </dd>
   </dt>
 
-  <dt><dfn data-lt="DID schemes">DID scheme</dfn></dt>
+  <dt><dfn data-lt="DID schemes|DID scheme|DID 스키마">DID 체계</dfn> (DID scheme)</dt>
 
   <dd>
-The formal syntax of a <a>decentralized identifier</a>. The generic DID scheme
-is defined in this specification. Separate <a>DID method</a> specifications
-define a specific DID scheme that works with that specific <a>DID method</a>.
+<a>탈중앙 식별자</a>의 공식적인 구문. 전반적인 DID 체계는 이 문서에 포함되어 있다.
   </dd>
 
-  <dt><dfn data-lt="DID subjects">DID subject</dfn></dt>
+  <dt><dfn data-lt="DID subject|DID subjects|DID 대상">DID 주체</dfn> (DID subject)</dt>
 
   <dd>
-The entity the <a>DID document</a> is about. That is, the entity identified by
-the <a>DID</a> and described by the <a>DID document</a>.
+<a>DID</a>로 구분되고 <a>DID 문서</a>로 설명되는 주체이다.
   </dd>
 
-  <dt><dfn data-lt="DID URLs">DID URL</dfn></dt>
+  <dt><dfn data-lt="DID URL|DID URLs">DID URL</dfn></dt>
 
   <dd>
-A <a>DID</a> plus an optional <a>DID path</a>, optional <code>?</code> character
-followed by a <a>DID query</a>, and optional <code>#</code> character followed
-by a <a>DID fragment</a>.
+<a>DID</a>와 선택적인 <a>DID 경로</a> (<code>?</code> 문자열 뒤에 DID 쿼리와 <code>#</code> 문자열 뒤 <a>DID 프래그먼트</a>를 포함)의 집합이다.
   </dd>
 
-  <dt><dfn data-lt="distributed ledger technology|DLT">distributed ledger</dfn> (DLT)</dt>
+  <dt><dfn data-lt="distributed ledger|distributed ledger technology|DLT|분산원장기술|분산 원장">분산원장</dfn> (distributed ledger, DLT)</dt>
 
   <dd>
-A <a href="https://en.wikipedia.org/wiki/Distributed_database">distributed database</a>
-in which the various nodes use a
-<a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)">consensus protocol</a>
-to maintain a shared ledger in which each transaction is cryptographically
-signed and chained to the previous transaction.
+여러 노드들이 <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)">합의 프로토콜</a>을 사용해 공유하는 원장인 <a href="https://en.wikipedia.org/wiki/Distributed_database">분산 데이터베이스</a>다. 원장의 각 트랜잭션들이 암호화로 서명하고 이전 트랜잭션에 연결되어 있다.
   </dd>
 
-  <dt><dfn data-lt="XDI">extensible data interchange</dfn> (XDI)</dt>
+  <dt><dfn data-lt="extensible data interchange|XDI|확장 가능한 데이터 교환 프로토콜">확장 가능한 데이터 교환</dfn> (extensible data interchange, XDI)</dt>
 
   <dd>
-A semantic graph format and semantic data interchange protocol defined by the
-<a href="https://www.oasis-open.org/committees/xdi/">OASIS XDI Technical Committee</a>.
+<a href="https://www.oasis-open.org/committees/xdi/">OASIS XDI Technical Committee</a>에 의해 정의된 시맨틱 그래프 형식 및 시맨틱 데이터 교환 프로토콜이다.
   </dd>
 
   <dt><dfn data-lt="identity owners">identity owner</dfn></dt>
@@ -186,40 +145,36 @@ by a <a>DID</a> and who directly controls the private keys to control the
 since a <a>DID subject</a> is not always an individual person.
   </dd>
 
-  <dt><dfn>JSON Pointer</dfn></dt>
+  <dt><dfn data-lt="JSON Pointer">JSON 포인터</dfn> (JSON Pointer)</dt>
 
   <dd>
-Defines a string syntax for identifying a specific value within a JavaScript
-Object Notation (JSON) document, as defined in [[RFC6901]].
+JSON 포인터는 [[RFC6901]]에 정의된 JavaScript Object Notation (JSON) 문서에서 특정 값을 식별하기위한 문자열 구문을 정의한다.
   </dd>
 
-  <dt><dfn>public key description</dfn></dt>
+  <dt><dfn data-lt="public key description|공개키 정보">공개키 설명</dfn> (public key description)</dt>
 
   <dd>
-A JSON object contained inside a <a>DID document</a> that contains all the
-metadata necessary to use a public key or verification key.
+<a>DID 문서</a> 안에 공개키나 인증키를 사용하기 위한 모든 메타데이터를 담은 JSON 객체이다.
   </dd>
 
-  <dt><dfn data-lt="service endpoints">service endpoint</dfn></dt>
+  <dt><dfn data-lt="service endpoint|service endpoints">서비스 엔드포인트</dfn> (service endpoint)</dt>
 
   <dd>
-A network address at which a service operates on behalf of a <a>DID subject</a>.
-Examples of specific services include discovery services, social networks, file
-storage services, and verifiable claim repository services. Service endpoints
-might also be provided by a generalized data interchange protocol, such as
-<a>extensible data interchange</a>.
+<a>DID 주체</a>가 운영하는 서비스 네트워크의 주소이다. 
+이런 서비스들의 예시로는 검색 서비스, 소셜 네트워크, 파일 스토리지 서비스 및 verifiable claim 저장소 서비스등이 있다. 
+서비스 엔드포인트는 <a>확장 가능한 데이터 교환 프로토콜</a> 같은 일반적인 데이터 교환 프로토콜에 의해서 제공 될 수도 있다.
   </dd>
 
   <dt><dfn data-lt="URI|URIs">Uniform Resource Identifier</dfn> (URI)</dt>
 
   <dd>
-An identifier, as defined by [[RFC3986]].
+    [[RFC3986]]에 정의되어 있는 식별자
   </dd>
 
-  <dt><dfn data-lt="UUID|UUIDs">Universally Unique Identifier</dfn> (UUID)</dt>
+  <dt><dfn data-lt="Universally Unique Identifier|UUID|UUIDs">범용고유식별자</dfn> (Universally Unique Identifier, UUID)</dt>
 
   <dd>
-An identifier, as defined by [[RFC4122]].
+    [[RFC4122]]에 정의되어 있는 식별자
   </dd>
 
 </dl>
