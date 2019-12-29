@@ -2437,31 +2437,23 @@ DID 문서 변화 알림
       </h2>
 
       <p>
-One mitigation against unauthorized changes to a <a>DID document</a> is
-monitoring and actively notifying the <a>DID subject</a> when there are changes.
-This is analogous to helping prevent account takeover on conventional
-username/password accounts by sending password reset notifications to the email
-addresses on file. In the case of a <a>DID</a>, where there is no intermediary
-registrar or account provider to generate the notification, the following
-approaches are suggested:
+<a>DID 문서</a>의 승인되지 않은 변화에 대한 하나의 완화방안은 <a>DID 주체</a>를 모니터링하고 적극적으로 알리는 것이다.
+이것은 전통적인 유저명/패스워드 계정의 계정 탈취를 막기 위해 패스워드 재설정에 대한 알림을 이메일 주소로 전달하는 것과 유사하다.
+알림을 생성해 줄 중개 등록자 혹은 계정 공급자가 없는 <a>DID</a>의 경우, 다음과 같은 방법이 제안된다:
       </p>
 
       <ul>
         <li>
-Subscriptions. If the <a>DID registry</a> on which the <a>DID</a> is registered
-directly supports change notifications, this service can be offered to
-<a>DID controllers</a>. Notifications could be sent directly to the relevant
-<a>service endpoints</a> listed in an existing <a>DID</a>.
+구독. <a>DID</a>가 등록된 <a>DID 레지스트리</a>가 변경 알림을 직접 지원하는 경우, 이 서비스는 <a>DID 컨트롤러</a>에게 제공될 수 있다. 
+알림은 기존 <a>DID</a>에 나열된 서비스 엔트포인트로 직접 보낼 수 있다.
         </li>
 
         <li>
-Self-monitoring. A <a>DID subject</a> can employ their own local or online agent
-to periodically monitor for changes to a <a>DID document</a>.
+자기 모니터링. <a>DID 주체</a>는 정기적으로 <a>DID 문서</a>의 변화를 모니터링하는 로컬 혹은 온라인 상의 에이전트를 둘 수 있다.
         </li>
 
         <li>
-Third-party monitoring. A <a>DID subject</a> could rely on a third-party
-monitoring service, however this introduces another vector of attack.
+3자 모니터링. <a>DID 주체</a>는 제 3의 모니터링 서비스에 의존할 수 있다. 다만, 이것은 또다른 공격 경로를 유발할 수 있다.
         </li>
       </ul>
     </section>
