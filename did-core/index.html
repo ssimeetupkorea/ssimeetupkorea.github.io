@@ -4,6 +4,7 @@
   <title>
     탈중앙 식별자 Decentralized Identifiers (DIDs) v1.0
   </title>
+  <link rel="shortcut icon" type="image/png" href="http://example.com/favicon.png"/>
   <meta content='text/html; charset=utf-8' http-equiv='Content-Type'><!--
     === NOTA BENE ===
     For the three scripts below, if your spec resides on dev.w3 you can check them
@@ -36,12 +37,12 @@
     subtitle: "Core Data Model and Syntaxes",
 
     // if you wish the publication date to be other than today, set this
-    //publishDate:  "2019-11-07",
+    publishDate:  "2019-12-09",
 
     // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
     // and its maturity status
-    // previousPublishDate:  "1977-03-15",
-    // previousMaturity:  "WD",
+    previousPublishDate:  "2019-12-09",
+    previousMaturity:  "WD",
 
     // extend the bibliography entries
     localBiblio: ccg.localBiblio,
@@ -121,6 +122,12 @@
         companyURL: "https://danubetech.com/",
         w3cid: 46729
       }
+    ],
+    translators: [
+      {
+        name: "Jaehoon Shim",
+        url: "mailto:jshim10@illinois.edu",
+      }
     ]
     };
   </script>
@@ -139,6 +146,9 @@
   </style>
 </head>
 <body>
+  <p class="issue" data-number="">
+    이 문서의 원본은 
+  <p>
   <section id='abstract'>
     <p>
 <a>탈중앙 식별자</a>(DIDs)란 검증가능하고 탈중앙화된 디지털 신원을 위한 새로운 형식의 식별자이다.  
@@ -155,8 +165,6 @@
   </section>
 
   <section id='sotd'>
-
-    <p>
 This specification is under active development and implementers are advised
 against implementing the specification unless they are directly involved
 with the W3C DID Working Group. There are use cases [[?DID-USE-CASES]] in active
