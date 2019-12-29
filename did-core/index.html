@@ -282,9 +282,9 @@
     </p>
 
     <p class="note">
-      개념적으로, 이 규격(Decentralized Identifiers)과 <a>DID 메소드</a> 규격의 관계는 IETF 일반 <a>URI</a> 규격([RFC3986])과 특정 <a>URI</a>
-      체계([IANA-URI-SCHEMES])([RFC7230]에 명시된 http:와 https: 체계)의 관계와 유사하다. IETF 일반 URN 규격([RFC8141]) 및 특정 URN 네임스페이스
-      정의([RFC4122]에 정의된 <a>UUID</a> URN 네임스페이스 등과 같은)의 관계와도 역시 유사하다.
+      개념적으로, 이 규격(Decentralized Identifiers)과 <a>DID 메소드</a> 규격의 관계는 IETF 일반 <a>URI</a> 규격([[RFC3986]])과 특정 <a>URI</a>
+      체계([[IANA-URI-SCHEMES]])([[RFC7230]]에 명시된 http:와 https: 체계)의 관계와 유사하다. IETF 일반 URN 규격([[RFC8141]]) 및 특정 URN 네임스페이스
+      정의([[RFC4122]]에 정의된 <a>UUID</a> URN 네임스페이스 등과 같은)의 관계와도 역시 유사하다.
       차이점은 <a>DID 메소드</a> 규격은 특정 <a>DID 스키마</a>를 정의하는 것 외에도, 적절한 <a>DID 레지스트리</a>에서 <a>DIDs</a>의 구별방법을 제공하거나, 비활성화하거나,
       <a>DID 문서</a>를 작성하는 방법을 명시한다는 것이다.
     </p>
@@ -516,7 +516,7 @@ did:example:123456789abcdefghi
 
   </section>
 
-  <section class="informative">
+  <section id="terminology" class="informative">
     <h1>
       용어
     </h1>
@@ -526,7 +526,7 @@ did:example:123456789abcdefghi
 
   </section>
 
-  <section class="informative">
+  <section id="data-model" class="informative">
     <h1>
       Data Model
     </h1>
@@ -556,7 +556,7 @@ did:example:123456789abcdefghi
       </p>
     </section>
 
-    <section>
+    <section id="did-document">
       <h2>
         DID Document
       </h2>
@@ -679,7 +679,7 @@ did:example:123456789abcdefghi
       </li>
     </ul>
 
-    <section>
+    <section id="generic-did-syntax">
       <h2>
         일반 DID 구문
       </h2>
@@ -1066,7 +1066,7 @@ did:example:123456#oidc
       <p class="note" title="The JSON-LD Context">
         More information about the
         <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD Context</a>
-        in general can be found in the [[!JSON-LD]] specification.
+        in general can be found in the [[JSON-LD]] specification.
       </p>
 
       <dl>
@@ -1471,7 +1471,7 @@ Example:
       </p>
     </section>
 
-    <section>
+    <section id="authentication">
       <h2>
         인증
       </h2>
@@ -1526,7 +1526,7 @@ Example:
 </pre>
     </section>
 
-    <section>
+    <section id="authorization-and-delegation">
       <h2>
         인가 및 위임
       </h2>
@@ -1581,7 +1581,7 @@ Example:
         </pre>
     </section>
 
-    <section>
+    <section id="service-endpoints">
       <h2>
         서비스 엔드포인트
       </h2>
@@ -1589,7 +1589,7 @@ Example:
       <p>
         <a>DID 문서</a>의 주요 목적은 <a>서비스 엔드포인트</a>를 검색할 수 있게 하는 것이다.
         <a>서비스 엔드포인트</a>는 추가 탐색, 인증, 인가 또는 상호작용을 위한
-        <a>분산 ID 관리 서비스</a>를 포함하여 <a>DID 주체</a>가 공시하는 모든 유형의
+        <a>탈중앙 ID 관리</a>서비스를 포함하여 <a>DID 주체</a>가 공시하는 모든 유형의
         서비스를 나타낼 수 있다.
       </p>
 
@@ -1679,9 +1679,9 @@ Example:
         <a>서비스 엔드포인트</a>에 대한 추가 보안 고려 사항은
         <a href="#did-method-schemes"></a> 및 <a href="#authentication"></a>을 참조
       </p>
-    </section>
+    </sectionㅑㅇ >
 
-    <section>
+    <section id="created">
       <h2>
         생성
       </h2>
@@ -1711,7 +1711,7 @@ Example:
 </pre>
     </section>
 
-    <section>
+    <section id="updated">
       <h2>
         갱신
       </h2>
@@ -2199,9 +2199,9 @@ Example:
     <p class="note" title="개발자 참고사항">
       개발자의 초안 단계에서 이 장은 초기 구현에 중요한 보안 주제에 중점을 둔다.
       또한, 편집자들은 본 장 또는 사양의 다른 부분에 반영되어야만 하는 위협 및 위협 완화에
-      대한 피드백을 탐색한다. <a>탈중앙 식별자(DIDs)</a> 및 <a>DID 문서</a>에 대한
-      루트 식별자 레코드는 <a>분산 ID 관리</a>의 필수 구성 요소이다. 또한 기존 X.509 인증서를
-      보완하는 <a>분산 공개키 기반 구조</a> (DPKI)의 기본 구성 요소이다. 따라서 <a>DID</a>는
+      대한 피드백을 탐색한다. <a>탈중앙 식별자</a>(DIDs) 및 <a>DID 문서</a>에 대한
+      루트 식별자 레코드는 <a>탈중앙 ID 관리</a>의 필수 구성 요소이다. 또한 기존 X.509 인증서를
+      보완하는 <a>탈중앙 공개키 인프라</a> (DPKI)의 기본 구성 요소이다. 따라서 <a>DID</a>는
       많은 IETF 표준에서 사용하는 일반적인 인터넷 위협 모델에서 작동하도록 설계되었다. 우리는
       침해되지 않는 엔드포인트를 가정하지만 네트워크상에서 메시지가 읽혀지거나, 손상될 수
       있음을 고려해야 한다. 시스템이 손상되었을 때 공격으로부터 보호하려면 외부 키 서명
@@ -2312,7 +2312,7 @@ Example:
         [[DID-METHOD-REGISTRY]]는 <a>DID 메소드</a> 이름 및 해당 <a>DID 메소드</a> 사양에
         대한 정보를 제공하는 목록이다. 개발자는 특정 <a>DID 메소드</a> 이름과 함께
         사용해야하는 <a>DID 메소드</a> 사양을 위임 할 CA가 없다는 것을 알아두어야 하지만,
-        <a>DID 메서드</a> 사양은 특정 <a>DID 메서드</a> 이름과 함께 사용해야 하고
+        <a>DID 메소드</a> 사양은 특정 <a>DID 메소드</a> 이름과 함께 사용해야 하고
         [[DID-METHOD-REGISTRY]]를 사용하여 사용할 <a>DID 리졸버</a> 구현을 선택할 때
         결정을 내릴 수 있다.
 
@@ -2601,19 +2601,19 @@ Example:
 
       <p>
         많은 사이버 보안 침해는 현실과 합리적이고 선의의 이용자들의 이상 사이의 격차를 이용하는 데 달려 있다. 다른 생태계와 마찬가지로, <a>DID</a> 생태계는 이것이 일어날 가능성이 있다. 이 사양은
-        프로토콜이 아닌 데이터 모델에 중점을 두기 때문에 해당 모델의 사용 방식에 대한 여러 측면에 대한 의견을 제시하지 않았다. 그러나 개별 <a>DID 방법들</a>은 필요하지 않은 동작이나 의미를
-        제거하는 제약 조건을 고려할 수 있다. <a>DID 방법</a>이 <em>잠금</em>(<em>locked down</em>)상태 일수록 동일한 기능 세트를 제공하는 반면 악의적인 행위자가 조작 할
+        프로토콜이 아닌 데이터 모델에 중점을 두기 때문에 해당 모델의 사용 방식에 대한 여러 측면에 대한 의견을 제시하지 않았다. 그러나 개별 <a>DID 메소드</a>들은 필요하지 않은 동작이나 의미를
+        제거하는 제약 조건을 고려할 수 있다. <a>DID 메소드</a>가 <em>잠금</em>(<em>locked down</em>)상태 일수록 동일한 기능 세트를 제공하는 반면 악의적인 행위자가 조작 할
         수있는 수준은 줄어 든다.
       </p>
       <p>
         예를 들어, 데이터 모델이 업데이트와 관련하여 제공하는 유연성을 고려해보자. <a>DID 문서</a>를 한 번만 편집하면 문서의 루트 ID 속성을 제외한 모든 항목을 변경할 수 있으며 데이터 모델의
-        개별 JSON 객체는 root <code>id</code>를 제외한 모든 속성을 변경할 수 있다. 그러나 <a>서비스 엔드 포인트</a>가 일단 정의되면 <code>type</code>을 변경하는 것이
+        개별 JSON 객체는 root <code>id</code>를 제외한 모든 속성을 변경할 수 있다. 그러나 <a>서비스 엔드포인트</a>가 일단 정의되면 <code>type</code>을 변경하는 것이
         실제로 바람직한가? 아니면 가치를 바꾸는 열쇠가 필요한가? 아니면 객체의 특정 기본 속성이 변경 될 때 새로운 <code>id</code>를 요구하는 것이 더 좋은가? 웹 사이트의 악의적인 인수는 종종
         사이트가 자신의 식별자 (호스트 이름)를 유지하지만 그 아래에 미묘하고 위험한 변화를 가져 오는 결과를 목표로 한다. 사양에 따라 사이트의 특정 속성을 변경할 수없는 경우 (예 : IP 주소와 관련된
         ASN) 이러한 공격을 수행하는 데 훨씬 더 어렵고 비용이 많이 들며 이상 탐지가 더 쉬울 수 있다.
       </p>
       <p>
-        불변성이 일부 사이버 보안 이점을 제공 할 수 있다는 개념은 캐싱 때문에 특히 관련이 있다. 전 세계 진실 소스에 연결된 <a>DID 방법들</a>의 경우 최신 버전의 <a>DID 문서</a>를 적시에
+        불변성이 일부 사이버 보안 이점을 제공 할 수 있다는 개념은 캐싱 때문에 특히 관련이 있다. 전 세계 진실 소스에 연결된 <a>DID 메소드</a>들의 경우 최신 버전의 <a>DID 문서</a>를 적시에
         직접 조회 할 수 있다. 그러나 캐시 레이어는 결국 클라이언트와 해당 소스 사이에 있을 수 있다. 만약 그렇다면, 실제로 미묘하게 다른 <a>DID 문서</a>에있는 객체(object)의 속성이 주어진
         상태를 가지고 있다고 믿으면 활용을 증대 할 수 있습니다. 일부 조회가 전체 <a>DID 문서</a>이고 다른 조회가 부분적인 데이터 인 경우 더 큰 맥락이 가정되는 경우에 특히 그렇습니다.
     </section>
