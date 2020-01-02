@@ -2449,29 +2449,22 @@ DID 문서 변화 알림
       </p>
     </section>
 
-    <section>
+    <section id="key-revocation-and-recovery">
       <h2>
-        Key Revocation and Recovery
+        키 해지 및 복구
       </h2>
 
       <p>
-        Section <a href="#did-operations"></a> specifies the <a>DID</a> operations to be
-        supported by a <a>DID method</a> specification, including deactivation of a
-        <a>DID document</a> by replacing it with an updated <a>DID document</a>. In
-        general, checking for key revocation on <a>DLT</a>-based methods is expected to
-        be handled in a manner similar to checking the balance of a cryptocurrency
-        account on a <a>distributed ledger</a>. That is, if the balance is empty, the
-        entire <a>DID</a> is deactivated. <a>DID method</a> specifications are expected
-        to enable support for a quorum of trusted parties to enable key recovery. Some
-        of the facilities to do so are suggested in Section
-        <a href="#authorization-and-delegation"></a>. Not all <a>DID method</a>
-        specifications will recognize control from <a>DIDs</a> registered using other
-        <a>DID methods</a> and they might restrict third-party control to <a>DIDs</a>
-        that use the same method. Access control and key recovery in a <a>DID method</a>
-        specification can also include a time lock feature to protect against key
-        compromise by maintaining a second track of control for recovery. Further
-        specification of this type of control is a matter for future work (see Section
-        <a href="#time-locks-and-did-document-recovery"></a>).
+        섹션 <a href="#did-operations"></a>은 업데이트 된 <a>DID 문서</a>로 교체하여 <a>DID 문서</a>를 비활성화 하는방법을 포함한 
+        <a>DID 메소드</a> 사양에서 지원해야하는 <a>DID</a> 작업을 설명한다. 
+        일반적으로 <a>DLT</a> 기반에서 키 해지여부 확인은 <a>분산 원장</a>에서 암호 화폐 게정의 잔액을 확인하는 것과 유사한 방식으로 처리 된다: 
+        잔액이 비어있으면 <a>DID</a> 전체가 비활성화 된것이다. <a>DID 메소드</a> 사양은 신뢰하는 집단의 합의를 통해 키 복원을 지원해야한다. 
+        그렇게 할 수 있는 방법들은 섹션 <a href="#authorization-and-delegation"></a>에 나와있다. 
+        참고해야 할 것은 모든 <a>DID 메소드</a> 사양이 다른 <a>DID 메소드</a>를 사용하여 등록 된 <a>DID</a>의 제어를 인식하는 것은 아니며 
+        타사 제어를 동일한 방법을 사용하는 <a>DID</a>로 제한 할 수 있다는 점이다. 
+        <a>DID 메소드</a> 사양의 접근 제어 및 키 복구에는 복구를 위한 두번째 제어 권한을 유지하는 방식으로 키 손상을 일으키는 방식을 방지하는 
+        시간 잠금 기능도 포함 될 수 있다. 이러한 유형의 제어에 대한 추가 사양은 향후 작업의 문제이다. 
+        (섹션 <a href="#time-locks-and-did-document-recovery"></a> 참조)
       </p>
     </section>
 
