@@ -2436,19 +2436,16 @@ DID 문서 변화 알림
       </ul>
     </section>
 
-    <section>
+    <section id="key-and-signature-expiration">
       <h2>
-        Key and Signature Expiration
+        키 또는 서명 만료
       </h2>
 
       <p>
-        In a <a>decentralized identifier</a> architecture, there are no centralized
-        authorities to enforce key or signature expiration policies. Therefore
-        <a>DID resolvers</a> and other client applications need to validate that keys
-        were not expired at the time they were used. Because some use cases might have
-        legitimate reasons why already-expired keys can be extended, make sure a key
-        expiration does not prevent any further use of the key, and implementations
-        of a resolver ought to be compatible with such extension behavior.
+        <a>탈중앙 식별자</a> 아키텍처에는 키 또는 서명 만료 정책을 시행할 중앙 권한이 없다. 
+        따라서 <a>DID 리졸버</a> 및 기타 클라이언트 프로그램은 키를 사용할 때 만료되지 않았는지 확인해야한다. 
+        일부 사용 사례에는 이미 만료 된 키를 확장해야하는 합당한 이유가 있을 수 있으므로 만료가 되어도 키의 추가사용을 막지 않아야하며 
+        리졸버를 구현할 때 이런 확장 기능을 호환가능하게 만들어야 한다.
       </p>
     </section>
 
