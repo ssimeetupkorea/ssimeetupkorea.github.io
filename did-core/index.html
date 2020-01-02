@@ -2273,197 +2273,164 @@ DID 리졸버는 믿을 만한(authoritative) <a>DID 문서</a>를 조회하기 
       </p>
     </section>
 
-    <section>
+    <section id="binding-of-identity">
       <h2>
-        Binding of Identity
+신원의 결합
       </h2>
 
       <p>
-        The following sections describe binding identities to <a>DIDs</a> and
-        <a>DID documents</a>.
+다음 섹션은 <a>DID</a>와 <a>DID 문서</a>에 신원을 결합하는 것에 대해 설명하고 있다.
       </p>
 
       <section>
         <h3>
-          Proving Control of a DID and DID Document
+DID와 DID 문서에 대한 컨트롤 증명하기
         </h3>
 
         <p>
-          Signatures are one way to allow <a>DID documents</a> to be cryptographically
-          verifiable.
+서명은 <a>DID 문서</a>가 암호학적으로 검증 가능하도록 하는 하나의 수단이다.
         </p>
 
         <p>
-          By itself, a verified signature on a self-signed <a>DID document</a> does not
-          prove control of a <a>DID</a>. It only proves that the:
+<a>DID 문서</a>에 대한 검증된 서명 자체는 <a>DID</a>에 대한 컨트롤을 증명하지 못한다. 
+그것은 단지 아래 내용만을 증명한다:
         </p>
 
         <ul>
           <li>
-            <a>DID document</a> was not tampered with since it was registered.
+<a>DID 문서</a>는 그것이 등록된 이후 변조되지 않았다.
           </li>
 
           <li>
-            <a>DID controller(s)</a> controlled the private key used for the signature at
-            the time the signature was generated.
+<a>DID 컨트롤러</a>는 서명이 생성된 시점의 서명을 위해 개인키를 컨트롤 했다.
           </li>
         </ul>
 
         <p>
-          Proving control of a <a>DID</a>, that is, the binding between the <a>DID</a> and
-          the <a>DID document</a> that describes it, requires a two step process:
+<a>DID</a>의 컨트롤을 증명하는 것 즉, <a>DID</a>와 그것을 설명하는 <a>DID 문서</a> 사이를 결합하는 것은 다음 두 가지 과정을 필요로한다:
         </p>
 
         <ol start="1">
           <li>
-            Resolving the <a>DID</a> to a <a>DID document</a> according to its
-            <a>DID method</a> specification.
+<a>DID</a>를 <a>DID 메소드</a> 명세에 따라 주소분해 한다.
           </li>
 
           <li>
-            Verifying that the <code>id</code> property of the resulting <a>DID document</a>
-            matches the <a>DID</a> that was resolved.
+<a>DID 문서</a>의 <code>id</code> 프로퍼티가 주소분해된 <a>DID</a>와 일치하는지 검증한다.
           </li>
         </ol>
 
         <p>
-          It should be noted that this process proves control of a <a>DID</a> and
-          <a>DID document</a> regardless of whether the <a>DID document</a> is signed.
+주목해야 할 점은 이 과정이 <a>DID 문서</a>가 서명되었는지의 여부와 상관없이 <a>DID</a>와 <a>DID 문서</a>의 컨트롤을 증명한다는 점이다.
         </p>
 
         <p>
-          Signatures on <a>DID documents</a> are optional. <a>DID method</a>
-          specifications SHOULD explain and specify their implementation if applicable.
+<a>DID 문서</a>에 대한 서명은 선택사항이다. 
+만약 가능하다면, <a>DID 메소드</a> 명세는 그것의 구현에 대해 반드시 설명해 주어야 한다.
         </p>
 
         <p>
-          It is good practice to combine timestamps with signatures.
+타임스탬프와 서명을 결합하는 것은 좋은 사례이다.
         </p>
       </section>
 
       <section>
         <h3>
-          Proving Control of a Public Key
+공개키에 대한 컨트롤 증명하기
         </h3>
 
         <p>
-          There are two methods for proving control of the private key corresponding to a
-          <a>public key description</a> in the <a>DID document</a>: static and dynamic.
+<a>DID 문서</a>의 공개키에 대응하는 <a>개인키의 증명</a>에는 두가지 방법이 있다: 정적 그리고 동적. 
         </p>
 
         <p>
-          The static method is to sign the <a>DID document</a> with the private key. This
-          proves control of the private key at a time no later than the
-          <a>DID document</a> was registered. If the <a>DID document</a> is not signed,
-          control of a public key described in the <a>DID document</a> can still be proven
-          dynamically as follows:
+정적 방법은 <a>DID 문서</a>를 개인키로 서명하는 것이다.
+이것은 <a>DID 문서</a>가 등록된 시점 까지의 개인키에 대한 컨트롤을 증명한다.
+만약 <a>DID 문서</a>가 서명되지 않았다면, <a>DID 문서</a> 상의 공개키는 다음과 같은 동적 방법으로 증명할 수 있다:
         </p>
 
         <ol start="1">
           <li>
-            Send a challenge message containing a <a>public key description</a> from the
-            <a>DID document</a> and a nonce to an appropriate <a>service endpoint</a>
-            described in the <a>DID document</a>.
+<a>DID 문서</a>의 <a>공개키 설명</a>(Description)을 포함한 신청 메세지를 보낸다.
+그리고 <a>DID 문서</a>에 설명된 적절한 <a>서비스 엔드포인트</a>에 논스를 전달한다.
           </li>
 
           <li>
-            Verify the signature of the response message against the
-            <a>public key description</a>.
+<a>공개키 설명</a>에 대한 반응 메세지의 서명을 검증한다.
           </li>
         </ol>
       </section>
 
       <section>
         <h3>
-          Authentication and Verifiable Claims
+인증과 Verifiable Claim
         </h3>
 
         <p>
-          A <a>DID</a> and <a>DID document</a> do not inherently carry any
-          <a href="https://en.wikipedia.org/wiki/Personally_identifiable_information">PII</a>
-          (personally-identifiable information). The process of binding a <a>DID</a> to
-          something in the real world, such as a person or a company, for example with
-          credentials with the same subject as that <a>DID</a>, is out of scope for this
-          specification. For more information, see the [[VC-DATA-MODEL]] instead.
+<a>DID</a>와 <a>DID 문서</a>는 <a href="https://en.wikipedia.org/wiki/Personally_identifiable_information">개인식별정보(PII)</a>를 포함하여 전달하지 않는다. 
+<a>DID</a>와 사람 혹은 회사 같은 실 세계의 무언가와 결합하는 과정(예를들면, <a>DID</a>의 동일 주체에 대한 Credential)은 본 규격에서 다루지 않는다. 
+더 상세한 내용은 [[VC-DATA-MODEL]]을 참고.
         </p>
       </section>
     </section>
 
     <section>
       <h2>
-        Authentication Service Endpoints
+인증 서비스 엔드포인트
       </h2>
 
       <p>
-        If a <a>DID document</a> publishes a <a>service endpoint</a> intended for
-        authentication or authorization of the <a>DID subject</a> (see Section
-        <a href="#service-endpoints"></a>), it is the responsibility of the
-        <a>service endpoint</a> provider, subject, or relying party to comply with the
-        requirements of the authentication protocols supported at that
-        <a>service endpoint</a>.
+만약 <a>DID 문서</a>가 <a>DID 주체</a>에 대한 인증 혹은 승인을 위한 <a>서비스 엔드포인트</a>를 발행했을 경우(섹션 <a href="#service-endpoints">5.6 서비스 엔드포인트</a> 참조), 
+해당 <a>서비스 엔드포인트</a>에서 지원하는 인증 프로토콜의 요구사항을 만족시키는 것은 <a>서비스 엔드포인트</a>, 주체, 그리고 연계된 조직의 책임이다.
       </p>
     </section>
 
     <section>
       <h2>
-        Non-Repudiation
+부인방지
       </h2>
 
       <p>
-        Non-repudiation of <a>DIDs</a> and <a>DID document</a> updates is supported
-        under the assumption that the subject:
+<a>DID</a>와 <a>DID 문서</a>의 업데이트에 대한 부인 방지는 다음과 같은 가정 아래 지원된다:
       </p>
 
       <ul>
         <li>
-          Is monitoring for unauthorized updates (see Section
-          <a href="#notification-of-did-document-changes"></a>).
+주체는 승인되지 않은 업데이트에 대해 모니터링 한다. (섹션 <a href="#notification-of-did-document-changes">9.6 DID 문서 변화 알림</a> 참조)
         </li>
         <li>
-          Has had adequate opportunity to revert malicious updates according to the
-          access control mechanism for the <a>DID method</a> (see Section
-          <a href="#authentication"></a>).
+주체는 비정상적인 업데이트에 대해 <a>DID 메소드</a>의 접근관리 메커니즘을 통해 되돌릴 수 있는 충분한 기회를 가지고 있다. (섹션 <a href="#authentication">5.4 인증</a> 참조)
         </li>
         <ul>
 
-          <p>
-            Non-repudiation is further supported if timestamps are included (see Sections
-            <a href="#created"></a> and <a href="#updated"></a>) and the target <a>DLT</a>
-            system supports timestamps.
-          </p>
+      <p>
+부인방지는 타임스탬프가 포함되고 (섹션 <a href="#created">5.7 생성</a> 및 <a href="#updated">5.8 갱신</a> 참조), 대상 분산원장기술(DLT) 시스템이 타임스탬프를 지원하는 경우 더욱 보완된다.
+      </p>
     </section>
 
     <section>
       <h2>
-        Notification of DID Document Changes
+DID 문서 변화 알림
       </h2>
 
       <p>
-        One mitigation against unauthorized changes to a <a>DID document</a> is
-        monitoring and actively notifying the <a>DID subject</a> when there are changes.
-        This is analogous to helping prevent account takeover on conventional
-        username/password accounts by sending password reset notifications to the email
-        addresses on file. In the case of a <a>DID</a>, where there is no intermediary
-        registrar or account provider to generate the notification, the following
-        approaches are suggested:
+<a>DID 문서</a>의 승인되지 않은 변화에 대한 하나의 완화방안은 <a>DID 주체</a>를 모니터링하고 적극적으로 알리는 것이다.
+이것은 전통적인 유저명/패스워드 계정의 계정 탈취를 막기 위해 패스워드 재설정에 대한 알림을 이메일 주소로 전달하는 것과 유사하다.
+알림을 생성해 줄 중개 등록자 혹은 계정 공급자가 없는 <a>DID</a>의 경우, 다음과 같은 방법이 제안된다:
       </p>
 
       <ul>
         <li>
-          Subscriptions. If the <a>DID registry</a> on which the <a>DID</a> is registered
-          directly supports change notifications, this service can be offered to
-          <a>DID controllers</a>. Notifications could be sent directly to the relevant
-          <a>service endpoints</a> listed in an existing <a>DID</a>.
+구독. <a>DID</a>가 등록된 <a>DID 레지스트리</a>가 변경 알림을 직접 지원하는 경우, 이 서비스는 <a>DID 컨트롤러</a>에게 제공될 수 있다. 
+알림은 기존 <a>DID</a>에 나열된 서비스 엔트포인트로 직접 보낼 수 있다.
         </li>
 
         <li>
-          Self-monitoring. A <a>DID subject</a> can employ their own local or online agent
-          to periodically monitor for changes to a <a>DID document</a>.
+자기 모니터링. <a>DID 주체</a>는 정기적으로 <a>DID 문서</a>의 변화를 모니터링하는 로컬 혹은 온라인 상의 에이전트를 둘 수 있다.
         </li>
 
         <li>
-          Third-party monitoring. A <a>DID subject</a> could rely on a third-party
-          monitoring service, however this introduces another vector of attack.
+3자 모니터링. <a>DID 주체</a>는 제 3의 모니터링 서비스에 의존할 수 있다. 다만, 이것은 또다른 공격 경로를 유발할 수 있다.
         </li>
       </ul>
     </section>
