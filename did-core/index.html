@@ -158,7 +158,7 @@
       번역일: 2020-01-01<br />
     </p>
     <dt><span style="font-weight: 500;">번역자 (가나다순)</span>: </dt>
-    <dd><a href="mailto:jshim10@illinois.edu" ]>심재훈</a> (<a href="https://lgcns.co.kr">LG CNS</a>)</dd>
+    <dd><a href="mailto:jshim10@illinois.edu" ]>심재훈</a></dd>
     <dd><a href="mailto:anh1026@kaist.ac.kr" ]>안형철</a></dd>
     <dd><a href="mailto:example@gmail.com" ]>오효근</a></dd>
     <dd><a href="https://www.linkedin.com/in/minho-yoo-1b968837/" ]>유민호</a> (<a href="https://iotrust.kr/">IoTrust Co., Ltd.</a>)</dd>
@@ -655,7 +655,7 @@ did:example:123456789abcdefghi
     <ul>
       <li>
         URL과 동일하게, 주체에 대해 설명하는 일반 자원을 주소 분해(Resolve)하거나 역참조(Dereferenced)한다.
-        더 상세한 내용은 섹션 <a href="#did-documents">5. DID Documents</a> 참조.
+        더 상세한 내용은 섹션 <a href="#did-documents"></a> 참조.
       </li>
       <li>
         URL을 역참조 할 경우 반환되는 리소스와는 다르게, <a>DID 문서</a>는 일반적으로 <a>DID 주체</a>에 대한 인증을 가능하게 하는 암호학적 요소를 포함하고 있다.
@@ -717,7 +717,7 @@ param-char         = ALPHA / DIGIT / "." / "-" / "_" / ":" /
       <p>
         <a>DID 메소드</a> 명세는 반드시 <code>method-name</code>과 <code>method-specific-id</code> 구문을 정의함으로써 일반 DID 구문을 추가로 제한해야
         한다.
-        더 상세한 내용은 섹션 <a href="#did-methods">7. DID Methods</a> 참조.
+        더 상세한 내용은 섹션 <a href="#did-methods"></a> 참조.
       </p>
     </section>
 
@@ -737,8 +737,7 @@ param-char         = ALPHA / DIGIT / "." / "-" / "_" / ":" /
         반드시 <a>DID 메소드</a>가 그것을 지원하는 방식으로 동일하게 작동해야만 한다.
       </p>
       <p>
-        메소드에 완전히 특화된 매개변수 이름은 <a href="#method-specific-did-parameter-names">
-          4.4 Method-Specific DID Parameter Names</a>에서 설명하고 있다.
+        메소드에 완전히 특화된 매개변수 이름은 <a href="#method-specific-did-parameter-names"></a>에서 설명하고 있다.
       </p>
       <p>
         아래 표는 일반 DID 매개변수 이름 세트를 정의하고 있다:
@@ -1709,17 +1708,17 @@ URL이 참조하고 있는 곳을 찾아서, 그 URL과 연관된 <code>publicKe
 
         <ol start="1">
           <li>
-            섹션 5.2 <a href="#did-subject">DID 주체</a>에 정의 된 <a>DID 주체</a> 또는:
+            섹션 5.2 <a href="#did-subject"></a>에 정의 된 <a>DID 주체</a> 또는:
           </li>
 
           <li>
-            <a href="#authorization-and-delegation">권한 부여 및 위임</a>에 정의 된 DID 컨트롤러 (있는 경우).
+            <a href="#authorization-and-delegation"></a>에 정의 된 DID 컨트롤러 (있는 경우).
           </li>
         </ol>
 
         <p>
-          이 증명은 <a>DID</a>와 <a>DID 문서</a>간의 연관성(binding) 대한 증명이 아니다 (섹션 9.3 <a
-          href="#binding-of-identity">신원의 바인딩</a> 참조).
+          이 증명은 <a>DID</a>와 <a>DID 문서</a>간의 연관성(binding) 대한 증명이 아니다 (섹션 <a
+          href="#binding-of-identity"></a> 참조).
         </p>
 
         <p>
@@ -2379,7 +2378,7 @@ DID와 DID 문서에 대한 컨트롤 증명하기
       </h2>
 
       <p>
-만약 <a>DID 문서</a>가 <a>DID 주체</a>에 대한 인증 혹은 승인을 위한 <a>서비스 엔드포인트</a>를 발행했을 경우(섹션 <a href="#service-endpoints">5.6 서비스 엔드포인트</a> 참조), 
+만약 <a>DID 문서</a>가 <a>DID 주체</a>에 대한 인증 혹은 승인을 위한 <a>서비스 엔드포인트</a>를 발행했을 경우(섹션 <a href="#service-endpoints"></a> 참조), 
 해당 <a>서비스 엔드포인트</a>에서 지원하는 인증 프로토콜의 요구사항을 만족시키는 것은 <a>서비스 엔드포인트</a>, 주체, 그리고 연계된 조직의 책임이다.
       </p>
     </section>
@@ -2395,19 +2394,19 @@ DID와 DID 문서에 대한 컨트롤 증명하기
 
       <ul>
         <li>
-주체는 승인되지 않은 업데이트에 대해 모니터링 한다. (섹션 <a href="#notification-of-did-document-changes">9.6 DID 문서 변화 알림</a> 참조)
+주체는 승인되지 않은 업데이트에 대해 모니터링 한다. (섹션 <a href="#notification-of-did-document-changes"></a> 참조)
         </li>
         <li>
-주체는 비정상적인 업데이트에 대해 <a>DID 메소드</a>의 접근관리 메커니즘을 통해 되돌릴 수 있는 충분한 기회를 가지고 있다. (섹션 <a href="#authentication">5.4 인증</a> 참조)
+주체는 비정상적인 업데이트에 대해 <a>DID 메소드</a>의 접근관리 메커니즘을 통해 되돌릴 수 있는 충분한 기회를 가지고 있다. (섹션 <a href="#authentication"></a> 참조)
         </li>
         <ul>
 
       <p>
-부인방지는 타임스탬프가 포함되고 (섹션 <a href="#created">5.7 생성</a> 및 <a href="#updated">5.8 갱신</a> 참조), 대상 분산원장기술(DLT) 시스템이 타임스탬프를 지원하는 경우 더욱 보완된다.
+부인방지는 타임스탬프가 포함되고 (섹션 <a href="#created"></a> 및 <a href="#updated"></a> 참조), 대상 분산원장기술(DLT) 시스템이 타임스탬프를 지원하는 경우 더욱 보완된다.
       </p>
     </section>
 
-    <section>
+    <section id="notification-of-did-document-changes">
       <h2>
 DID 문서 변화 알림
       </h2>
