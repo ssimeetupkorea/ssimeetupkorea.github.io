@@ -160,7 +160,7 @@
     <dt><span style="font-weight: 500;">번역자 (가나다순)</span>: </dt>
     <dd><a href="mailto:jshim10@illinois.edu" ]>심재훈</a></dd>
     <dd><a href="mailto:anh1026@kaist.ac.kr" ]>안형철</a></dd>
-    <dd><a href="mailto:example@gmail.com" ]>오효근</a></dd>
+    <dd><a href="mailto:benjioh5@gmail.com" ]>오효근</a> (<a href="https://www.scvsoft.net/">SCVSoft Co., Ltd.</a>)</dd>
     <dd><a href="https://www.linkedin.com/in/minho-yoo-1b968837/" ]>유민호</a> (<a href="https://iotrust.kr/">IoTrust Co., Ltd.</a>)</dd>
     <dd><a href="mailto:example@gmail.com" ]>유수웅</a></dd>
     <dd><a href="mailto:example@gmail.com" ]>윤희태</a> (<a href="https://http://blockcrafters.com/">Block Crafters Co., Ltd.</a>)</dd>
@@ -809,19 +809,19 @@ param-char         = ALPHA / DIGIT / "." / "-" / "_" / ":" /
 
     <section>
       <h2>
-        Method-Specific DID Parameter Names
+        메소드 특정한 DID 매개변수 이름
       </h2>
 
       <p>
-        A <a>DID method</a> specification MAY specify additional method-specific
-        parameter names. A method-specific parameter name MUST be prefixed by the method
-        name, as defined by the <code>method-name</code> rule.
+        <a>DID 메소드</a> 명세는 추가적인 메소드 특정한 매개변수 이름에 대해서 정의를 할 <b>수</b> 있다.
+        메소드 특정한 매개변수 이름은 <code>method-name</code> 규칙에 정의된 메소드 이름에 따라 <b>무조건</b>
+        접두사가 되어야한다.
       </p>
 
       <p>
-        For example, if the method <code>did:foo:</code> defines the parameter bar, the
-        parameter name must be <code>foo:bar</code>. An example <a>DID URL</a> using
-        this method and this method-specific parameter would be as shown below.
+        예를 들어, 만약 <code>did:foo:</code> 메소드가 매개변수 bar를 정의한다면 매개변수 이름은 
+        <code>foo:bar</code> 가 되어야만 한다. 메소드와 메소드 특정한 매개변수를 사용하는 <a>DID URL</a>에
+        대한 예시는 다음과 같다 : 
       </p>
 
       <pre class="example nohighlight">
@@ -829,13 +829,12 @@ did:foo:21tDAKCERh95uGgKbJNHYp;foo:bar=high
       </pre>
 
       <p class="issue" data-number="35">
-        Consider using kebab-case style instead of colon separator,
-        e.g., <code>foo-bar</code> instead of <code>foo:bar</code>.
+        케밥 케이스 스타일 대신에 콜론 분리자를 사용하는 것을 고려한다.
+        예) <code>foo-bar</code> 대신에 <code>foo:bar</code>를 사용하는 것
       </p>
 
       <p>
-        A method-specific parameter name defined by one <a>DID method</a> MAY be used by
-        other <a>DID methods</a>.
+        한 <a>DID 메소드</a>에서 정의된 메소드 특정한 파마리터 이름은 다른 <a>DID 메소드</a>에서도 사용되어질 수 있다. 예를 들면,
       </p>
 
       <pre class="example nohighlight">
@@ -843,8 +842,7 @@ did:example:21tDAKCERh95uGgKbJNHYp;foo:bar=low
       </pre>
 
       <p>
-        Method-specific parameter names MAY be combined with generic parameter names in
-        any order.
+        메소드 특정한 매개변수 이름은 다른 종류의 포괄적인 매개변수와 순서에 관계 없이 섞일 수 있다.
       </p>
 
       <pre class="example nohighlight">
@@ -852,10 +850,9 @@ did:example:21tDAKCERh95uGgKbJNHYp;service=agent;foo:bar=high
       </pre>
 
       <p>
-        Both <a>DID method</a> namespaces and method-specific parameter namespaces MAY
-        include colons, so they might be partitioned hierarchically, as defined by a
-        <a>DID method</a> specification. The following example <a>DID URL</a>
-        illustrates both.
+        <a>DID 메소드</a> 네임스페이스와 메소드 특정한 매개변수 네임스페이스 모두 콜론을 포함 할 수 있으며,
+        이에 따라 <a>DID 메소드</a> 규격에 정의된 처럼 계층적으로 분리 될 수 있다.
+        여기 이 두 가지를 보이는 <a>DID URL</a> 예시가 있다.
       </p>
 
       <pre class="example nohighlight">
@@ -864,26 +861,23 @@ did:foo:baz:21tDAKCERh95uGgKbJNHYp;foo:baz:hex=b612
     </section>
 
     <p class="issue" data-number="36">
-      Review what exactly we want to say about method-specific parameters
-      defined by one method but used in a <a>DID URL</a> with a different method.
-      Also discuss hierarchical method namespaces in DID parameter names.
+      한 메소드에서 정의 되었지만, 다른 메소드를 갖고 있는 <a>DID URL</a> 안에서도 사용되는 메소드 특정한 매개변수에 대해서 리뷰를 한다.
+      또한, DID 파라메터 이름 속에서 계층화된 메소드 네임스페이스에 대해서 논의한다.
     </p>
 
     <section>
       <h2>
-        Path
+        경로
       </h2>
 
       <p>
-        A generic <a>DID path</a> is identical to a URI path and MUST conform to the
-        <code>path-abempty</code> ABNF rule in [[!RFC3986]]. A <a>DID path</a> SHOULD be
-        used to address resources available through a <a>service endpoint</a>. For more
-        information, see Section <a href="#service-endpoints"></a>.
+        일반적인 <a>DID 경로</a>는 URI 경로와 동일해야하며,
+        [[!RFC3986]]에서 정의된 <code>path-abempty</code> ABNF 규칙을 무조건 따라야만 한다.
+        <a>DID 경로</a>는 <a>서비스 엔드포인트</a>를 통해 사용 가능한 주소 자원으로써 사용될 수 있어야만한다. <a href="#service-endpoints"></a> 를 확인하십시오
       </p>
 
       <p>
-        A specific <a>DID scheme</a> MAY specify ABNF rules for <a>DID paths</a> that
-        are more restrictive than the generic rules in this section.
+        일부 <a>DID 스키마</a>는 이 세션의 일반적인 규칙보다 제한된 <a>DID 경로</a> 규칙을 위한 ABNF 규칙을 정의할 수 있다.
       </p>
 
       <pre class="example nohighlight">
@@ -893,19 +887,17 @@ did:example:123456/path
 
     <section>
       <h2>
-        Query
+        질의(쿼리)
       </h2>
 
       <p>
-        A generic <a>DID query</a> is identical to a URI query and MUST conform to the
-        <code>query</code> ABNF rule in [[!RFC3986]]. A <a>DID query</a> SHOULD be used
-        to address resources available through a <a>service endpoint</a>. For more
-        information, see Section <a href="#service-endpoints"></a>.
+        일반적인 <a>DID 쿼리</a>는 URI 쿼리와 동일하며, [[!RFC3986]]의 <code>query</code> ABNF 규칙을 무조건적으로 따라야한다.
+        <a>DID 쿼리</a>는 <a>서비스 엔드포인트</a>를 통해 사용 가능한 주소 자원으로써 사용 될 수 있어야만 한다.
+        <a href="#service-endpoints"></a>을 확인하십시오.
       </p>
 
       <p>
-        A specific <a>DID scheme</a> MAY specify ABNF rules for <a>DID queries</a> that
-        are more restrictive than the generic rules in this section.
+        일부 <a>DID 스키마</a>는 이 세션의 일반적인 규칙보다 제한된 <a>DID 쿼리</a> 규칙을 위한 ABNF 규칙을 정의할 수 있다.
       </p>
 
       <pre class="example nohighlight">
@@ -915,36 +907,31 @@ did:example:123456?query=true
 
     <section>
       <h2>
-        Fragment
+        파편화(프래그먼트)
       </h2>
 
       <p>
-        A generic <a>DID fragment</a> is identical to a URI fragment and MUST conform to
-        the <code>fragment</code> ABNF rule in [[RFC3986]]. Implementers are strongly
-        discouraged from using a <a>DID fragment</a> for anything other than a
-        method-independent reference into the <a>DID document</a> to identify a
-        component of a <a>DID document</a> (for example, a unique
-        <a>public key description</a> or <a>service endpoint</a>). To resolve this
-        reference, the complete <a>DID URL</a> including the <a>DID fragment</a> MUST be
-        used as input to the <a>DID URL</a> dereferencing algorithm for the
-        target component in the <a>DID document</a> object. For more information, see
-        [[DID-RESOLUTION]].
+        보편적인 <a>DID 파편화</a>는 URI 파편화와 동일하며, [[RFC3986]]의 <code>fragment</code> ABNF 규칙을 무조건 따라야만 한다.
+        구현을 하는 사람은 <a>DID 문서</a>의 컴포넌트(e.g. <a>유일한 공개키 설명</a>, 혹은 <a>서비스 엔드포인트 </a>)를 
+        식별하기 위해 사용하는 <a>DID 문서</a> 안의 메소드 독립적인 레퍼런스 대신에 <a>DID 파편화</a>를 사용하는 것을 
+        강력하게 권장하지 않는다. 이러한 레퍼런스를 가져오기 위해서는, <a>DID 파편화</a>를 포함한 완벽한 <a>DID URL</a>이 
+        <a>DID 문서</a> 오브젝트 안의 타겟 컴포넌트를 위해 <a>DID URL</a> 역참조 알고리즘([[DID-RESOULTION]]을 볼 것)에 
+        입력값으로 무조건 사용되어야한다.
       </p>
 
       <p>
-        A specific <a>DID scheme</a> MAY specify ABNF rules for <a>DID fragments</a>
-        that are more restrictive than the generic rules in this section.
+        특수한 <a>DID 스키마</a>는 이 섹션의 범용적인 규칙 대신에 더 제한적인 
+        <a>DID 파편화</a> ABNF 규칙을 사용할 수 있다.
       </p>
 
       <p>
-        Implementations need not rely on graph-based processing of <a>DID documents</a>
-        to locate metadata contained in the <a>DID document</a> when the <a>DID</a>
-        includes a <a>DID fragment</a>. Tree-based processing can be used instead.
+        구현체는 <a>DID</a>가 <a>DID 파편화</a>를 포함하고 있을 때, 
+        <a>DID 문서</a> 속에 포함된 메타데이터를  찾아내기 위해 <a>DID 문서</a>에 대해 그래프 기반 처리에 
+        의존하지 않아야한다. 그 대신, 트리 기반 처리사 사용 될 수 있다.
       </p>
 
       <p>
-        Implementations SHOULD NOT prevent the use of <a>JSON Pointer</a>
-        ([[!RFC6901]]).
+        구현은 <a>JSON Pointer</a>([[@RFC6901]])의 사용을 막지 않아야만 한다.
       </p>
 
       <pre class="example nohighlight">
@@ -954,40 +941,36 @@ did:example:123456#oidc
 
     <section>
       <h2>
-        Normalization
+        노말라이제이션
       </h2>
 
       <p>
-        For the broadest interoperability, make <a>DID</a> normalization as simple and
-        universal as possible:
+        상호 운용성을 높이기 위해, <a>DID</a> 정규화는 가능한 보편적이고 간단해야한다. 그러므로 :
       </p>
       <ul>
         <li>
-          The <a>DID scheme</a> name MUST be lowercase.
+          <a>DID 스키마<a>는 <b>무조건</b> 소문자여야 한다
         </li>
 
         <li>
-          The <a>DID method</a> name MUST be lowercase.
+          <a>메소드 이름</a>은 <b>무조건</b> 소문자여야 한다
         </li>
 
         <li>
-          Case sensitivity and normalization of the value of the
-          <code>method-specific-id</code> rule in Section
-          <a href="#generic-did-syntax"></a> MUST be defined by the governing
-          <a>DID method</a> specification.
+          <a href="#generic-did-syntax"></a>의 <code>method-specific-id</code> 규칙의 값의 
+          대소문자 구분과 정규화는 관리되고 있는 <a>DID 메소드</a> 정의에서 무조건  정의되야한다.
         </li>
       </ul>
     </section>
 
     <section>
       <h2>
-        Persistence
+        지속성(영속성)
       </h2>
 
       <p>
-        A <a>DID</a> is expected to be persistent and immutable. That is, a <a>DID</a>
-        is bound exclusively and permanently to its one and only subject. Even after a
-        <a>DID</a> is deactivated, it is intended that it never be repurposed.
+        <a>DID</a>는 지속적이고 변화 불가능한 것으로 간주됩니다. 예를 들어 하나의 대상에만 오직 영원하고 배타적으로 종속됩니다. 
+        심지어 <a>DID</a>가 비활성화 된 이후에도, 절대로 다른 목적으로 갖고 새롭게 사용되지 않아야한다.
       </p>
 
       <p>
@@ -999,13 +982,16 @@ did:example:123456#oidc
         <a href="https://en.wikipedia.org/wiki/List_of_DNS_record_types%23SOA">start-of-authority</a>
         (SOA) problems. It also greatly increases implementation complexity for
         developers.
+        이상적으로 <a>DID</a>는 <a>DID 등록소들</a>에 여러 번 등록 될 수 있어서, 어떠한 특정한 시스템에도 
+        독립적으로 존재할 수 있는 (UUID 처럼) 완벽히 추상화된 식별자가 되어야한다. 
+        그러나, 동일한 식별자를 복수의 <a>DID 등록소들</a>에 등록하는 것은 실재함을 극단적으로 힘들게 만들고, 
+        <a href="https://en.wikipedia.org/wiki/List_of_DNS_record_types%23SOA">권한 시작 문제</a>를 발생시킵니다. 
+        또한 개발자들이 이를 적용시키는데 있어서 복잡성을 높인다.
       </p>
 
       <p>
-        To avoid these issues, it is RECOMMENDED that <a>DID method</a> specifications
-        only produce <a>DIDs</a> and <a>DID methods</a> bound to strong, stable
-        <a>DID registries</a> capable of making the highest level of commitment to
-        persistence of the <a>DID</a> and <a>DID method</a> over time.
+        이러한 문제들을 피하기 위해, <a>DID 메소드</a> 정의는 <a>DIDs</a>와 <a>DID 메소드</a>가 시간이 지나도 지속이 될 수 있도록 
+        최고의 수준의 노력을 할 수 있는 강력하고 안정적인 <a>DID 등록소들</a>에만 등록되도록 하는 것을 추천한다
       </p>
 
       <p class="note">
@@ -1014,7 +1000,12 @@ did:example:123456#oidc
         verifiable equivalence relations between <a>DIDs</a> representing the same
         subject on multiple <a>DID registries</a>. Such equivalence relations can
         produce the practical equivalent of a single persistent abstract <a>DID</a>. For
-        more information, see Section <a href="#future-work"></a>.
+        more information,
+        
+        이 버전에는 도입되지 않았지만, 이 규격의 미래의 버전에는 다수의 <a>DID 등록소들</a>에 동일안 추체로써
+        <a>DIDs</a>가 관계를 갖고 있다는 것을 증명할 수 있도록  <a>DID 문서</a>의 <code>equivID</code> 프로퍼티를 지원할 수 있다.
+        이러한 대등 관계는 하나의 지속적인 추상 <a>DID</a>의 실용적인 대등함을 만들어 낼 수 있다.
+        <a href="#future-work"></a>를 참조.
       </p>
     </section>
   </section>
