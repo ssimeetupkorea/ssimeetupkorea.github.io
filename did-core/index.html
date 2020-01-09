@@ -2637,129 +2637,107 @@ DID 문서 변화 알림
 
     <section>
       <h2>
-        Upper Limits on DID Character Length
+        DID 문자열 길이의 상한
       </h2>
 
       <p>
-        The current specification does not take a position on maximum length
-        of a <a>DID</a>. The maximum interoperable URL length is currently about 2K
-        characters. QR codes can handle about 4K characters. Clients using
-        <a>DIDs</a> will be responsible for storing many <a>DIDs</a>, and some methods
-        would be able to externalize some of their costs onto clients by
-        relying on more complicated signature schemes or by adding state into
-        <a>DIDs</a> intended for temporary use. A future version of this
-        specification should set reasonable limits on <a>DID</a> character length to
-        minimize externalities.
+        현 규격에서는 <a>DID</a>의 최대 길이에 대한 부분이 없다. 상호 운용가능한 URL의 최대의 길이는 약 2천자 정도이다. 
+        QR 코드는 약 4천자를 다룰 수 있다. <a>DIDs</a>를 사용하는 클라이언트는 최대한 많이 <a>DIDs</a>를 저장해야하고, 
+        일부 메소드들은 <a>DIDs</a>가 임시적으로 사용된다는 상태를 추가하거나 좀 더 복잡한 시그니처 스키마에 의존함으로써 
+        비용의 일부를 외부화 할 수 있을 것이다. 이 규격의 미래 버전에서는 합리적인 수준의 <a>DID</a> 문자열 길이 제한을 통해 
+        외부성을 최소화할 것입니다.
       </p>
     </section>
 
     <section>
       <h2>
-        Equivalence
+        동치관계
       </h2>
 
       <p>
-        Including an equivalence property, such as <code>equivID</code>, in <a>DID documents</a>
-        whose value is an array of <a>DIDs</a> would allow subjects to assert two or
-        more <a>DIDs</a> that represent the same subject. This capability has
-        numerous uses, including supporting migration between <a>DID registries</a> and
-        providing forward compatibility of existing <a>DIDs</a> to future <a>DID
-          registries</a>. In
-        theory, equivalent <a>DIDs</a> should have the same identifier rights,
-        allowing <a href="https://w3c.github.io/vctf/">verifiable claims</a>
-        made against one <a>DID</a> to apply to equivalent <a>DIDs</a>. Equivalence was not
-        included in the current specification due to the complexity of
-        verifying equivalence across different <a>DLTs</a> and different <a>DID
-          methods</a>, and also of aggregating properties of equivalent <a>DID
-          documents</a>. However equivalence should be supported in a future
-        version of this specification.
+        <code>equivID</code>와 같은 동치관계 속성을 도입하여, <a>DIDs</a>의 배열을 값으로 갖는 
+        <a>DID 도큐멘트</a> 안에서의 주체들이 두개 혹은 더 많은 <a>DiDs</a>이 동일한 주체를 
+        가리킨다는 것을 주장할 수 있다. 이 능력은 <a>DID 저장소</a> 간 이전을 지원하거나, 
+        미래의 <a>DID 저장소</a>에 기존의 <a>DIDs</a>를 전달하는 등의 다양한 용도를 갖고 있다.
+        이론적으로 동등한 <a>DIDs</a>는 동등한 <a>DIDs</a>에게 적용할 수 있는 한 <a>DID</a>에서 만들어진
+        <a href="https://w3c.github.io/vctf/">증명 가능한 주장</a>을 가능케 하는 같은 식별자 권한을 가져야한다.
+        동치관계는 다른 <a>DLTs</a> 사이와 다른 <a>DID 메소드</a>, 그리고 동일한 <a>DID 도큐멘트</a>의 
+        종합적인 특징들 사이에서 동등함을 증명하는 것의 복잡함 떄문에 현 규격에서는 포함되지 않는다.
+        그러나 동치관계는 이 규격의 미래 버전에서 지원되어야한만다.
+        </a>
       </p>
     </section>
 
     <section>
       <h2>
-        Timestamps
+        타임스탬프
       </h2>
 
       <p>
-        Verifiable timestamps have significant utility for identifier
-        records. This is a good fit for <a>DLTs</a>, since most offer some type of
-        timestamp mechanism. Despite some transactional cost, they are the
-        most censorship-resistant transaction ordering systems in the world,
-        so they are nearly ideal for <a>DID document</a> timestamping. In some cases
-        a <a>DLT</a>'s immediate timing is approximate, however their sense of
-        <a href="https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki%23Abstract">
-          "median time past" (see Bitcoin BIP 113)</a> can be precisely
-        defined. A generic <a>DID document</a> timestamping mechanism could would
-        work across all <a>DLTs</a> and might operate via a mechanism including
-        either individual transactions or transaction batches. The generic
-        mechanism was deemed out of scope for this version, although it may
-        be included in a future version of this specification.
+        증명가능한 타임스탬프는 식별자 레코드에서 명백한 용도를 갖고 있다. <a>DLTs</a>에게 잘 어울리는데, 
+        <a>DLTs</a>는 일종의 타임스탬프 메커니즘을 제공하기 때문이다. 트랜젝션 비용에 비해, <a>DLTs</a>는
+        이 세상에서 가장 검열 저항적인 트랜젝션 정렬 시스템이기에 <a>DID 도큐멘트</a>의 타임스탬프 저장에 진짜 이상적이다.
+        일부 상황에서 <a>DLT</a>은 근사적인 시간 관념을 쓰지만, <a href="https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki%23Abstract">
+        "평균 시간 지연" (비트코인 BIP 113을 보라)</a>으로 명료하게 정의될 수 있다. 범용적인 <a>DID 문서</a>의 
+        타임스탬프 매터니즘은 모든 <a>DLTs</a>에 적용될 수 있고, 트랜젠션들이나 트랜젝션의 배치들을 통한 매커니즘을 통해 
+        작동될 수 있다. 범용적인 매커니즘은 이 버전의 목적에 벗어나지만, 이 규격의 미래 버전에서는 포함될 것이다.
+
       </p>
     </section>
 
     <section>
       <h2>
-        Time Locks and DID Document Recovery
+        타임 락과 DID 문서 복구
       </h2>
 
       <p>
-        Section <a href="#key-revocation-and-recovery"></a> mentions one
-        possible clever use of time locks to recover control of a <a>DID</a> after a
-        key compromise. The technique relies on an ability to override the
-        most recent update to a <a>DID document</a> with Authorization applied by an
-        earlier version of the <a>DID document</a> in order to defeat the attacker.
-        This protection depends on adding a <a
-          href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki%23Abstract">
-          time lock (see Bitcoin BIP 65)</a> to protect part of the transaction
-        chain, enabling a Authorization block to be used to recover control.
-        We plan to add support for time locks in a future version of this
-        specification.
+        <a href="#key-revocation-and-recovery"></a> 세션에서 키의 훼손 이후 <a>DID</a>의 
+        제어 복구에 대한 타임 락에 대한 영리한 실제 사용 가능한 방법을 이야기헀다. 이 기법은 
+        공격자를 무력화하기 위해 이전 버전의 <a>DID 문서</a>에 적용된 인가로 제일 최신의 <a>DID 문서</a> 업데이트를 
+        덮어 씌우는 것에 의존한다. 이러한 방어 기법은 트랜젝션 체인을 보호하기 위해 <a
+        href="https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki%23Abstract">
+        타임 락 (비트코인 BIP 65 보라)</a>을 추가하여, 제어 복구를 위한 인가 블록을 활성화 할 수 있다.
+        우리는 이 규격의 미래 버전에서 타임 락의 지원을 포함 시킬 것이다.
+
       </p>
     </section>
 
     <section>
       <h2>
-        Smart Signatures
+        스마트 서명
       </h2>
 
       <p>
-        Not all <a>DLTs</a> can support the Authorization logic in section
-        <a href="#authorization-and-delegation"></a>.
-        Therefore, in this version of the specification, all Authorization
-        logic is delegated to <a>DID method</a> specifications. A potential
-        future solution is a <a href="http://www.weboftrust.info/downloads/smart-signatures.pdf">Smart
-          Signature</a> specification that specifies the code any conformant
-        <a>DLT</a> may implement to process signature control logic.
+        모든 <a>DLTs</a>가 <a href="#authorization-and-delegation"></a> 세션의 인가 로직을 지원하는 건 아니다.
+        그러무로, 현 규격의 현재 버전에서는 모든 인가 로직은 <a>DID 메소드</a>에 위임한다. 잠재적인 대안은 
+        서명 제어 로직으로 <a>DLT</a>가 적용할 수 있는 
+        <a href="http://www.weboftrust.info/downloads/smart-signatures.pdf">스마트 서명</a> 규격이다.
       </p>
     </section>
 
     <section>
       <h2>
-        Verifiable Claims
+        증명가능한 주장
       </h2>
 
       <p>
-        Although <a>DIDs</a> and <a>DID documents</a> form a foundation for decentralized
-        identity, they are only the first step in describing their subjects. The
-        rest of the descriptive power comes through collecting and
-        selectively using <a href="https://w3c.github.io/vctf/">verifiable
-          claims</a>. Future versions of the specification will describe in
-        more detail how <a>DIDs</a> and <a>DID document</a> can be integrated with &mdash; and help
-        enable &mdash; the verifiable claims ecosystem.
+        <a>DIDs</a>와 <a>DID 문서</a>가 탈중앙화된 신원을 위한 기반을 제공해도, 
+        그들의 주체를 설명하는 첫 단계에 불과하다. 나머지의 설명가능한 능력은 
+        <a href="https://w3c.github.io/vctf/">증명가능한 주장</a>을 모으고
+        선택적으로 사용함으로써 나온다. 미래의 버전의 규격에서는 <a>DIDs</a>와 <a>DID 문서</a>가
+        증명가능한 주장 생태계와 통합될 수 있는지 (그리고 작동되게 도움이 되는지)에 대해서 설명할 것이다.
+
       </p>
     </section>
 
     <section>
       <h2>
-        Alternate Serializations and Graph Models
+        그래프 모델과 시리얼라이제이션의 대안
       </h2>
 
       <p>
-        This version of the specification relies on JSON-LD and the RDF graph
-        model for expressing a <a>DID document</a>. Future versions of this
-        specification might specify other semantic graph formats for a <a>DID
-          document</a>.
+        현재 규격의 버전에서는 <a>DID 문서</a>의 표현을 위해 JSON-LD와 RDF 그래프 모델을 사용한다. 
+        미래의 버전에서는 <a>DID 문서</a>을 위한 다른 의미 그래프 포맷을 명시할 수 있다.
       </p>
     </section>
   </section>
