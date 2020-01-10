@@ -156,7 +156,9 @@
     </p>
 
     <p>
-      번역일: 2020-01-01<br />
+      원문작성일: 2019-12-09<br />
+      최초번역일: 2019-12-29<br />
+      최종수정일: 2020-01-10<br />
     </p>
     <dt><span style="font-weight: 500;">번역자 (가나다순)</span>: </dt>
     <dd><a href="mailto:jshim10@illinois.edu" ]>심재훈</a></dd>
@@ -722,7 +724,7 @@ param-char         = ALPHA / DIGIT / "." / "-" / "_" / ":" /
       </p>
     </section>
 
-    <section>
+    <section id="method-specific-did-parameter-names">
       <h2>
         일반 DID 매개변수 이름
       </h2>
@@ -913,10 +915,10 @@ did:example:123456?query=true
 
       <p>
         보편적인 <a>DID 파편화</a>는 URI 파편화와 동일하며, [[RFC3986]]의 <code>fragment</code> ABNF 규칙을 무조건 따라야만 한다.
-        구현을 하는 사람은 <a>DID 문서</a>의 컴포넌트(e.g. <a>유일한 공개키 설명</a>, 혹은 <a>서비스 엔드포인트 </a>)를 
+        구현을 하는 사람은 <a>DID 문서</a>의 컴포넌트(e.g. 유일한 <a>공개키 설명</a>, 혹은 <a>서비스 엔드포인트 </a>)를 
         식별하기 위해 사용하는 <a>DID 문서</a> 안의 메소드 독립적인 레퍼런스 대신에 <a>DID 파편화</a>를 사용하는 것을 
         강력하게 권장하지 않는다. 이러한 레퍼런스를 가져오기 위해서는, <a>DID 파편화</a>를 포함한 완벽한 <a>DID URL</a>이 
-        <a>DID 문서</a> 오브젝트 안의 타겟 컴포넌트를 위해 <a>DID URL</a> 역참조 알고리즘([[DID-RESOULTION]]을 볼 것)에 
+        <a>DID 문서</a> 오브젝트 안의 타겟 컴포넌트를 위해 <a>DID URL</a> 역참조 알고리즘([[DID-RESOLUTION]]을 볼 것)에 
         입력값으로 무조건 사용되어야한다.
       </p>
 
@@ -950,11 +952,11 @@ did:example:123456#oidc
       </p>
       <ul>
         <li>
-          <a>DID 스키마<a>는 <b>무조건</b> 소문자여야 한다
+          <a>DID 스키마</a>는 <b>무조건</b> 소문자여야 한다
         </li>
 
         <li>
-          <a>메소드 이름</a>은 <b>무조건</b> 소문자여야 한다
+          <a>DID 메소드</a> 이름은 <b>무조건</b> 소문자여야 한다
         </li>
 
         <li>
@@ -975,35 +977,20 @@ did:example:123456#oidc
       </p>
 
       <p>
-        Ideally, a <a>DID</a> would be a completely abstract decentralized identifier
-        (like a <a>UUID</a>) that could be bound to multiple underlying
-        <a>DID registries</a> over time, thus maintaining its persistence independent of
-        any particular system. However, registering the same identifier on multiple
-        <a>DID registries</a> introduces extremely hard entityship and
-        <a href="https://en.wikipedia.org/wiki/List_of_DNS_record_types%23SOA">start-of-authority</a>
-        (SOA) problems. It also greatly increases implementation complexity for
-        developers.
-        이상적으로 <a>DID</a>는 <a>DID 등록소들</a>에 여러 번 등록 될 수 있어서, 어떠한 특정한 시스템에도 
+        이상적으로 <a>DID</a>는 <a>DID 레지스트리</a>들에 여러 번 등록 될 수 있어서, 어떠한 특정한 시스템에도 
         독립적으로 존재할 수 있는 (UUID 처럼) 완벽히 추상화된 식별자가 되어야한다. 
-        그러나, 동일한 식별자를 복수의 <a>DID 등록소들</a>에 등록하는 것은 실재함을 극단적으로 힘들게 만들고, 
+        그러나, 동일한 식별자를 복수의 <a>DID 레지스트리</a>에 등록하는 것은 실재함을 극단적으로 힘들게 만들고, 
         <a href="https://en.wikipedia.org/wiki/List_of_DNS_record_types%23SOA">권한 시작 문제</a>를 발생시킵니다. 
         또한 개발자들이 이를 적용시키는데 있어서 복잡성을 높인다.
       </p>
 
       <p>
         이러한 문제들을 피하기 위해, <a>DID 메소드</a> 정의는 <a>DIDs</a>와 <a>DID 메소드</a>가 시간이 지나도 지속이 될 수 있도록 
-        최고의 수준의 노력을 할 수 있는 강력하고 안정적인 <a>DID 등록소들</a>에만 등록되도록 하는 것을 추천한다
+        최고의 수준의 노력을 할 수 있는 강력하고 안정적인 <a>DID 레지스트리</a>에만 등록되도록 하는 것을 추천한다
       </p>
 
       <p class="note">
-        Although not included in this version, future versions of this specification
-        might support a <a>DID document</a> <code>equivID</code> property to establish
-        verifiable equivalence relations between <a>DIDs</a> representing the same
-        subject on multiple <a>DID registries</a>. Such equivalence relations can
-        produce the practical equivalent of a single persistent abstract <a>DID</a>. For
-        more information,
-        
-        이 버전에는 도입되지 않았지만, 이 규격의 미래의 버전에는 다수의 <a>DID 등록소들</a>에 동일안 추체로써
+        이 버전에는 도입되지 않았지만, 이 규격의 미래의 버전에는 다수의 <a>DID 레지스트리</a>에 동일안 추체로써
         <a>DIDs</a>가 관계를 갖고 있다는 것을 증명할 수 있도록  <a>DID 문서</a>의 <code>equivID</code> 프로퍼티를 지원할 수 있다.
         이러한 대등 관계는 하나의 지속적인 추상 <a>DID</a>의 실용적인 대등함을 만들어 낼 수 있다.
         <a href="#future-work"></a>를 참조.
@@ -2657,12 +2644,12 @@ DID 문서 변화 알림
 
       <p>
         <code>equivID</code>와 같은 동치관계 속성을 도입하여, <a>DIDs</a>의 배열을 값으로 갖는 
-        <a>DID 도큐멘트</a> 안에서의 주체들이 두개 혹은 더 많은 <a>DIDs</a>이 동일한 주체를 
-        가리킨다는 것을 주장할 수 있다. 이 능력은 <a>DID 저장소</a> 간 이전을 지원하거나, 
-        미래의 <a>DID 저장소</a>에 기존의 <a>DIDs</a>를 전달하는 등의 다양한 용도를 갖고 있다.
+        <a>DID 문서</a> 안에서의 주체들이 두개 혹은 더 많은 <a>DIDs</a>이 동일한 주체를 
+        가리킨다는 것을 주장할 수 있다. 이 능력은 <a>DID 레지스트리</a> 간 이전을 지원하거나, 
+        미래의 <a>DID 레지스트리</a>에 기존의 <a>DIDs</a>를 전달하는 등의 다양한 용도를 갖고 있다.
         이론적으로 동등한 <a>DIDs</a>는 동등한 <a>DIDs</a>에게 적용할 수 있는 한 <a>DID</a>에서 만들어진
         <a href="https://w3c.github.io/vctf/">증명 가능한 주장</a>을 가능케 하는 같은 식별자 권한을 가져야한다.
-        동치관계는 다른 <a>DLTs</a> 사이와 다른 <a>DID 메소드</a>, 그리고 동일한 <a>DID 도큐멘트</a>의 
+        동치관계는 다른 <a>DLTs</a> 사이와 다른 <a>DID 메소드</a>, 그리고 동일한 <a>DID 문서</a>의 
         종합적인 특징들 사이에서 동등함을 증명하는 것의 복잡함 떄문에 현 규격에서는 포함되지 않는다.
         그러나 동치관계는 이 규격의 미래 버전에서 지원되어야한만다.
         </a>
@@ -2677,7 +2664,7 @@ DID 문서 변화 알림
       <p>
         증명가능한 타임스탬프는 식별자 레코드에서 명백한 용도를 갖고 있다. <a>DLTs</a>에게 잘 어울리는데, 
         <a>DLTs</a>는 일종의 타임스탬프 메커니즘을 제공하기 때문이다. 트랜젝션 비용에 비해, <a>DLTs</a>는
-        이 세상에서 가장 검열 저항적인 트랜젝션 정렬 시스템이기에 <a>DID 도큐멘트</a>의 타임스탬프 저장에 거의 이상적이다.
+        이 세상에서 가장 검열 저항적인 트랜젝션 정렬 시스템이기에 <a>DID 문서</a>의 타임스탬프 저장에 거의 이상적이다.
         일부 상황에서 <a>DLT</a>은 근사적인 시간 관념을 쓰지만, <a href="https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki%23Abstract">
         "평균 시간 지연" (비트코인 BIP 113을 보라)</a>으로 명료하게 정의될 수 있다. 범용적인 <a>DID 문서</a>의 
         타임스탬프 매터니즘은 모든 <a>DLTs</a>에 적용될 수 있고, 트랜젠션들이나 트랜젝션의 배치들을 통한 매커니즘을 통해 
@@ -2686,7 +2673,7 @@ DID 문서 변화 알림
       </p>
     </section>
 
-    <section>
+    <section id="time-locks-and-did-document-recovery">
       <h2>
         타임 락과 DID 문서 복구
       </h2>
