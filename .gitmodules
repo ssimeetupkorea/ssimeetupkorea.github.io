@@ -1,0 +1,3 @@
+[submodule "vc-data-model"]
+	path = vc-data-model
+	url = https://github.com/ssimeetupkorea/vc-data-model
